@@ -17,7 +17,6 @@ public class MainController {
 
     @RequestMapping("/")
     public String homepage(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("blablabla2");
         model.addAttribute("sigh", "lesigh");
         return "index";
     }
