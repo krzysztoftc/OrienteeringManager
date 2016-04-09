@@ -1,4 +1,4 @@
-package pl.edu;
+package pl.edu.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller("mainController")
 public class MainController {
-
 
     @RequestMapping("/")
     public String homepage(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
