@@ -1,4 +1,4 @@
-package pl.edu.controllers;
+package pl.edu.controller.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

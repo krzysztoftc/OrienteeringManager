@@ -1,0 +1,35 @@
+package pl.edu.controller.login;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.edu.controller.login.form.LoginForm;
+import pl.edu.controller.login.form.LoginValidator;
+import pl.edu.model.user.User;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Created by bartosz on 11.04.16.
+ */
+@Controller("loginController")
+public class LoginController {
+    @RequestMapping(value = { "/login", "/login/" })
+    public String homepage(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "login";
+    }
+
+    @RequestMapping(value = { "/login", "/login/" }, method = RequestMethod.POST)
+    public String login(LoginForm loginForm, BindingResult result, Model model,
+                        RedirectAttributes redirectAttributes, HttpServletRequest request,
+                        HttpServletResponse response) {
+        LoginValidator validator = new LoginValidator();
+        return "index";
+    }
+}
