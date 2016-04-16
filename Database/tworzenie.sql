@@ -12,7 +12,7 @@ USE `orienteering` ;
 DROP TABLE IF EXISTS `orienteering`.`clubs` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`clubs` (
-  `idclub` INT NOT NULL,
+  `idclub` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `address` VARCHAR(128) NULL,
   `agent_name` VARCHAR(45) NULL,
@@ -29,16 +29,16 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`users` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`users` (
-  `iduser` INT NULL,
+  `iduser` INT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(32) NOT NULL,
-  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  `type` INT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `type` VARCHAR(10) NULL,
   `idclub` INT NULL,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   PRIMARY KEY (`iduser`),
+  INDEX `fk_user_1_idx` (`idclub` ASC),
   CONSTRAINT `fk_user_1`
-    FOREIGN KEY (`iduser`)
+    FOREIGN KEY (`idclub`)
     REFERENCES `orienteering`.`clubs` (`idclub`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -66,7 +66,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`categories` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`categories` (
-  `idcategory` INT NOT NULL,
+  `idcategory` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`idcategory`))
 ENGINE = InnoDB;
@@ -78,7 +78,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`competitors` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`competitors` (
-  `idcompetitor` INT NOT NULL,
+  `idcompetitor` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `surname` VARCHAR(45) NULL,
   `licence_number` VARCHAR(5) NULL,
@@ -110,12 +110,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`acomodations` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`acomodations` (
-  `idacomodation` INT NOT NULL,
+  `idacomodation` INT NOT NULL AUTO_INCREMENT,
   `adress` VARCHAR(45) NULL,
   `name` VARCHAR(45) NULL,
   `description` VARCHAR(255) NULL,
   `places` INT NULL,
-  `reserved_places` INT NULL,
   PRIMARY KEY (`idacomodation`))
 ENGINE = InnoDB;
 
@@ -126,7 +125,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`caterings` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`caterings` (
-  `idacatering` INT NOT NULL,
+  `idacatering` INT NOT NULL AUTO_INCREMENT,
   `adress` VARCHAR(45) NULL,
   `name` VARCHAR(45) NULL,
   `description` VARCHAR(255) NULL,
@@ -140,9 +139,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`acomodation_avaliabilities` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`acomodation_avaliabilities` (
-  `idreservations_options` INT NOT NULL,
+  `idreservations_options` INT NOT NULL AUTO_INCREMENT,
   `acomodationid` INT NULL,
-  `date` VARCHAR(45) NULL,
+  `date` DATE NULL,
   `price` FLOAT NULL,
   PRIMARY KEY (`idreservations_options`),
   INDEX `fk_acomodation_avaliabilities_1_idx` (`acomodationid` ASC),
@@ -160,7 +159,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`catering_avaliabilities` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`catering_avaliabilities` (
-  `idreservations_options` INT NOT NULL,
+  `idreservations_options` INT NOT NULL AUTO_INCREMENT,
   `cateringid` INT NULL,
   `date` DATE NULL,
   `meal_time` VARCHAR(45) NULL,
@@ -182,18 +181,18 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`competiton_info` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`competiton_info` (
-  `idcompetiton_info` INT NOT NULL,
-  `description` VARCHAR(45) NULL,
+  `idcompetiton_info` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255) NULL,
   `name` VARCHAR(45) NULL,
-  `address` VARCHAR(45) NULL,
-  `begin` VARCHAR(45) NULL,
-  `end` VARCHAR(45) NULL,
-  `entry_fee` VARCHAR(45) NULL,
-  `overdue_entry_fee` VARCHAR(45) NULL,
-  `chip_borrow_fee` VARCHAR(45) NULL,
-  `chip_lost_fee` VARCHAR(45) NULL,
-  `aplication_deadline` VARCHAR(45) NULL,
-  `aplication_start` VARCHAR(45) NULL,
+  `address` VARCHAR(255) NULL,
+  `begin` DATE NULL,
+  `end` DATE NULL,
+  `entry_fee` FLOAT NULL,
+  `overdue_entry_fee` FLOAT NULL,
+  `chip_borrow_fee` FLOAT NULL,
+  `chip_lost_fee` FLOAT NULL,
+  `aplication_deadline` DATE NULL,
+  `aplication_start` DATE NULL,
   PRIMARY KEY (`idcompetiton_info`))
 ENGINE = InnoDB;
 
@@ -204,7 +203,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`catering_reservations` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`catering_reservations` (
-  `idcatering_reservations` INT NOT NULL,
+  `idcatering_reservations` INT NOT NULL AUTO_INCREMENT,
   `cateriing_option` INT NOT NULL,
   `competitor` INT NOT NULL,
   PRIMARY KEY (`idcatering_reservations`),
@@ -229,7 +228,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `orienteering`.`acomodation_reservations` ;
 
 CREATE TABLE IF NOT EXISTS `orienteering`.`acomodation_reservations` (
-  `idacomodation_reservations` INT NOT NULL,
+  `idacomodation_reservations` INT NOT NULL AUTO_INCREMENT,
   `acomodation_option` INT NOT NULL,
   `competitor` INT NOT NULL,
   PRIMARY KEY (`idacomodation_reservations`),
