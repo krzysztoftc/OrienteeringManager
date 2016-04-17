@@ -1,9 +1,9 @@
-package pl.edu.dao.user;
+package pl.edu.repository.user;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import pl.edu.dao.CommonCriteriaQueryable;
+import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.model.user.User;
 import pl.edu.utils.ClassUtils;
 
@@ -24,8 +24,8 @@ public class CriteriaUsers extends Users{
 	}
 
 	public Criteria modifyCriteria(Criteria criteria) {
-		if (StringUtils.isNotBlank(username)) {
-			criteria.add(Restrictions.eq("username", username));
+		if (StringUtils.isNotBlank(email)) {
+			criteria.add(Restrictions.eq("email", email));
 		}
 		return criteria;
 	}

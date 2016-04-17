@@ -1,7 +1,7 @@
-package pl.edu.dao.user;
+package pl.edu.repository.user;
 
 import org.springframework.stereotype.Repository;
-import pl.edu.dao.StandardDatabaseRepository;
+import pl.edu.repository.StandardDatabaseRepository;
 import pl.edu.model.BaseEntity;
 import pl.edu.model.user.User;
 

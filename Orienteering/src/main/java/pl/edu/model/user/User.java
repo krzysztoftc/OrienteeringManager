@@ -12,6 +12,8 @@ import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.edu.model.BaseEntity;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity<Long> {
@@ -20,8 +22,8 @@ public class User extends BaseEntity<Long> {
 
     public User(){}
 
-    public User(String username, String password){
-        this.username=username;
+    public User(String email, String password){
+        this.email=email;
         this.password=password;
     }
 
@@ -30,13 +32,21 @@ public class User extends BaseEntity<Long> {
     @GeneratedValue
     private Long id;
 
+    @Getter
+    @Setter
+    @Column(nullable=false, unique=true)
+    private String email;
+
     @JsonIgnore
     @Column(nullable=false)
     @Getter	@Setter
     private String password;
 
-    @Getter @Setter
-    @Column(nullable=false, unique = true)
-    private String username;
+    @Getter	@Setter
+    @Column(nullable=false)
+    private String type;
 
+    @Getter	@Setter
+    @Column(nullable=false, name = "idclub")
+    private int clubId;
 }

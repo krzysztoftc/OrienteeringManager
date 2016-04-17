@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.edu.dao.user.IUserRepository;
-import pl.edu.dao.user.Users;
+import pl.edu.repository.user.IUserRepository;
+import pl.edu.repository.user.Users;
 import pl.edu.model.user.Role;
 import pl.edu.model.user.User;
 import pl.edu.service.user.IUserService;
@@ -72,26 +72,42 @@ public class UserService implements IUserService {
 		userRepository.update(user);
 	}
 
-	private User getByUsername(String username) {
-		return userRepository.findAll().withUsername(username).uniqueObject();
+	private User getByEmail(String email) {
+		Users u = userRepository.findAll().withEmail(email);
+        User usr = u.uniqueObject();
+        String str = "usr == null";
+        if(usr != null){
+            str = "email: "
+                    + usr.getEmail()
+                    + ", password: "
+                    + usr.getPassword();
+        }
+
+        System.out.println(str);
+
+        return usr;
 	}
 
 	/**
 	 * Zwraca implementację {@link UserDetails} za pomocą loginu
 	 */
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = getByUsername(username);
+	public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+		User user = getByEmail(email);
 		if (user == null) {
 			throw new UsernameNotFoundException("");
 		}
 
-		return new org.springframework.security.core.userdetails.User(user.getUsername(),
+		return new org.springframework.security.core.userdetails.User(user.getEmail(),
 				user.getPassword(),
 				true,
 				true,
 				true,
 				true,
 				getAuthorities(user));
+	}
+
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		return loadUserByEmail(email);
 	}
 
 	/**
@@ -108,8 +124,8 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User afterAuthentication(String username) {
-		User user = userRepository.findAll().withUsername(username).uniqueObject();
+	public User afterAuthentication(String email) {
+		User user = userRepository.findAll().withEmail(email).uniqueObject();
 		return user;
 	}
 

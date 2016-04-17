@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import pl.edu.dao.user.Users;
+import pl.edu.repository.user.Users;
 import pl.edu.model.user.User;
 import pl.edu.service.IService;
 

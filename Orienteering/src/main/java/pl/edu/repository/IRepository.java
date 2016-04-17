@@ -1,4 +1,4 @@
-package pl.edu.dao;
+package pl.edu.repository;
 
 import pl.edu.model.BaseEntity;
 

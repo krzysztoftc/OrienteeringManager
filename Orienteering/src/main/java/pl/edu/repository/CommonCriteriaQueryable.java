@@ -1,4 +1,4 @@
-package pl.edu.dao;
+package pl.edu.repository;
 
 import java.io.Serializable;
 import java.util.Collections;

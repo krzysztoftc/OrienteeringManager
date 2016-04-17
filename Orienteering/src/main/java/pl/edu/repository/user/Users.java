@@ -1,24 +1,24 @@
-package pl.edu.dao.user;
+package pl.edu.repository.user;
 
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import pl.edu.dao.OrderType;
-import pl.edu.dao.Queryable;
+import pl.edu.repository.OrderType;
+import pl.edu.repository.Queryable;
 import pl.edu.model.user.User;
 
 public abstract class Users extends Queryable<User, Long> {
 
 	private static final long serialVersionUID = -5848249886489304600L;
 
-	protected String username;
+	protected String email;
 
 	protected Users() {
 	}
 
 
-	public Users withUsername(String username) {
-		this.username = username;
+	public Users withEmail(String email) {
+		this.email = email;
 		return this;
 	}
 
@@ -44,8 +44,8 @@ public abstract class Users extends Queryable<User, Long> {
 
 	public Users merge(Users other) {
 		super.merge(other);
-		if (StringUtils.isNotBlank(other.username)) {
-			this.username = other.username;
+		if (StringUtils.isNotBlank(other.email)) {
+			this.email = other.email;
 		}
 		return this;
 	}
