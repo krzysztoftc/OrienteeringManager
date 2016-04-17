@@ -18,7 +18,7 @@ public interface IUserService extends UserDetailsService, IService {
 	 * Wywoływana podczas jego rejestrowania.
 	 * @param user
 	 */
-	void register(User user, Locale locale);
+	void register(User user);
 	
 	/**
 	 * Metoda zapisująca zmiany danych użytkownika. 

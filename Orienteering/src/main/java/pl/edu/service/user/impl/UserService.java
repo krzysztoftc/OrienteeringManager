@@ -62,7 +62,7 @@ public class UserService implements IUserService {
 
 
 	@Override
-	public void register(User user, Locale locale) {
+	public void register(User user) {
 		//encryptPasswords(user);
 		userRepository.save(user);
 	}

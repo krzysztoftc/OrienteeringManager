@@ -50,7 +50,7 @@ public class LoginController {
         System.out.println("POST Homepage");
         LoginValidator validator = new LoginValidator();
         validator.validate(loginForm, result);
-        String resultView = "index";
+        String resultView = "login";
         if (!validator.hasErrors()) {
 
             Authentication authenticate = null;
@@ -65,21 +65,21 @@ public class LoginController {
                     SecurityContextHolder.getContext().setAuthentication(authenticate);
                     HttpSession session = request.getSession(true);
                     session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
-                    resultView = "index";
+                    resultView = "redirect:/";
                 }
             } catch (BadCredentialsException e) {
                 System.out.println(e.getClass());
-                resultView = "index";
+                resultView = "login";
 
             } catch (AccountExpiredException e){
                 System.out.println(e.getClass());
-                resultView = "index";
+                resultView = "login";
             } catch (LockedException e){
                 System.out.println(e.getClass());
-                resultView = "index";
+                resultView = "login";
             } catch (Exception e){
                 System.out.println(e.getClass());
-                resultView = "index";
+                resultView = "login";
             }
         }
         return resultView;
