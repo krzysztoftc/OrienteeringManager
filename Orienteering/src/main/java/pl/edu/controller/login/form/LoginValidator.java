@@ -22,7 +22,7 @@ public class LoginValidator extends CommonValidator {
 		LoginForm form = (LoginForm) target;
 
 		if (StringUtils.isBlank(form.getUser().getEmail())) {
-			errors.rejectValue("user.username", "user.email.cannot.be.null");
+			errors.rejectValue("user.email", "user.email.cannot.be.null");
 		}
 
 		if (StringUtils.isBlank(form.getUser().getPassword())) {
