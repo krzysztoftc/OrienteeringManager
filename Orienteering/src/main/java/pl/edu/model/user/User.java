@@ -30,6 +30,7 @@ public class User extends BaseEntity<Long> {
     @Id
     @Getter
     @GeneratedValue
+    @Column(name = "iduser")
     private Long id;
 
     @Getter
