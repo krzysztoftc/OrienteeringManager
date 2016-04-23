@@ -3,6 +3,7 @@ package pl.edu.controller.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +66,10 @@ public class LoginController {
                     SecurityContextHolder.getContext().setAuthentication(authenticate);
                     HttpSession session = request.getSession(true);
                     session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+
+                    for(GrantedAuthority a : authenticate.getAuthorities()){
+                        System.out.println(a.getAuthority());
+                    }
                     resultView = "redirect:/";
                 }
             } catch (BadCredentialsException e) {

@@ -7,15 +7,25 @@ public enum Role {
 	/**
 	 * zwykły użytkownik
 	 */
-	ROLE_USER("ROLE_USER"), 
+	CLUB("CLUB"),
 	
-	ROLE_ADMIN("ROLE_ADMIN");
-	
+	ADMIN("ADMIN"),
+
+    INDIVIDUAL("INDIVIDUAL");
+
 	Role(String code){
 		this.code=code;
 	}
 
 	@Getter
 	private String code;
-	
+
+    public String getCodeWithPrefix(){
+        return "ROLE_" + code;
+    }
+
+    @Override
+    public String toString() {
+        return code;
+    }
 }

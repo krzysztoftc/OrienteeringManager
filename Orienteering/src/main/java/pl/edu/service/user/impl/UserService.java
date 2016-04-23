@@ -119,7 +119,7 @@ public class UserService implements IUserService {
 	 */
 	private Collection<? extends GrantedAuthority> getAuthorities(User user) {
 		Set<GrantedAuthority> authorities = new HashSet<>();
-		authorities.add(new SimpleGrantedAuthority(Role.ROLE_USER.getCode()));
+		authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getType()));
 		return authorities;
 	}
 

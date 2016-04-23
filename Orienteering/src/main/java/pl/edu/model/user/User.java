@@ -1,18 +1,10 @@
 package pl.edu.model.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.edu.model.BaseEntity;
-
-import java.util.Date;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")

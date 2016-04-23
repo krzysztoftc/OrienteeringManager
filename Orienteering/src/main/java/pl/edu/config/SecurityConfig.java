@@ -6,10 +6,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import pl.edu.service.user.IUserService;
-import pl.edu.service.user.impl.UserService;
+import pl.edu.model.user.Role;
 
 /**
  * Created by bartosz on 11.04.16.
@@ -25,6 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasRole(Role.ADMIN.getCode())
+                .antMatchers("/clubs/**").hasAnyRole(Role.CLUB.getCode(),
+                                                     Role.INDIVIDUAL.getCode());
 //        http
 //                .authorizeRequests().anyRequest().authenticated();
 //        http
