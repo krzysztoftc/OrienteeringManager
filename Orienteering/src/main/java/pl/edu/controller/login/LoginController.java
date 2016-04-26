@@ -5,6 +5,7 @@ import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +32,7 @@ public class LoginController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private IUserService userService;
+    private PasswordEncoder passwordEncoder;
 
     @ModelAttribute("loginForm")
     public LoginForm form() {
@@ -39,15 +40,13 @@ public class LoginController {
     }
 
     @RequestMapping(value = { "/login", "/login/" })
-    public String homepage(Model model) {
+    public String homepage() {
         System.out.println("Homepage");
         return "login";
     }
 
     @RequestMapping(value = { "/login", "/login/" }, method = RequestMethod.POST)
-    public String login(LoginForm loginForm, BindingResult result, Model model,
-                        RedirectAttributes redirectAttributes, HttpServletRequest request,
-                        HttpServletResponse response) {
+    public String login(LoginForm loginForm, BindingResult result, HttpServletRequest request) {
         System.out.println("POST Homepage");
         LoginValidator validator = new LoginValidator();
         validator.validate(loginForm, result);
@@ -56,7 +55,7 @@ public class LoginController {
 
             Authentication authenticate = null;
             try {
-                // sprawdzamy czy haslo i user sie zgadza (z sola)
+                // sprawdzamy czy haslo i user sie zgadza
                 authenticate = authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(
                                 loginForm.getUser().getEmail(),

@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.edu.repository.user.IUserRepository;
@@ -23,6 +24,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 	@Override
 	public void delete(User user) {
@@ -63,7 +67,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public void register(User user) {
-		//encryptPasswords(user);
+		encryptPasswords(user);
 		userRepository.save(user);
 	}
 
@@ -135,4 +139,9 @@ public class UserService implements IUserService {
 		userRepository.evict(user);
 		return user != null;
 	}
+
+    public void encryptPasswords(User user){
+        String encodedPass = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPass);
+    }
 }
