@@ -1,15 +1,15 @@
-package pl.edu.repository.user;
+package pl.edu.repository.club;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import pl.edu.model.user.User;
+import pl.edu.model.club.Club;
 import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.utils.ClassUtils;
 
 import java.util.List;
 
-public class CriteriaUsers extends Users{
+public class CriteriaClubs extends Clubs {
 	
 	/**
 	 * 
@@ -18,14 +18,14 @@ public class CriteriaUsers extends Users{
 	protected Criteria criteria;
 	protected Criteria criteria2;
 
-	public CriteriaUsers(Criteria criteria, Criteria criteria2) {
+	public CriteriaClubs(Criteria criteria, Criteria criteria2) {
 		this.criteria = criteria;
 		this.criteria2 = criteria2;
 	}
 
 	public Criteria modifyCriteria(Criteria criteria) {
-		if (StringUtils.isNotBlank(email)) {
-			criteria.add(Restrictions.eq("email", email));
+		if (StringUtils.isNotBlank(clubNumber)) {
+			criteria.add(Restrictions.eq("clubNumber", clubNumber));
 		}
 		return criteria;
 	}
@@ -36,12 +36,12 @@ public class CriteriaUsers extends Users{
 	}
 
 	@Override
-	public List<User> list() {
-		return CommonCriteriaQueryable.list(this, modifyCriteria(criteria), criteria2, ClassUtils.getMapAndCollectionsFrom(User.class));
+	public List<Club> list() {
+		return CommonCriteriaQueryable.list(this, modifyCriteria(criteria), criteria2, ClassUtils.getMapAndCollectionsFrom(Club.class));
 	}
 
 	@Override
-	public User uniqueObject() {
+	public Club uniqueObject() {
 		return CommonCriteriaQueryable.uniqueObject(this, modifyCriteria(criteria));
 	}
 }

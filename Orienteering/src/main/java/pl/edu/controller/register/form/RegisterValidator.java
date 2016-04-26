@@ -21,6 +21,7 @@ public class RegisterValidator extends CommonValidator {
 
 		RegisterForm form = (RegisterForm) target;
 
+        // User
 		if (StringUtils.isBlank(form.getUser().getEmail())) {
 			errors.rejectValue("user.email", "user.email.cannot.be.null");
 		}
@@ -29,11 +30,36 @@ public class RegisterValidator extends CommonValidator {
 			errors.rejectValue("user.password", "user.password.cannot.be.null");
 		}
 		if (StringUtils.isBlank(form.getSecondPassword())) {
-			errors.rejectValue("secondPassword", "user.password.cannot.be.null");
+			errors.rejectValue("secondPassword", "user.secondPassword.cannot.be.null");
 		}
 		
 		if (!form.getUser().getPassword().equals(form.getSecondPassword())) {
 			errors.rejectValue("user.password", "user.password.cannot.be.null");
 		}
+
+        // Club
+        if(StringUtils.isBlank(form.getClub().getName())){
+            errors.rejectValue("club.name", "club.name.cannot.be.null");
+        }
+
+        if(StringUtils.isBlank(form.getClub().getAddress())){
+            errors.rejectValue("club.address", "club.address.cannot.be.null");
+        }
+
+        if(StringUtils.isBlank(form.getClub().getAgentName())){
+            errors.rejectValue("club.agentName", "club.agentName.cannot.be.null");
+        }
+
+        if(StringUtils.isBlank(form.getClub().getAgentSurname())){
+            errors.rejectValue("club.agentSurname", "club.agentSurname.cannot.be.null");
+        }
+
+        if(StringUtils.isBlank(form.getClub().getClubNumber())){
+            errors.rejectValue("club.clubNumber", "club.clubNumber.cannot.be.null");
+        }
+
+        if(StringUtils.isBlank(form.getClub().getPhoneNumber())){
+            errors.rejectValue("club.phoneNumber", "club.phoneNumber.cannot.be.null");
+        }
 	}
 }

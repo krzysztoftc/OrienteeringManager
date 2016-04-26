@@ -1,9 +1,9 @@
 package pl.edu.repository.user;
 
 import org.springframework.stereotype.Repository;
+import pl.edu.model.user.User;
 import pl.edu.repository.StandardDatabaseRepository;
 import pl.edu.model.BaseEntity;
-import pl.edu.model.user.User;
 
 @Repository
 public class DatabaseUserRepository extends StandardDatabaseRepository<User, Long> implements IUserRepository{

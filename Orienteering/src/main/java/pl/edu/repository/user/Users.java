@@ -1,11 +1,11 @@
 package pl.edu.repository.user;
 
-import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
+import pl.edu.model.user.User;
 import pl.edu.repository.OrderType;
 import pl.edu.repository.Queryable;
-import pl.edu.model.user.User;
+
+import java.util.List;
 
 public abstract class Users extends Queryable<User, Long> {
 

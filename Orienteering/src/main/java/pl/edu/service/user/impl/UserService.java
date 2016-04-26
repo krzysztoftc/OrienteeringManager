@@ -10,10 +10,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.edu.model.user.User;
 import pl.edu.repository.user.IUserRepository;
 import pl.edu.repository.user.Users;
 import pl.edu.model.user.Role;
-import pl.edu.model.user.User;
 import pl.edu.service.user.IUserService;
 
 @Service
@@ -79,15 +79,6 @@ public class UserService implements IUserService {
 	private User getByEmail(String email) {
 		Users u = userRepository.findAll().withEmail(email);
         User usr = u.uniqueObject();
-        String str = "usr == null";
-        if(usr != null){
-            str = "email: "
-                    + usr.getEmail()
-                    + ", password: "
-                    + usr.getPassword();
-        }
-
-        System.out.println(str);
 
         return usr;
 	}
@@ -96,7 +87,7 @@ public class UserService implements IUserService {
 	 * Zwraca implementację {@link UserDetails} za pomocą loginu
 	 */
 	public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
-		User user = getByEmail(email);
+        User user = getByEmail(email);
 		if (user == null) {
 			throw new UsernameNotFoundException("");
 		}
@@ -129,13 +120,13 @@ public class UserService implements IUserService {
 
 	@Override
 	public User afterAuthentication(String email) {
-		User user = userRepository.findAll().withEmail(email).uniqueObject();
+        User user = userRepository.findAll().withEmail(email).uniqueObject();
 		return user;
 	}
 
 	@Override
 	public boolean exists(Users users) {
-		User user = userRepository.findAll().merge(users).uniqueObject();
+        User user = userRepository.findAll().merge(users).uniqueObject();
 		userRepository.evict(user);
 		return user != null;
 	}

@@ -1,11 +1,10 @@
 package pl.edu.service.user;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import pl.edu.repository.user.Users;
 import pl.edu.model.user.User;
+import pl.edu.repository.user.Users;
 import pl.edu.service.IService;
 
 public interface IUserService extends UserDetailsService, IService {
@@ -33,7 +32,7 @@ public interface IUserService extends UserDetailsService, IService {
 	 * @param inquiry 
 	 * @return user 
 	 */
-	User afterAuthentication(String username);
+    User afterAuthentication(String username);
 	
 	boolean exists(Users users);
 	
@@ -46,6 +45,6 @@ public interface IUserService extends UserDetailsService, IService {
 	List<User> list(Users users);
 
 	long count(Users users);
-	
-	User uniqueObject(Users users);
+
+    User uniqueObject(Users users);
 }

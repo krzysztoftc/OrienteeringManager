@@ -1,23 +1,21 @@
 package pl.edu.controller.register;
 
 
-import javax.servlet.http.HttpServletRequest;
-
 import lombok.extern.log4j.Log4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.edu.controller.register.form.RegisterForm;
 import pl.edu.controller.register.form.RegisterValidator;
+import pl.edu.model.club.Club;
 import pl.edu.model.user.User;
+import pl.edu.repository.club.Clubs;
 import pl.edu.repository.user.Users;
+import pl.edu.service.club.IClubService;
 import pl.edu.service.user.IUserService;
 
 import java.util.List;
@@ -28,6 +26,9 @@ public class RegisterController {
 
 	@Autowired
 	private IUserService userService;
+
+    @Autowired
+    private IClubService clubService;
 	
 	@ModelAttribute("registerForm")
 	public RegisterForm form() {
@@ -48,10 +49,18 @@ public class RegisterController {
 		if (!validator.hasErrors()) {
 			try {
 				List<User> users = userService.list(Users.findAll().withEmail(registerForm.getUser().getEmail()));
-
                 if(users.size() == 0) {
-                    userService.register(registerForm.getUser());
-                    resultView = "redirect:/";
+                    List<Club> clubs = clubService.list(Clubs.findAll().withClubNumber(registerForm.getClub().getClubNumber()));
+                    if(clubs.size() == 0){
+                        clubService.register(registerForm.getClub());
+                        Club club = clubService.uniqueObject(Clubs.findAll().withClubNumber(registerForm.getClub().getClubNumber()));
+                        if(club != null){
+                            User user = registerForm.getUser();
+                            user.setClubId(club.getId());
+                            userService.register(user);
+                            resultView = "redirect:/";
+                        }
+                    }
                 }
 
 			} catch (Exception e) {

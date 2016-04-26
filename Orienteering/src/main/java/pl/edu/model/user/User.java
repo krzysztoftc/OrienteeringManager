@@ -41,5 +41,5 @@ public class User extends BaseEntity<Long> {
 
     @Getter	@Setter
     @Column(nullable=false, name = "idclub")
-    private int clubId;
+    private long clubId;
 }

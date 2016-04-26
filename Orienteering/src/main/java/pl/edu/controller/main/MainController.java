@@ -16,7 +16,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String homepage(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-        model.addAttribute("sigh", "lesigh");
+        model.addAttribute("attribute", "Zmienna z modelu");
         return "index";
     }
 }

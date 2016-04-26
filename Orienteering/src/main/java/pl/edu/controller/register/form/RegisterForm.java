@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import pl.edu.model.club.Club;
 import pl.edu.model.user.User;
 import pl.edu.mvc.AbstractForm;
 
@@ -14,6 +15,10 @@ public class RegisterForm extends AbstractForm {
 	@Getter
 	@Setter
 	private User user;
+
+    @Getter
+    @Setter
+    private Club club;
 	
 	@Getter
 	@Setter

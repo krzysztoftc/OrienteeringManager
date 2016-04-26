@@ -17,7 +17,7 @@
             </div>
             <div>
                 <label> Powtorz haslo:
-                    <input type="password" name="password" th:field="*{secondPassword}"></input>
+                    <input type="password" name="secondPassword" th:field="*{secondPassword}"></input>
                 </label>
             </div>
             <div>
@@ -28,7 +28,37 @@
                     </select>
                 </label>
             </div>
-            <input type="submit" value="Sign In"></input>
+            <div>
+                <label>Nazwa klubu:
+                    <input type="text" name="clubName" th:field="*{club.name}"></input>
+                </label>
+            </div>
+            <div>
+                <label>Adres:
+                    <input type="text" name="address" th:field="*{club.address}"></input>
+                </label>
+            </div>
+            <div>
+                <label>Imię przedstawiciela:
+                    <input type="text" name="agentName" th:field="*{club.agentName}"></input>
+                </label>
+            </div>
+            <div>
+                <label>Nazwisko przedstawiciela:
+                    <input type="text" name="agentSurname" th:field="*{club.agentSurname}"></input>
+                </label>
+            </div>
+            <div>
+                <label>Numer klubu:
+                    <input type="text" name="clubNumber" th:field="*{club.clubNumber}"></input>
+                </label>
+            </div>
+            <div>
+                <label>Telefon kontaktowy:
+                    <input type="text" name="phoneNumber" th:field="*{club.phoneNumber}"></input>
+                </label>
+            </div>
+            <input type="submit" value="Zarejestruj"></input>
         </form>
     </body>
 </html>
