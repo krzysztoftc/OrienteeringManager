@@ -11,14 +11,7 @@ public interface ICompetitorService extends IService {
 	void delete(Competitor competitor);
 
 	/**
-	 * Metoda zapisująca nowego użytkownika do repozytorium. 
-	 * Wywoływana podczas jego rejestrowania.
-	 * @param competitor
-	 */
-	void register(Competitor competitor);
-	
-	/**
-	 * Metoda zapisująca zmiany danych klubu.
+	 * Metoda zapisująca zmiany danych zawodnika.
 	 * @param competitor
 	 */
 	void update(Competitor competitor);

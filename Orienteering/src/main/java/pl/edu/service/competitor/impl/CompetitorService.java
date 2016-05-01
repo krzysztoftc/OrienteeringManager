@@ -54,12 +54,6 @@ public class CompetitorService implements ICompetitorService {
 		return competitorRepository.findAll().merge(competitors).uniqueObject();
 	}
 
-
-	@Override
-	public void register(Competitor competitor) {
-        competitorRepository.save(competitor);
-	}
-
 	@Override
 	public void update(Competitor competitor) {
         competitorRepository.update(competitor);
