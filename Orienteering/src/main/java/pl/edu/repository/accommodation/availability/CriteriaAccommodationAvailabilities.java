@@ -1,7 +1,7 @@
 package pl.edu.repository.accommodation.availability;
 
 import org.hibernate.Criteria;
-import pl.edu.model.catering.availability.AccommodationAvailability;
+import pl.edu.model.accommodation.availability.AccommodationAvailability;
 import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.utils.ClassUtils;
 

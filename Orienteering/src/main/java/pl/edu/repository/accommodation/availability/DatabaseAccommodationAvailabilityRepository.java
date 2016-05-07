@@ -2,12 +2,11 @@ package pl.edu.repository.accommodation.availability;
 
 import org.springframework.stereotype.Repository;
 import pl.edu.model.BaseEntity;
-import pl.edu.model.catering.Catering;
-import pl.edu.model.catering.availability.AccommodationAvailability;
+import pl.edu.model.accommodation.availability.AccommodationAvailability;
 import pl.edu.repository.StandardDatabaseRepository;
 
 @Repository
-public class DatabaseCateringAvailabilityRepository
+public class DatabaseAccommodationAvailabilityRepository
         extends StandardDatabaseRepository<AccommodationAvailability, Long>
         implements IAccommodationAvailabilityRepository {
 

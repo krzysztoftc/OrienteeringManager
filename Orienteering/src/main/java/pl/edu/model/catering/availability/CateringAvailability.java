@@ -9,11 +9,11 @@ import java.util.Date;
 
 @Entity
 @Table(name = "catering_avaliabilities")
-public class AccommodationAvailability extends BaseEntity<Long> {
+public class CateringAvailability extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -758076802868616147L;
 
-    public AccommodationAvailability(){}
+    public CateringAvailability(){}
 
     @Id
     @Getter

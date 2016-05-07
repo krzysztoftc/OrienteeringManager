@@ -1,6 +1,8 @@
 package pl.edu.service.catering;
 
+import pl.edu.model.catering.Catering;
 import pl.edu.model.club.Club;
+import pl.edu.repository.catering.Caterings;
 import pl.edu.repository.club.Clubs;
 import pl.edu.service.IService;
 
@@ -8,32 +10,21 @@ import java.util.List;
 
 public interface ICateringService extends IService {
 
-	void delete(Club club);
+	void delete(Catering catering);
 
-	/**
-	 * Metoda zapisująca nowego użytkownika do repozytorium. 
-	 * Wywoływana podczas jego rejestrowania.
-	 * @param club
-	 */
-	void register(Club club);
+	void update(Catering catering);
 	
-	/**
-	 * Metoda zapisująca zmiany danych klubu.
-	 * @param club
-	 */
-	void update(Club club);
+	boolean exists(Caterings caterings);
 	
-	boolean exists(Clubs clubs);
+	void saveOrUpdate(Catering catering);
 	
-	void saveOrUpdate(Club user);
+	void save(Catering catering);
 	
-	void save(Club user);
-	
-	boolean saveIfNew(Club user);
+	boolean saveIfNew(Catering catering);
 
-	List<Club> list(Clubs clubs);
+	List<Catering> list(Caterings caterings);
 
-	long count(Clubs clubs);
-	
-	Club uniqueObject(Clubs clubs);
+	long count(Caterings caterings);
+
+    Catering uniqueObject(Caterings caterings);
 }

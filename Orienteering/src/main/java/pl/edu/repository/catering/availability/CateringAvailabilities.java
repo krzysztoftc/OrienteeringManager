@@ -1,12 +1,12 @@
 package pl.edu.repository.catering.availability;
 
-import pl.edu.model.catering.availability.AccommodationAvailability;
+import pl.edu.model.catering.availability.CateringAvailability;
 import pl.edu.repository.OrderType;
 import pl.edu.repository.Queryable;
 
 import java.util.List;
 
-public abstract class CateringAvailabilities extends Queryable<AccommodationAvailability, Long> {
+public abstract class CateringAvailabilities extends Queryable<CateringAvailability, Long> {
 
 	private static final long serialVersionUID = -5848249886489304600L;
 
@@ -44,12 +44,12 @@ public abstract class CateringAvailabilities extends Queryable<AccommodationAvai
 			private static final long serialVersionUID = -6804576481886404146L;
 
 			@Override
-			public AccommodationAvailability uniqueObject() {
+			public CateringAvailability uniqueObject() {
 				return null;
 			}
 
 			@Override
-			public List<AccommodationAvailability> list() {
+			public List<CateringAvailability> list() {
 				return null;
 			}
 

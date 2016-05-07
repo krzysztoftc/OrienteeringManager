@@ -1,6 +1,8 @@
 package pl.edu.service.accommodation;
 
+import pl.edu.model.accommodation.Accommodation;
 import pl.edu.model.club.Club;
+import pl.edu.repository.accommodation.Accommodations;
 import pl.edu.repository.club.Clubs;
 import pl.edu.service.IService;
 
@@ -8,32 +10,21 @@ import java.util.List;
 
 public interface IAccommodationService extends IService {
 
-	void delete(Club club);
+	void delete(Accommodation accommodation);
 
-	/**
-	 * Metoda zapisująca nowego użytkownika do repozytorium. 
-	 * Wywoływana podczas jego rejestrowania.
-	 * @param club
-	 */
-	void register(Club club);
+	void update(Accommodation accommodation);
 	
-	/**
-	 * Metoda zapisująca zmiany danych klubu.
-	 * @param club
-	 */
-	void update(Club club);
+	boolean exists(Accommodations accommodations);
 	
-	boolean exists(Clubs clubs);
+	void saveOrUpdate(Accommodation accommodation);
 	
-	void saveOrUpdate(Club user);
+	void save(Accommodation accommodation);
 	
-	void save(Club user);
-	
-	boolean saveIfNew(Club user);
+	boolean saveIfNew(Accommodation accommodation);
 
-	List<Club> list(Clubs clubs);
+	List<Accommodation> list(Accommodations accommodations);
 
-	long count(Clubs clubs);
-	
-	Club uniqueObject(Clubs clubs);
+	long count(Accommodations accommodations);
+
+    Accommodation uniqueObject(Accommodations accommodations);
 }

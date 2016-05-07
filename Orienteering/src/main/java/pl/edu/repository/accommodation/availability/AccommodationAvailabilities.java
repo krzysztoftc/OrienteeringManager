@@ -1,6 +1,6 @@
 package pl.edu.repository.accommodation.availability;
 
-import pl.edu.model.catering.availability.AccommodationAvailability;
+import pl.edu.model.accommodation.availability.AccommodationAvailability;
 import pl.edu.repository.OrderType;
 import pl.edu.repository.Queryable;
 

@@ -1,7 +1,7 @@
 package pl.edu.repository.catering.availability;
 
 import org.hibernate.Criteria;
-import pl.edu.model.catering.availability.AccommodationAvailability;
+import pl.edu.model.catering.availability.CateringAvailability;
 import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.utils.ClassUtils;
 
@@ -31,15 +31,15 @@ public class CriteriaCateringAvailabilities extends CateringAvailabilities {
 	}
 
 	@Override
-	public List<AccommodationAvailability> list() {
+	public List<CateringAvailability> list() {
 		return CommonCriteriaQueryable.list(this,
                 modifyCriteria(criteria),
                 criteria2,
-                ClassUtils.getMapAndCollectionsFrom(AccommodationAvailability.class));
+                ClassUtils.getMapAndCollectionsFrom(CateringAvailability.class));
 	}
 
 	@Override
-	public AccommodationAvailability uniqueObject() {
+	public CateringAvailability uniqueObject() {
 		return CommonCriteriaQueryable.uniqueObject(this, modifyCriteria(criteria));
 	}
 }

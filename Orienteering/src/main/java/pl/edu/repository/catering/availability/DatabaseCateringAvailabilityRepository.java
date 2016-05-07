@@ -3,12 +3,12 @@ package pl.edu.repository.catering.availability;
 import org.springframework.stereotype.Repository;
 import pl.edu.model.BaseEntity;
 import pl.edu.model.catering.Catering;
-import pl.edu.model.catering.availability.AccommodationAvailability;
+import pl.edu.model.catering.availability.CateringAvailability;
 import pl.edu.repository.StandardDatabaseRepository;
 
 @Repository
 public class DatabaseCateringAvailabilityRepository
-        extends StandardDatabaseRepository<AccommodationAvailability, Long>
+        extends StandardDatabaseRepository<CateringAvailability, Long>
         implements ICateringAvailabilityRepository {
 
 	/**

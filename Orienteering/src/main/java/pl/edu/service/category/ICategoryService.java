@@ -1,6 +1,8 @@
 package pl.edu.service.category;
 
+import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
+import pl.edu.repository.category.Categories;
 import pl.edu.repository.club.Clubs;
 import pl.edu.service.IService;
 
@@ -8,32 +10,21 @@ import java.util.List;
 
 public interface ICategoryService extends IService {
 
-	void delete(Club club);
+	void delete(Category category);
 
-	/**
-	 * Metoda zapisująca nowego użytkownika do repozytorium. 
-	 * Wywoływana podczas jego rejestrowania.
-	 * @param club
-	 */
-	void register(Club club);
+	void update(Category category);
 	
-	/**
-	 * Metoda zapisująca zmiany danych klubu.
-	 * @param club
-	 */
-	void update(Club club);
+	boolean exists(Categories categories);
 	
-	boolean exists(Clubs clubs);
+	void saveOrUpdate(Category category);
 	
-	void saveOrUpdate(Club user);
+	void save(Category category);
 	
-	void save(Club user);
-	
-	boolean saveIfNew(Club user);
+	boolean saveIfNew(Category category);
 
-	List<Club> list(Clubs clubs);
+	List<Category> list(Categories categories);
 
-	long count(Clubs clubs);
-	
-	Club uniqueObject(Clubs clubs);
+	long count(Categories categories);
+
+    Category uniqueObject(Categories categories);
 }
