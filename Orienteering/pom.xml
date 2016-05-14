@@ -74,6 +74,15 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 	</dependencies>
 	
 	<build>
@@ -84,6 +93,9 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
+
 	
 
 </project>

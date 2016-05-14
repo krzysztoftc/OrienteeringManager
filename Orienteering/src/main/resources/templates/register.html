@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orientering Manager - Rejestracja</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"> </link>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" th:href="@{/assets/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css"  />
+    <link rel="stylesheet" href="../assets/css/form-elements.css" th:href="@{/assets/css/form-elements.css}"> </link>
+    <link rel="stylesheet" href="../assets/css/style.css" th:href="@{/assets/css/style.css}"> </link>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon and touch icons
+    <link rel="shortcut icon" href="assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+</head>
+
+<body>
+
+<!-- Top content -->
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1>Orientering manager</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <h3>Rejestracja</h3>
+                        <p>Wypełnij formularz:</p>
+                    </div>
+                    <div class="form-bottom contact-form">
+                        <form role="form" action="assets/contact.php" method="post">
+                            <div class="form-group">
+                                <label class="sr-only" for="register-email">Email</label>
+                                <input type="text" name="username" th:field="*{user.email}" placeholder="Email..." class="register-email form-control" id="register-email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-password">Hasło</label>
+                                <input type="password" name="password" th:field="*{user.password}" placeholder="Hasło..." class="register-password form-control" id="register-password" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-second-password">Powtórz hasło</label>
+                                <input type="password" name="secondPassword" th:field="*{secon dPassword}" placeholder="Powtórz hasło..." class="register-second-password form-control" id="register-second-password" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-type">Typ konta</label>
+                                <select th:field="*{user.type}">
+                                    <option value="" disable="" selected="">Wybierz typ konta</option>
+                                    <option value="INDIVIDUAL">Indywidualny</option>
+                                    <option value="CLUB">Klub</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-club-name">Nazwa Klubu</label>
+                                <input type="text" name="clubName" th:field="*{club.name}" placeholder="Nazwa klubu" class="register-club-name form-control" id="register-club-name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-addres">Adres</label>
+                                <input type="text" name="clubAddres" th:field="*{club.addres}" placeholder="Adres klubu" class="register-addres form-control" id="register-addres" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-agent-name">Imię przedstawiciela</label>
+                                <input type="text" name="agentName" th:field="*{club.agentName}" placeholder="Imię przedstawiciela" class="register-agent_name form-control" id="register-agent_name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-agent-surnaname">Nazwisko przedstawiciela</label>
+                                <input type="text" name="agentSurnameame" th:field="*{club.agentSurname}" placeholder="Nazwisko przedstawiciela" class="register-agent-surnaname form-control" id="register-agent-surnaname" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-club-number">Numer klubu</label>
+                                <input type="text" name="clubNumber" th:field="*{club.number}" placeholder="Numer klubu" class="register-club-number form-control" id="register-club-number" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-club-phone-number">Telefon kontaktowy</label>
+                                <input type="text" name="phoneNumber" th:field="*{club.phoneNumber}" placeholder="Telefon kontaktowy" class="register-phone-number form-control" id="register-phone-number" />
+                            </div>
+                            <button type="submit" class="btn">Zarejestruj się</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Javascript -->
+<script src="../assets/js/jquery-1.11.1.min.js" th:href="@{/assets/js/jquery-1.11.1.min.js}"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js" th:href="@{/assets/js/bootstrap.min.js}"></script>
+<script src="../assets/js/jquery.backstretch.min.js" th:href="@{/assets/js/jquery.backstretch.min.js}"></script>
+<script src="../assets/js/scripts/login.js" th:href="@{/assets/js/scripts/login.js}"></script>
+
+<!--[if lt IE 10]>
+<script src="assets/js/placeholder.js"></script>
+<![endif]-->
+
+</body>
+
+</html>
