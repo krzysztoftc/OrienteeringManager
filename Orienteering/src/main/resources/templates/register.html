@@ -49,7 +49,7 @@
                         <p>Wypełnij formularz:</p>
                     </div>
                     <div class="form-bottom contact-form">
-                        <form role="form" action="assets/contact.php" method="post">
+                        <form role="form" th:action="@{/register}" method="POST" th:object="${registerForm}">
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
                                 <input type="text" name="username" th:field="*{user.email}" placeholder="Email..." class="register-email form-control" id="register-email" />
@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="register-addres">Adres</label>
-                                <input type="text" name="clubAddres" th:field="*{club.addres}" placeholder="Adres klubu" class="register-addres form-control" id="register-addres" />
+                                <input type="text" name="clubAddress" th:field="*{club.address}" placeholder="Adres klubu" class="register-address form-control" id="register-address" />
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="register-agent-name">Imię przedstawiciela</label>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="register-club-number">Numer klubu</label>
-                                <input type="text" name="clubNumber" th:field="*{club.number}" placeholder="Numer klubu" class="register-club-number form-control" id="register-club-number" />
+                                <input type="text" name="clubNumber" th:field="*{club.clubNumber}" placeholder="Numer klubu" class="register-club-number form-control" id="register-club-number" />
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="register-club-phone-number">Telefon kontaktowy</label>

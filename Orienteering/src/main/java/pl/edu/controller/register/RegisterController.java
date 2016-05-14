@@ -36,7 +36,7 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = { "/register", "/register/" })
-	public String register(User user) {
+	public String register() {
         return "register";
 	}
 	
