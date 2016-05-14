@@ -60,10 +60,6 @@ public class LoginController {
                     SecurityContextHolder.getContext().setAuthentication(authenticate);
                     HttpSession session = request.getSession(true);
                     session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
-
-                    for(GrantedAuthority a : authenticate.getAuthorities()){
-                        System.out.println(a.getAuthority());
-                    }
                     resultView = "redirect:/";
                 }
             } catch (BadCredentialsException e) {

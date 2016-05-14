@@ -1,4 +1,4 @@
-package pl.edu.controller.clubs;
+package pl.edu.controller.clubs.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by bartosz on 23.04.16.
  */
-@Controller("clubsController")
-public class ClubsController {
+@Controller("clubsHomeController")
+public class ClubsHomeController {
 
     @RequestMapping(value = {"/clubs", "/clubs/"})
-    public String clubs(){
+    public String home(){
         return "clubs/index";
     }
 
