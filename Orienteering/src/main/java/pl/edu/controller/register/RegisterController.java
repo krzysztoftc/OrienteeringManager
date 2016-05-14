@@ -48,12 +48,13 @@ public class RegisterController {
         String resultView = "register";
 		if (!validator.hasErrors()) {
 			try {
-				List<User> users = userService.list(Users.findAll().withEmail(registerForm.getUser().getEmail()));
-                if(users.size() == 0) {
-                    List<Club> clubs = clubService.list(Clubs.findAll().withClubNumber(registerForm.getClub().getClubNumber()));
-                    if(clubs.size() == 0){
+//				List<User> users = userService.list(Users.findAll().withEmail(registerForm.getUser().getEmail()));
+                if(!userExists(registerForm.getUser())) {
+//                    List<Club> clubs = clubService.list(Clubs.findAll().withClubNumber(registerForm.getClub().getClubNumber()));
+                    if(!clubExists(registerForm.getClub())){
                         clubService.register(registerForm.getClub());
                         Club club = clubService.uniqueObject(Clubs.findAll().withClubNumber(registerForm.getClub().getClubNumber()));
+
                         if(club != null){
                             User user = registerForm.getUser();
                             user.setClubId(club.getId());
@@ -71,4 +72,14 @@ public class RegisterController {
 		}
 		return resultView;
 	}
+
+    private boolean userExists(User user){
+        return userService.exists(Users.findAll().withEmail(user.getEmail()));
+    }
+
+    private boolean clubExists(Club club){
+        return clubService.exists(Clubs.findAll().withClubNumber(club.getClubNumber()));
+    }
+
+
 }
