@@ -36,8 +36,8 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = { "/register", "/register/" })
-	public String register() {
-		return "register";
+	public String register(User user) {
+        return "register";
 	}
 	
 	@RequestMapping(value = { "/register", "/register/" }, method = RequestMethod.POST)
