@@ -26,19 +26,31 @@ public class MainController {
 
     @RequestMapping("/")
     public String homepage(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-        String resultView = "index";
+        Role effectiveRole = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // When there is authenticated user
         if(authentication.isAuthenticated()){
             Collection authorities = authentication.getAuthorities();
-            for (Role role : Role.values()) {
-                SimpleGrantedAuthority simpleGrantedAuthority =
-                        new SimpleGrantedAuthority(role.getCodeWithPrefix());
-                if(authorities.contains(simpleGrantedAuthority)){
-                    resultView = RoleUtils.getHomeFromRole(role);
+
+            // If there is only one authority (more means there is error)
+            if(authorities.size() == 1) {
+                // Iterate over enum values and check if there is granted authority
+                for (Role role : Role.values()) {
+                    SimpleGrantedAuthority simpleGrantedAuthority =
+                            new SimpleGrantedAuthority(role.getCodeWithPrefix());
+
+                    // If there is granted authority
+                    if(authorities.contains(simpleGrantedAuthority)){
+                        effectiveRole = role;
+                        break;
+                    }
                 }
             }
         }
         model.addAttribute("attribute", "Zmienna z modelu");
-        return resultView;
+
+        // Redirect to a proper page or show default homepage
+        return RoleUtils.getHomeFromRole(effectiveRole);
     }
 }
