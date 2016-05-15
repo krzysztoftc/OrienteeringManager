@@ -94,19 +94,19 @@ public abstract class Competitors extends Queryable<Competitor, Long> {
         if (StringUtils.isNotBlank(other.licenceNumber)) {
             this.licenceNumber = other.licenceNumber;
         }
-        if (other.chipNumber != 0) {
+        if (other.chipNumber != null) {
             this.chipNumber = other.chipNumber;
         }
-        if (other.clubId != 0) {
+        if (other.clubId != null) {
             this.clubId = other.clubId;
         }
-        if (other.birthYear != 0) {
+        if (other.birthYear != null) {
             this.birthYear = other.birthYear;
         }
-        if (other.gender != '\0') {
+        if (other.gender != null) {
             this.gender = other.gender;
         }
-        if (other.category != 0) {
+        if (other.category != null) {
             this.category = other.category;
         }
 		return this;

@@ -33,19 +33,19 @@ public class CriteriaCompetitors extends Competitors {
         if (StringUtils.isNotBlank(licenceNumber)) {
             criteria.add(Restrictions.eq("licenceNumber", licenceNumber));
         }
-        if (chipNumber != 0) {
+        if (chipNumber != null) {
             criteria.add(Restrictions.eq("chipNumber", chipNumber));
         }
-        if (clubId != 0) {
+        if (clubId != null) {
             criteria.add(Restrictions.eq("clubId", clubId));
         }
-        if (birthYear != 0) {
+        if (birthYear != null) {
             criteria.add(Restrictions.eq("birthYear", birthYear));
         }
-        if (gender != '\0') {
+        if (gender != null) {
             criteria.add(Restrictions.eq("gender", gender));
         }
-        if (category != 0) {
+        if (category != null) {
             criteria.add(Restrictions.eq("category", category));
         }
 

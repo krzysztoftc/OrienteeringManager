@@ -22,47 +22,13 @@ import java.util.List;
 @Controller("adminHomeController")
 public class AdminHomeController {
 
-    int number = 0;
-
     @Autowired
     private ICompetitorService competitorService;
 
     @RequestMapping(value = {"/admin", "/admin/"})
-    public String home(ModelMap model, HttpServletRequest request, HttpServletResponse response,
-                       ServletContext servletContext, TemplateEngine templateEngine){
-        number++;
-        model.addAttribute("n", number);
-        process(request, response, servletContext, templateEngine);
+    public String home(ModelMap model){
+        List<Competitor> competitors = competitorService.list(Competitors.findAll());
+        model.addAttribute("competitors", competitors);
         return "admin/index";
-    }
-
-    public void process(
-            HttpServletRequest request, HttpServletResponse response,
-            ServletContext servletContext, TemplateEngine templateEngine) {
-
-        List<Competitor> allCompetitors = new ArrayList<Competitor>();
-        for(int i = 0; i < number; ++i)
-        {
-            Competitor c = new Competitor();
-            c.setName("Imie " + i % 4);
-            c.setSurname("Ładne " + i % 7 + " nazwisko");
-            c.setGender( (i % 2 == 0) ? 'M' : 'K');
-            c.setBirthYear( new Long(i + 1990) );
-            allCompetitors.add(c);
-        }
-//        List<Competitor> competitors = competitorService.list(Competitors.findAll());
-//
-//        allCompetitors.addAll(competitors);
-
-        WebContext ctx = new WebContext(request, response, servletContext);
-        ctx.setVariable("competitors", allCompetitors);
-
-        try
-        {
-            templateEngine.process("admin/index", ctx, response.getWriter());
-        }
-        catch ( Exception e ) {
-
-        }
     }
 }
