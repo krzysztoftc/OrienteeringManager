@@ -21,7 +21,7 @@ import java.util.Collection;
 public class MainController {
 
     @RequestMapping("/")
-    public String homepage(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+    public String homepage(ModelMap model) {
         Role effectiveRole = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
