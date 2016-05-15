@@ -97,3 +97,15 @@ img { max-width: 100%; }
 	.inner-bg { padding: 40px 0 110px 0; }
 
 }
+
+p.input-error{
+	padding-left: 15px;
+	padding-bottom: 5px;
+	color: #ad1a1a;
+	font-weight: bolder;
+	border-style: solid;
+	border-width: 3px;
+	/*border-radius: 10px;*/
+	background: #f2c7c7;
+	border-color: #ad6b6b;
+}
