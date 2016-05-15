@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <p th:text="${attribute}"></p>
-</head>
-<body>
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin index</title>
+    </head>
+    <body>
+    <label>Ilość wszystkich obecnych zawodników <label th:text="${n}"></label></label>
+    <table>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Płeć</th>
+            <th>Rok urodzenia</th>
+        </tr>
+        <tr th:each="comp : ${competitors}">
+            <td th:text="${comp.name}"/>
+            <td th:text="${comp.surname}"/>
+            <td th:text="${comp.gender}"/>
+            <td th:text="${comp.birthYear}"/>
+        </tr>
+    </table>
+    </body>
 </html>
