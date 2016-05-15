@@ -4,6 +4,20 @@
         <title>Admin index</title>
     </head>
     <body>
-    <label>Admin index</label>
+    <label>Ilość wszystkich obecnych zawodników <label th:text="${n}"></label></label>
+    <table>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Płeć</th>
+            <th>Rok urodzenia</th>
+        </tr>
+        <tr th:each="comp : ${competitors}">
+            <td th:text="${comp.name}"/>
+            <td th:text="${comp.surname}"/>
+            <td th:text="${comp.gender}"/>
+            <td th:text="${comp.birthYear}"/>
+        </tr>
+    </table>
     </body>
 </html>
