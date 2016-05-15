@@ -14,6 +14,7 @@ hs_err_pid*
 Orienteering/target/*
 .directory
 Orienteering/.directory
+Orienteering/.idea
 
 #erd
 *.bak
