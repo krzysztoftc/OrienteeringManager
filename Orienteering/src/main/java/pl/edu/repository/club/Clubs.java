@@ -12,6 +12,7 @@ public abstract class Clubs extends Queryable<Club, Long> {
 	private static final long serialVersionUID = -5848249886489304600L;
 
 	protected String clubNumber;
+    protected String clubName;
 
 	protected Clubs() {
 	}
@@ -20,6 +21,11 @@ public abstract class Clubs extends Queryable<Club, Long> {
 		this.clubNumber = clubNumber;
 		return this;
 	}
+
+    public Clubs withClubName(String clubName) {
+        this.clubName = clubName;
+        return this;
+    }
 
 	public Clubs withId(Long id) {
 		return (Clubs) super.withId(id);

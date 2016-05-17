@@ -27,6 +27,9 @@ public class CriteriaClubs extends Clubs {
 		if (StringUtils.isNotBlank(clubNumber)) {
 			criteria.add(Restrictions.eq("clubNumber", clubNumber));
 		}
+        if (StringUtils.isNotBlank(clubName)) {
+            criteria.add(Restrictions.eq("clubName", clubName));
+        }
 		return criteria;
 	}
 

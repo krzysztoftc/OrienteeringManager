@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import pl.edu.controller.competitor.form.CompetitorForm;
@@ -96,36 +97,15 @@ public class AdminHomeController {
         return "admin/index";
     }
 
-//    @RequestMapping(value = {"/admin/deleteuser/", "/admin/deleteuser"}, method = RequestMethod.POST)
-//    public String deleteUser(CompetitorForm form){
-//        Competitor competitor = form.getCompetitor();
-//        if(competitor != null){
-//            System.out.println(competitor.getName());
-//        }
-//        else{
-//            System.out.println("null");
-//        }
-//        return "admin/index";
-//    }
-
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=edit")
-    public String edit(CompetitorForm form) {
-        System.out.println("Edit button clicked");
-        Competitor competitor = form.getCompetitor();
-        if(competitor != null){
-            System.out.println(competitor.getName());
-        }
-        return "admin/index";
+    public String edit(CompetitorForm form, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute("comperitorForm", form);
+        return "redirect:/admin/edit/competitor";
     }
-
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
     public String delete(CompetitorForm form) {
-        System.out.println("Delete button clicked");
-        Competitor competitor = form.getCompetitor();
-        if(competitor != null){
-            System.out.println(competitor.getName());
-        }
+        competitorService.delete(form.getCompetitor());
         return "admin/index";
     }
 }

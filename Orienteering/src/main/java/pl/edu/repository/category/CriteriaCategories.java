@@ -1,6 +1,8 @@
 package pl.edu.repository.category;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import pl.edu.model.category.Category;
 import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.utils.ClassUtils;
@@ -22,6 +24,9 @@ public class CriteriaCategories extends Categories {
 	}
 
 	public Criteria modifyCriteria(Criteria criteria) {
+        if (StringUtils.isNotBlank(name)) {
+            criteria.add(Restrictions.eq("name", name));
+        }
 		return criteria;
 	}
 

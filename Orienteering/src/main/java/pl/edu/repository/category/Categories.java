@@ -10,12 +10,19 @@ public abstract class Categories extends Queryable<Category, Long> {
 
 	private static final long serialVersionUID = -5848249886489304600L;
 
+    protected String name;
+
 	protected Categories() {
 	}
 
 	public Categories withId(Long id) {
 		return (Categories) super.withId(id);
 	}
+
+    public Categories withName(String name){
+        this.name = name;
+        return this;
+    }
 
 	public Categories addOrder(OrderType orderType, String sortProperty) {
 		return (Categories) super.addOrder(orderType, sortProperty);

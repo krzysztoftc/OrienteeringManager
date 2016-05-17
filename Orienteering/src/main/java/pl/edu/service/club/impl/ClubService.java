@@ -54,7 +54,6 @@ public class ClubService implements IClubService {
 		return clubRepository.findAll().merge(clubs).uniqueObject();
 	}
 
-
 	@Override
 	public void register(Club club) {
 		clubRepository.save(club);
