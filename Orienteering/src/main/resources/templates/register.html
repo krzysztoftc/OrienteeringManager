@@ -62,15 +62,14 @@
                                 <label class="sr-only" for="register-second-password">Powtórz hasło</label>
                                 <input type="password" name="secondPassword" th:field="*{secondPassword}" placeholder="Powtórz hasło..." class="register-second-password form-control" id="register-second-password" />
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"><p> Typ konta</p>
                                 <label class="sr-only" for="register-type">Typ konta</label>
-                                <select th:field="*{user.type}">
-                                    <option value="" disable="" selected="">Wybierz typ konta</option>
-                                    <option value="INDIVIDUAL">Indywidualny</option>
+                                <select th:field="*{user.type}" onchange="change_type()" id="register-club-type">
                                     <option value="CLUB">Klub</option>
+                                    <option value="INDIVIDUAL">Indywidualny</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group only-club">
                                 <label class="sr-only" for="register-club-name">Nazwa Klubu</label>
                                 <input type="text" name="clubName" th:field="*{club.name}" placeholder="Nazwa klubu" class="register-club-name form-control" id="register-club-name" />
                             </div>
@@ -86,7 +85,7 @@
                                 <label class="sr-only" for="register-agent-surnaname">Nazwisko przedstawiciela</label>
                                 <input type="text" name="agentSurnameame" th:field="*{club.agentSurname}" placeholder="Nazwisko przedstawiciela" class="register-agent-surnaname form-control" id="register-agent-surnaname" />
                             </div>
-                            <div class="form-group">
+                            <div class="form-group only-club">
                                 <label class="sr-only" for="register-club-number">Numer klubu</label>
                                 <input type="text" name="clubNumber" th:field="*{club.clubNumber}" placeholder="Numer klubu" class="register-club-number form-control" id="register-club-number" />
                             </div>
@@ -109,7 +108,7 @@
 <script src="../assets/js/jquery-1.11.1.min.js" th:href="@{/assets/js/jquery-1.11.1.min.js}"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js" th:href="@{/assets/js/bootstrap.min.js}"></script>
 <script src="../assets/js/jquery.backstretch.min.js" th:href="@{/assets/js/jquery.backstretch.min.js}"></script>
-<script src="../assets/js/scripts/login.js" th:href="@{/assets/js/scripts/login.js}"></script>
+<script src="../assets/js/scripts/register.js" th:href="@{/assets/js/scripts/login.js}"></script>
 
 <!--[if lt IE 10]>
 <script src="assets/js/placeholder.js"></script>
