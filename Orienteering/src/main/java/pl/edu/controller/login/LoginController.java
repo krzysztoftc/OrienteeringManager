@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,11 +42,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = { "/login", "/login/" }, method = RequestMethod.POST)
-    public String login(LoginForm loginForm, BindingResult result, HttpServletRequest request) {
+    public String login(Model model, LoginForm loginForm, BindingResult result, HttpServletRequest request) {
         System.out.println("POST Homepage");
         LoginValidator validator = new LoginValidator();
         validator.validate(loginForm, result);
         String resultView = "login";
+        String errorString = "";
         if (!validator.hasErrors()) {
 
             Authentication authenticate = null;
@@ -63,20 +65,24 @@ public class LoginController {
                     resultView = "redirect:/";
                 }
             } catch (BadCredentialsException e) {
-                System.out.println(e.getClass());
+                errorString = "Niepoprawny login lub hasło";
                 resultView = "login";
 
             } catch (AccountExpiredException e){
-                System.out.println(e.getClass());
+                errorString = "Konto wygasło";
                 resultView = "login";
             } catch (LockedException e){
-                System.out.println(e.getClass());
+                errorString = "Konto jest zablokowane";
                 resultView = "login";
             } catch (Exception e){
-                System.out.println(e.getClass());
+                errorString = "Nieznany błąd";
                 resultView = "login";
             }
         }
+        else {
+            errorString = "Uzupełnij wszystkie pola";
+        }
+        model.addAttribute("errorString", errorString);
         return resultView;
     }
 }
