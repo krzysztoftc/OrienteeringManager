@@ -6,20 +6,20 @@ import org.springframework.validation.Errors;
 import pl.edu.service.user.IUserService;
 import pl.edu.validator.CommonValidator;
 
-public class LoginValidator extends CommonValidator {
+public class CompetitorValidator extends CommonValidator {
 
 	@Autowired
 	IUserService userService;
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return clazz.equals(LoginForm.class);
+		return clazz.equals(CompetitorForm.class);
 	}
 
 	@Override
 	public void validateForm(Object target, Errors errors) {
 
-		LoginForm form = (LoginForm) target;
+        CompetitorForm form = (CompetitorForm) target;
 
 		if (StringUtils.isBlank(form.getUser().getEmail())) {
 			errors.rejectValue("user.email", "user.email.cannot.be.null");
