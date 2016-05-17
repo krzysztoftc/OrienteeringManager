@@ -52,6 +52,9 @@ public abstract class Clubs extends Queryable<Club, Long> {
 		if (StringUtils.isNotBlank(other.clubNumber)) {
 			this.clubNumber = other.clubNumber;
 		}
+        if (StringUtils.isNotBlank(other.clubName)) {
+            this.clubName = other.clubName;
+        }
 		return this;
 	}
 

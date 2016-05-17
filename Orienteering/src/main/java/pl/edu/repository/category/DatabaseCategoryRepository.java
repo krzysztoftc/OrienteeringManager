@@ -23,6 +23,6 @@ public class DatabaseCategoryRepository
 
 	@Override
 	public Class<? extends BaseEntity<Long>> getEntityClass() {
-		return Catering.class;
+		return Category.class;
 	}
 }

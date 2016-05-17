@@ -14,11 +14,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import pl.edu.controller.competitor.form.CompetitorForm;
+import pl.edu.model.category.Category;
 import pl.edu.model.competition.CompetitonInfo;
 import pl.edu.model.competitor.Competitor;
+import pl.edu.repository.category.Categories;
+import pl.edu.repository.club.Clubs;
 import pl.edu.repository.competition.CompetitonInfos;
 import pl.edu.repository.competitor.Competitors;
 import pl.edu.repository.user.Users;
+import pl.edu.service.category.ICategoryService;
+import pl.edu.service.club.IClubService;
 import pl.edu.service.competition.ICompetitonInfoService;
 import pl.edu.service.competitor.ICompetitorService;
 
@@ -39,6 +44,12 @@ import java.util.List;
 public class AdminHomeController {
 
     @Autowired
+    private IClubService clubService;
+
+    @Autowired
+    private ICategoryService categoryService;
+
+    @Autowired
     private ICompetitorService competitorService;
 
     @Autowired
@@ -50,8 +61,22 @@ public class AdminHomeController {
     }
 
     @ModelAttribute("competitors")
-    public List<Competitor> competitorList() {
-        return competitorService.list(Competitors.findAll());
+    public List<CompetitorForm> competitorList() {
+        List<Competitor> competitorList = competitorService.list(Competitors.findAll());
+        List<CompetitorForm> formList = new ArrayList<>();
+
+        for(Competitor competitor : competitorList){
+            CompetitorForm form = new CompetitorForm();
+            form.setCompetitor(competitor);
+            form.setClubName(clubService.uniqueObject(Clubs.findAll().withId(competitor.getClubId())).getName());
+            Categories cat = Categories.findAll().withId(competitor.getCategory());
+            Category uo = categoryService.uniqueObject(cat);
+            String name = uo.getName();
+            form.setCategory(name);
+            formList.add(form);
+        }
+
+        return formList;
     }
 
     @ModelAttribute("days")

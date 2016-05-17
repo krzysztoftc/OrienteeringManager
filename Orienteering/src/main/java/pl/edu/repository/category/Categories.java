@@ -1,5 +1,6 @@
 package pl.edu.repository.category;
 
+import org.apache.commons.lang3.StringUtils;
 import pl.edu.model.category.Category;
 import pl.edu.repository.OrderType;
 import pl.edu.repository.Queryable;
@@ -42,6 +43,9 @@ public abstract class Categories extends Queryable<Category, Long> {
 
 	public Categories merge(Categories other) {
 		super.merge(other);
+        if (StringUtils.isNotBlank(other.name)) {
+            this.name = other.name;
+        }
 		return this;
 	}
 

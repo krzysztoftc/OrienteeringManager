@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -51,7 +51,7 @@
                         <p>Wypełnij formularz:</p>
                     </div>
                     <div class="form-bottom contact-form">
-                        <form role="form" th:action="@{/register}" method="POST" th:object="${competitorForm}">
+                        <form role="form" th:action="@{/admin/edit/competitor}" method="POST" th:object="${competitorForm}">
                             <div class="form-group only-club">
                                 <label class="sr-only" for="register-competitor-name">Imię </label>
                                 <input type="text" name="Name" th:field="*{competitor.name}" placeholder="Imię zawodnika" class="register-competitor-name form-control" id="register-competitor-name" />
@@ -83,7 +83,12 @@
                                 <label class="sr-only" for="register-competitor-category">Kategoria </label>
                                 <input type="text" name="category" th:field="*{competitor.category}" placeholder="Kategoria" class="register-competitor-category form-control" id="register-competitor-category" />
                             </div>
-                            <button type="submit" class="btn">Zarejestruj</button>
+                            <input type="hidden" name="id" th:field="*{competitor.id}" class="register-competitor-id form-control" id="register-competitor-id" />
+                            <input type="hidden" name="clubId" th:field="*{competitor.clubId}" class="register-competitor-clubId form-control" id="register-competitor-clubId" />
+                            <input type="hidden" name="clubName" th:field="*{clubName}" class="register-competitor-clubName form-control" id="register-competitor-clubName" />
+                            <input type="hidden" name="category" th:field="*{category}" class="register-competitor-category form-control" id="register-competitor-category" />
+                            <input type="submit" class="btn" name="action" value="save"/>
+                            <input type="submit" class="btn" name="action" value="cancel"/>
                         </form>
                     </div>
                 </div>

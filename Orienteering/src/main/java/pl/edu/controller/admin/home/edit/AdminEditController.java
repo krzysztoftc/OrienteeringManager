@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.controller.competitor.form.CompetitorForm;
+import pl.edu.model.club.Club;
 import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.category.Categories;
 import pl.edu.repository.club.Clubs;
 import pl.edu.service.category.ICategoryService;
 import pl.edu.service.club.IClubService;
 import pl.edu.service.competitor.ICompetitorService;
+
+import java.util.List;
 
 /**
  * Created by bartosz on 23.04.16.

@@ -15,7 +15,7 @@ public class Competitor extends BaseEntity<Long> {
     public Competitor(){}
 
     @Id
-    @Getter
+    @Getter @Setter
     @GeneratedValue
     @Column(name = "idcompetitor")
     private Long id;
