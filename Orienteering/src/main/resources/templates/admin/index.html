@@ -17,6 +17,16 @@
             <td th:text="${comp.surname}"/>
             <td th:text="${comp.gender}"/>
             <td th:text="${comp.birthYear}"/>
+            <td>
+                <form th:action="@{/admin/edituser}" method="POST" th:object="${competitorForm}">
+                    <input type="submit" class="btn" value= "Edytuj" />
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/admin/deleteuser}" method="POST" >
+                    <input type="submit" class="btn" value= "Usun" />
+                </form>
+            </td>
         </tr>
     </table>
     </body>
