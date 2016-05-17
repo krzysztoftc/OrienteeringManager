@@ -49,7 +49,7 @@
                         <p>Wypełnij formularz:</p>
                     </div>
                     <div class="form-bottom contact-form">
-                        <form role="form" th:action="@{/register}" method="POST" th:object="${registerCompetitorForm}">
+                        <form role="form" th:action="@{/register}" method="POST" th:object="${competitorForm}">
                             <div class="form-group only-club">
                                 <label class="sr-only" for="register-competitor-name">Imię </label>
                                 <input type="text" name="Name" th:field="*{competitor.name}" placeholder="Imię zawodnika" class="register-competitor-name form-control" id="register-competitor-name" />
@@ -67,8 +67,8 @@
                                 <input type="text" name="chipNumber" th:field="*{competitor.chipNumber}" placeholder="Numer czipsa" class="register-competitor-chipNumber form-control" id="register-competitor-chipNumber" />
                             </div>
                             <div class="form-group only-club">
-                                <label class="sr-only" for="register-competitor-birtYear">Data urodzenia </label>
-                                <input type="text" name="birtYear" th:field="*{competitor.birtYear}" placeholder="Data urodzenia" class="register-competitor-birtYear form-control" id="register-competitor-birtYear" />
+                                <label class="sr-only" for="register-competitor-birthYear">Data urodzenia </label>
+                                <input type="text" name="birthYear" th:field="*{competitor.birthYear}" placeholder="Data urodzenia" class="register-competitor-birthYear form-control" id="register-competitor-birthYear" />
                             </div>
                             <div class="form-group only-club">
                                 <label class="sr-only" for="register-competitor-gender">Płeć </label>
