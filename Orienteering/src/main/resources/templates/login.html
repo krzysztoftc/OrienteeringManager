@@ -52,8 +52,8 @@
 			                    <form th:action="@{/login}" method="POST" th:object="${loginForm}">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="login-username">Login</label>
-                                        <div class="form-group">
-                                            <p class="input-error"> Niepoprawne dane logowania </p>
+                                        <div th:if="${errorString}" class="form-group">
+                                            <p  class="input-error" th:text = "${errorString}" > </p>
                                         </div>
 			                        	<input type="text" name="email" placeholder="Login" class="login-email form-control" id="user.email" th:field="*{user.email}"/>
 			                        </div>
