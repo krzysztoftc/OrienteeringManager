@@ -34,7 +34,7 @@ public class ClubsHomeController {
         Long clubId = userService.uniqueObject(Users.findAll().withEmail(user.getUsername())).getClubId();
         List<Competitor> competitors = competitorService.list(Competitors.findAll().withClubId(clubId));
         model.addAttribute("competitors", competitors);
-        return "index";
+        return "clubs/index";
     }
 
 }

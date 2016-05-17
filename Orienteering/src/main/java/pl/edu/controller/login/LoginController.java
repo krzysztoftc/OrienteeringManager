@@ -27,9 +27,6 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @ModelAttribute("loginForm")
     public LoginForm form() {
         return new LoginForm();

@@ -29,6 +29,6 @@ public class AdminHomeController {
     public String home(ModelMap model){
         List<Competitor> competitors = competitorService.list(Competitors.findAll());
         model.addAttribute("competitors", competitors);
-        return "index";
+        return "admin/index";
     }
 }
