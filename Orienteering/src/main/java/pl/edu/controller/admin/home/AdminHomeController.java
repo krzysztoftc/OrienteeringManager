@@ -98,13 +98,14 @@ public class AdminHomeController {
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=edit")
-    public String edit(CompetitorForm form, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("comperitorForm", form);
+    public String edit(@ModelAttribute("competitorForm") CompetitorForm form,
+                       RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("competitorForm", form);
         return "redirect:/admin/edit/competitor";
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
-    public String delete(CompetitorForm form) {
+    public String delete(@ModelAttribute("competitorForm") CompetitorForm form) {
         competitorService.delete(form.getCompetitor());
         return "admin/index";
     }

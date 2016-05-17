@@ -82,4 +82,10 @@ public class LoginController {
         model.addAttribute("errorString", errorString);
         return resultView;
     }
+
+    @RequestMapping(value = { "/logout", "/logout/" }, method = RequestMethod.POST)
+    public String logout(Model model, LoginForm loginForm, BindingResult result, HttpServletRequest request) {
+        return "login";
+    }
+
 }
