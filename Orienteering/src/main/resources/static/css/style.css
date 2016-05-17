@@ -97,3 +97,17 @@ img { max-width: 100%; }
 	.inner-bg { padding: 40px 0 110px 0; }
 
 }
+
+table.my{
+	margin: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: solid;
+}
+
+td.my {
+	color: red;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-left: 10px;
+}

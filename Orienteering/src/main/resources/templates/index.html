@@ -1,23 +1,81 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Admin index</title>
-    </head>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orientering Manager - admin index</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"> </link>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" th:href="@{/assets/bootstrap/css/bootstrap.css}" rel="stylesheet" type="text/css"  />
+    <link rel="stylesheet" href="../assets/css/form-elements.css" th:href="@{/assets/css/form-elements.css}"> </link>
+    <link rel="stylesheet" href="../assets/css/style.css" th:href="@{/assets/css/style.css}"> </link>
+    <link rel="stylesheet" href="../assets/css/table.css" th:href="@{/assets/css/table.css}"> </link>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon and touch icons
+    <link rel="shortcut icon" href="assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+</head>
     <body>
-    <label>Ilość wszystkich obecnych zawodników <label th:text="${n}"></label></label>
-    <table>
-        <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Płeć</th>
-            <th>Rok urodzenia</th>
-        </tr>
-        <tr th:each="comp : ${competitors}">
-            <td th:text="${comp.name}"/>
-            <td th:text="${comp.surname}"/>
-            <td th:text="${comp.gender}"/>
-            <td th:text="${comp.birthYear}"/>
-        </tr>
-    </table>
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-offset-2 text">
+                        <h1>Orientering manager</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-sm-offset-2 text">
+                        <div class="form-top">
+                            <p>Ilość wszystkich obecnych zawodników: </p> <p th:text="${n}"> </p>
+                        </div>
+                        <div class="form-bottom">
+                            <table class="my">
+                                <tr>
+                                    <th>Imię</th>
+                                    <th>Nazwisko</th>
+                                    <th>Płeć</th>
+                                    <th>Rok urodzenia</th>
+                                </tr>
+                                <tr th:each="comp : ${competitors}">
+                                    <td class="my" th:text="${comp.name}" />
+                                    <td class="my" th:text="${comp.surname}" />
+                                    <td class="my" th:text="${comp.gender}" />
+                                    <td class="my" th:text="${comp.birthYear}" />
+                                </tr>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Javascript -->
+    <script src="../assets/js/jquery-1.11.1.min.js" th:href="@{/assets/js/jquery-1.11.1.min.js}"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js" th:href="@{/assets/js/bootstrap.min.js}"></script>
+    <script src="../assets/js/jquery.backstretch.min.js" th:href="@{/assets/js/jquery.backstretch.min.js}"></script>
+    <script src="../assets/js/scripts/register.js" th:href="@{/assets/js/scripts/login.js}"></script>
+
+    <!--[if lt IE 10]>
+    <script src="assets/js/placeholder.js"></script>
+    <![endif]-->
     </body>
 </html>
