@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import pl.edu.controller.competitor.form.CompetitorForm;
@@ -41,7 +42,19 @@ public class AdminHomeController {
     }
 
     @RequestMapping(value = {"/admin", "/admin/"})
-    public String home(ModelMap model){
+    public String home(){
+        return "admin/index";
+    }
+
+    @RequestMapping(value = {"/admin/deleteuser/", "/admin/deleteuser"}, method = RequestMethod.POST)
+    public String deleteUser(CompetitorForm form){
+        Competitor competitor = form.getCompetitor();
+        if(competitor != null){
+            System.out.println(competitor.getName());
+        }
+        else{
+            System.out.println("null");
+        }
         return "admin/index";
     }
 }

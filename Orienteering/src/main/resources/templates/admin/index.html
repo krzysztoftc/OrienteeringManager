@@ -17,11 +17,11 @@
             <td th:text="${comp.surname}"/>
             <td th:text="${comp.gender}"/>
             <td th:text="${comp.birthYear}"/>
-            <form th:action="@{/admin/deleteuser}" method="POST" >
-                <input type = "hidden" th:field="*{comp.name}"/>
-                <input type = "hidden" th:field="*{comp.surname}"/>
-                <input type = "hidden" th:field="*{comp.gender}"/>
-                <input type = "hidden" th:field="*{comp.birthYear}"/>
+            <form th:action="@{/admin/deleteuser}" method="POST" th:object="${competitorForm}">
+                <input  th:attr="value = ${comp.name}" th:field="*{competitor.name}"/>
+                <input th:name="competitor.surname" th:id="competitor.surname" th:value="${comp.surname}"/>
+                <input  th:value="${comp.gender}" th:field="*{competitor.gender}"/>
+                <input  th:value="${comp.birthYear}" th:field="*{competitor.birthYear}"/>
                 <td>
                     <input type="submit" class="btn" value= "Edytuj" action="edit" />
                 </td>
