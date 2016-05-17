@@ -66,8 +66,6 @@ public class AdminHomeController {
         cStart.setTime(begin);
         cStop.setTime(end);
 
-        cStop.add(Calendar.DAY_OF_YEAR, 15);
-
         List<String> days = new ArrayList<>();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         do {
