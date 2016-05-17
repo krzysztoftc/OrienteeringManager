@@ -46,14 +46,35 @@ public class AdminHomeController {
         return "admin/index";
     }
 
-    @RequestMapping(value = {"/admin/deleteuser/", "/admin/deleteuser"}, method = RequestMethod.POST)
-    public String deleteUser(CompetitorForm form){
+//    @RequestMapping(value = {"/admin/deleteuser/", "/admin/deleteuser"}, method = RequestMethod.POST)
+//    public String deleteUser(CompetitorForm form){
+//        Competitor competitor = form.getCompetitor();
+//        if(competitor != null){
+//            System.out.println(competitor.getName());
+//        }
+//        else{
+//            System.out.println("null");
+//        }
+//        return "admin/index";
+//    }
+
+    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=edit")
+    public String edit(CompetitorForm form) {
+        System.out.println("Edit button clicked");
         Competitor competitor = form.getCompetitor();
         if(competitor != null){
             System.out.println(competitor.getName());
         }
-        else{
-            System.out.println("null");
+        return "admin/index";
+    }
+
+
+    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
+    public String delete(CompetitorForm form) {
+        System.out.println("Delete button clicked");
+        Competitor competitor = form.getCompetitor();
+        if(competitor != null){
+            System.out.println(competitor.getName());
         }
         return "admin/index";
     }
