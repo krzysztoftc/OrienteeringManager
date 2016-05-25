@@ -4,13 +4,30 @@
         <title>Admin index</title>
 
         <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"> </link>
-        <link rel="stylesheet" type="text/css"  href="/assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css"  href="/assets/bootstrap/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css"  href="/assets/css/form-elements.css"> </link>
         <link rel="stylesheet" type="text/css"  href="/assets/css/style.css"> </link>
 
     </head>
     <body>
-    <div>
+    <div th:replace="fragments/header :: header">
+        &nbsp;
+    </div>
+
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-0 text">
+                        <h1>Orientering manager</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-sm-offset-2 text">
+                        <div class="form-top">
+                            <p>Lista zawodników</p>
+                        </div>
+                        <div class="form-bottom">
         <table>
             <tr>
                 <th>Imię</th>
@@ -57,6 +74,11 @@
             </div>
         </table>
     </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <script src="/assets/js/jquery-1.11.1.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
