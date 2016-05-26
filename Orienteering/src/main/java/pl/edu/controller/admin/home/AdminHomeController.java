@@ -135,7 +135,8 @@ public class AdminHomeController extends BaseController{
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
-    public String delete(@ModelAttribute("competitorForm") CompetitorForm form) {
+    public String delete(@ModelAttribute("competitorForm") CompetitorForm form,
+                         BindingResult bindingResult) {
         competitorService.delete(form.getCompetitor());
         return "admin/index";
     }

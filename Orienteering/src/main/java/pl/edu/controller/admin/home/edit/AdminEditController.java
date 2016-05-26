@@ -39,6 +39,12 @@ public class AdminEditController extends BaseController {
         return new CompetitorForm();
     }
 
+    @ModelAttribute("clubList")
+    public List<Club> clubList(){
+        List<Club> clubList = clubService.list(Clubs.findAll());
+        return clubList;
+    }
+
     @ModelAttribute("categoryList")
     public List<Category> categoryList(){
         List<Category> categoryList = categoryService.list(Categories.findAll());
