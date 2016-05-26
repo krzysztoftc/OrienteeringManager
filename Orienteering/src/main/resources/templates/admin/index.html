@@ -41,7 +41,7 @@
 							        <form th:action="@{/admin}" method="POST" th:object="${competitorForm}">
 							            <tr th:id="${comp.id}" class="competitor_info" onclick="toogle(this.id)">
 							            	<td>
-							            	<input type="checkbox" th:name="${night}" th:id="${night}" th:value="${comp.name}" />
+							            	    <input type="checkbox" th:name="${night}" th:id="${night}"  />
 							            	</td>
 							                <td th:text="${comp.name}"/>
 							                <td th:text="${comp.surname}"/>

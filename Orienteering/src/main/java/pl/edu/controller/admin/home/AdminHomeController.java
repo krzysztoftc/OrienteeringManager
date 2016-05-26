@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,7 @@ import pl.edu.service.competitor.ICompetitorService;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,7 +60,8 @@ public class AdminHomeController extends BaseController{
 
     @ModelAttribute("competitorForm")
     public CompetitorForm form() {
-        return new CompetitorForm();
+        CompetitorForm competitorForm = new CompetitorForm();
+        return competitorForm;
     }
 
     @ModelAttribute("competitors")
@@ -124,14 +127,16 @@ public class AdminHomeController extends BaseController{
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=edit")
-    public String edit(@ModelAttribute("competitorForm") CompetitorForm form,
+    public String edit(@ModelAttribute("competitorForm") @Valid CompetitorForm form,
+                       BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("competitorForm", form);
         return "redirect:/admin/edit/competitor";
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
-    public String delete(@ModelAttribute("competitorForm") CompetitorForm form) {
+    public String delete(@ModelAttribute("competitorForm") CompetitorForm form,
+                         BindingResult bindingResult) {
         competitorService.delete(form.getCompetitor());
         return "admin/index";
     }
