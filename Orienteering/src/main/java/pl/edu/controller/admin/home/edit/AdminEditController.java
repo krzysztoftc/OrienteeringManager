@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
+import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
 import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.category.Categories;
@@ -36,6 +37,12 @@ public class AdminEditController extends BaseController {
     @ModelAttribute("competitorForm")
     public CompetitorForm form() {
         return new CompetitorForm();
+    }
+
+    @ModelAttribute("categoryList")
+    public List<Category> categoryList(){
+        List<Category> categoryList = categoryService.list(Categories.findAll());
+        return categoryList;
     }
 
     @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"})
