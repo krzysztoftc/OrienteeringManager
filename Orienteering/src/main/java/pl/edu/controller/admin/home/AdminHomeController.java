@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.model.category.Category;
 import pl.edu.model.competition.CompetitonInfo;
@@ -41,7 +42,7 @@ import java.util.List;
  * Created by bartosz on 23.04.16.
  */
 @Controller("adminHomeController")
-public class AdminHomeController {
+public class AdminHomeController extends BaseController{
 
     @Autowired
     private IClubService clubService;
@@ -61,22 +62,9 @@ public class AdminHomeController {
     }
 
     @ModelAttribute("competitors")
-    public List<CompetitorForm> competitorList() {
+    public List<Competitor> competitorList() {
         List<Competitor> competitorList = competitorService.list(Competitors.findAll());
-        List<CompetitorForm> formList = new ArrayList<>();
-
-        for(Competitor competitor : competitorList){
-            CompetitorForm form = new CompetitorForm();
-            form.setCompetitor(competitor);
-            form.setClubName(clubService.uniqueObject(Clubs.findAll().withId(competitor.getClubId())).getName());
-            Categories cat = Categories.findAll().withId(competitor.getCategory());
-            Category uo = categoryService.uniqueObject(cat);
-            String name = uo.getName();
-            form.setCategory(name);
-            formList.add(form);
-        }
-
-        return formList;
+        return competitorList;
     }
 
     @ModelAttribute("days")
@@ -107,16 +95,6 @@ public class AdminHomeController {
 
     @RequestMapping(value = {"/admin", "/admin/"})
     public String home(Model model){
-        List<String> days = new ArrayList<>();
-        days.add("Poniedziałek");
-        days.add("Wtorek");
-        days.add("Sroda");
-        days.add("Czwartek");
-        days.add("Piatek");
-        model.addAttribute(days);
-        for ( String day : days) {
-            System.out.println(day);
-        }
         return "admin/index";
     }
 

@@ -39,24 +39,24 @@
             <div th:each="comp : ${competitors}">
                 <form th:action="@{/admin}" method="POST" th:object="${competitorForm}">
                     <tr>
-                        <td rowspan="2" th:text="${comp.competitor.name}"/>
-                        <td rowspan="2" th:text="${comp.competitor.surname}"/>
-                        <td rowspan="2" th:text="${comp.competitor.gender}"/>
-                        <td rowspan="2" th:text="${comp.competitor.birthYear}"/>
+                        <td rowspan="2" th:text="${comp.name}"/>
+                        <td rowspan="2" th:text="${comp.surname}"/>
+                        <td rowspan="2" th:text="${comp.gender}"/>
+                        <td rowspan="2" th:text="${comp.birthYear}"/>
 
-                        <input type="hidden" th:name="competitor.id" th:id="competitor.id" th:value="${comp.competitor.id}"/>
-                        <input type="hidden" th:name="competitor.name" th:id="competitor.name" th:value="${comp.competitor.name}"/>
-                        <input type="hidden" th:name="competitor.surname" th:id="competitor.surname" th:value="${comp.competitor.surname}"/>
-                        <input type="hidden" th:name="competitor.licenceNumber" th:id="competitor.licenceNumber" th:value="${comp.competitor.licenceNumber}"/>
-                        <input type="hidden" th:name="competitor.chipNumber" th:id="competitor.chipNumber" th:value="${comp.competitor.chipNumber}"/>
-                        <input type="hidden" th:name="competitor.clubId" th:id="competitor.clubId" th:value="${comp.competitor.clubId}"/>
-                        <input type="hidden" th:name="competitor.birthYear" th:id="competitor.birthYear" th:value="${comp.competitor.birthYear}"/>
-                        <input type="hidden" th:name="competitor.gender" th:id="competitor.gender" th:value="${comp.competitor.gender}"/>
-                        <input type="hidden" th:name="competitor.category" th:id="competitor.category" th:value="${comp.competitor.category}"/>
-                        <input type="hidden" th:name="clubName" th:id="clubName" th:value="${comp.clubName}"/>
-                        <input type="hidden" th:name="category" th:id="category" th:value="${comp.category}"/>
+                        <input type="hidden" th:name="competitor.id" th:id="competitor.id" th:value="${comp.id}"/>
+                        <input type="hidden" th:name="competitor.name" th:id="competitor.name" th:value="${comp.name}"/>
+                        <input type="hidden" th:name="competitor.surname" th:id="competitor.surname" th:value="${comp.surname}"/>
+                        <input type="hidden" th:name="competitor.licenceNumber" th:id="competitor.licenceNumber" th:value="${comp.licenceNumber}"/>
+                        <input type="hidden" th:name="competitor.chipNumber" th:id="competitor.chipNumber" th:value="${comp.chipNumber}"/>
+                        <input type="hidden" th:name="competitor.club" th:id="competitor.club" th:value="${comp.club}"/>
+                        <input type="hidden" th:name="competitor.birthYear" th:id="competitor.birthYear" th:value="${comp.birthYear}"/>
+                        <input type="hidden" th:name="competitor.gender" th:id="competitor.gender" th:value="${comp.gender}"/>
+                        <input type="hidden" th:name="competitor.category" th:id="competitor.category" th:value="${comp.category}"/>
+                        <input type="hidden" th:name="clubName" th:id="clubName" th:value="${comp.club.name}"/>
+                        <input type="hidden" th:name="category" th:id="category" th:value="${comp.category.name}"/>
                         <td th:each="day : ${days}">
-                            <input th:each="comp : ${competitors}" type="checkbox" th:name="${night}" th:id="${night}" th:value="${comp.competitor.name}" />
+                            <input th:each="comp : ${competitors}" type="checkbox" th:name="${night}" th:id="${night}" th:value="${comp.name}" />
                         </td>
                         <td rowspan="2">
                             <input type="submit" class="btn" name="action" value="edit" />
@@ -67,7 +67,7 @@
                     </tr>
                     <tr>
                         <td th:each="day : ${days}">
-                            <input th:each="comp : ${competitors}" type="checkbox" th:name="${eat}" th:id="${eat}" th:value="${comp.competitor.name}" />
+                            <input th:each="comp : ${competitors}" type="checkbox" th:name="${eat}" th:id="${eat}" th:value="${comp.name}" />
                         </td>
                     </tr>
                 </form>

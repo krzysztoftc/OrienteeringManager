@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.edu.controller.BaseController;
 import pl.edu.model.competitor.Competitor;
 import pl.edu.model.user.Role;
 import pl.edu.repository.competitor.Competitors;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 
 @Controller("mainController")
-public class MainController {
+public class MainController extends BaseController {
 
     @Autowired
     private ICompetitorService competitorService;

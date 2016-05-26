@@ -1,6 +1,8 @@
 package pl.edu.repository.competitor;
 
 import org.apache.commons.lang3.StringUtils;
+import pl.edu.model.category.Category;
+import pl.edu.model.club.Club;
 import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.OrderType;
 import pl.edu.repository.Queryable;
@@ -15,10 +17,11 @@ public abstract class Competitors extends Queryable<Competitor, Long> {
     protected String surname;
     protected String licenceNumber;
     protected Long chipNumber;
-    protected Long clubId;
+//    protected Long clubId;
+    protected Club club;
     protected Long birthYear;
     protected Character gender;
-    protected Long category;
+    protected Category category;
 
 	protected Competitors() {
 	}
@@ -43,8 +46,8 @@ public abstract class Competitors extends Queryable<Competitor, Long> {
         return this;
     }
 
-    public Competitors withClubId(Long clubId) {
-        this.clubId = clubId;
+    public Competitors withClub(Club club) {
+        this.club = club;
         return this;
     }
 
@@ -58,7 +61,7 @@ public abstract class Competitors extends Queryable<Competitor, Long> {
         return this;
     }
 
-    public Competitors withCategory(Long category) {
+    public Competitors withCategory(Category category) {
         this.category = category;
         return this;
     }
@@ -97,8 +100,8 @@ public abstract class Competitors extends Queryable<Competitor, Long> {
         if (other.chipNumber != null) {
             this.chipNumber = other.chipNumber;
         }
-        if (other.clubId != null) {
-            this.clubId = other.clubId;
+        if (other.club != null) {
+            this.club = other.club;
         }
         if (other.birthYear != null) {
             this.birthYear = other.birthYear;

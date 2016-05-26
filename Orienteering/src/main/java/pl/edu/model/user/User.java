@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import pl.edu.model.BaseEntity;
+import pl.edu.model.club.Club;
+
 import javax.persistence.*;
 
 @Entity
@@ -40,6 +42,10 @@ public class User extends BaseEntity<Long> {
     private String type;
 
     @Getter	@Setter
-    @Column(nullable=false, name = "idclub")
-    private long clubId;
+//    @Column(nullable=false, name = "idclub")
+    @ManyToOne
+    @JoinColumn(name="clubs",
+            insertable=false, updatable=false,
+            nullable=false)
+    private Club club;
 }
