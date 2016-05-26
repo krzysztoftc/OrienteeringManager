@@ -39,7 +39,7 @@
 							    </tr>
 							    <div th:each="comp : ${competitors}">
 							        <form th:action="@{/admin}" method="POST" th:object="${competitorForm}">
-							            <tr>
+							            <tr th:id="${comp.id}" class="competitor_info" onclick="toogle(this.id)">
 							            	<td>
 							            	<input type="checkbox" th:name="${night}" th:id="${night}" th:value="${comp.name}" />
 							            	</td>
@@ -66,7 +66,7 @@
 							                    <input type="submit" class="btn" name="action" value="delete" />
 							                </td>
 							            </tr>
-                                        <tr th:id="optionRow + ${comp.id}"><td colspan="5">
+                                        <tr th:id="${comp.id}" class="option"><td colspan="5">
                                             <form>
                                                 <table  align="center" th:each="day : ${days}" >
                                                     <tr colspan="2" th:text="${day}"> </tr>
@@ -109,7 +109,7 @@
     <script src="/assets/js/jquery-1.11.1.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/jquery.backstretch.min.js"></script>
-    <script src="/assets/js/scripts/login.js"></script>
+    <script src="/assets/js/scripts/admin/details.js"/>
 
     <!--[if lt IE 10]>
     <script src="/assets/js/placeholder.js"></script>
