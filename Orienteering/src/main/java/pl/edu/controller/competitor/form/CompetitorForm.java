@@ -13,12 +13,6 @@ public class CompetitorForm extends AbstractForm {
 	@Getter @Setter
 	private Competitor competitor;
 
-    @Getter	@Setter
-    private String clubName;
-
-    @Getter	@Setter
-    private String category;
-
 	@Override
 	public String getID() {
 		return new Md5PasswordEncoder().encodePassword(competitor.getId() + "", "sdfNOghELOjklkjuhLOGINygtfrLOLrtgyhjk");

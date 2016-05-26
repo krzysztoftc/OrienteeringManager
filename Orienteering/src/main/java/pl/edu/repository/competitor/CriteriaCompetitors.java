@@ -36,8 +36,8 @@ public class CriteriaCompetitors extends Competitors {
         if (chipNumber != null) {
             criteria.add(Restrictions.eq("chipNumber", chipNumber));
         }
-        if (clubId != null) {
-            criteria.add(Restrictions.eq("clubId", clubId));
+        if (club != null) {
+            criteria.add(Restrictions.eq("club", club));
         }
         if (birthYear != null) {
             criteria.add(Restrictions.eq("birthYear", birthYear));

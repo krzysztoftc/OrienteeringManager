@@ -3,6 +3,8 @@ package pl.edu.model.competitor;
 import lombok.Getter;
 import lombok.Setter;
 import pl.edu.model.BaseEntity;
+import pl.edu.model.category.Category;
+import pl.edu.model.club.Club;
 
 import javax.persistence.*;
 
@@ -37,8 +39,12 @@ public class Competitor extends BaseEntity<Long> {
     private Long chipNumber;
 
     @Getter	@Setter
-    @Column(name = "idclub")
-    private Long clubId;
+//    @Column(name = "idclub")
+    @ManyToOne
+    @JoinColumn(name="idclub",
+            insertable=false, updatable=false,
+            nullable=false)
+    private Club club;
 
     @Getter	@Setter
     @Column(name = "birth_year")
@@ -49,6 +55,10 @@ public class Competitor extends BaseEntity<Long> {
     private Character gender;
 
     @Getter	@Setter
-    @Column
-    private Long category;
+//    @Column
+    @ManyToOne
+    @JoinColumn(name="category",
+            insertable=false, updatable=false,
+            nullable=false)
+    private Category category;
 }

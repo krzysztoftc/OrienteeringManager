@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.edu.controller.BaseController;
 import pl.edu.controller.login.form.LoginForm;
 import pl.edu.controller.login.form.LoginValidator;
 
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * Created by bartosz on 11.04.16.
  */
 @Controller("loginController")
-public class LoginController {
+public class LoginController extends BaseController {
 
     @Autowired
     private AuthenticationManager authenticationManager;

@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.edu.controller.BaseController;
 import pl.edu.controller.register.form.RegisterForm;
 import pl.edu.controller.register.form.RegisterValidator;
 import pl.edu.model.club.Club;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Controller
 @Log4j
-public class RegisterController {
+public class RegisterController extends BaseController {
 
 	@Autowired
 	private IUserService userService;
@@ -57,7 +58,7 @@ public class RegisterController {
 
                         if(club != null){
                             User user = registerForm.getUser();
-                            user.setClubId(club.getId());
+                            user.setClub(club);
                             userService.register(user);
                             resultView = "redirect:/";
                         }
