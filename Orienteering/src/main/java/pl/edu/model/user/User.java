@@ -44,7 +44,7 @@ public class User extends BaseEntity<Long> {
     @Getter	@Setter
 //    @Column(nullable=false, name = "idclub")
     @ManyToOne
-    @JoinColumn(name="clubs",
+    @JoinColumn(name="idclub",
             insertable=false, updatable=false,
             nullable=false)
     private Club club;

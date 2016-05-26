@@ -93,6 +93,31 @@ public class AdminHomeController extends BaseController{
         return days;
     }
 
+    @ModelAttribute("mealOptions")
+    public List<String> mealList() {
+        List<String> meals = new ArrayList<>();
+        meals.add("Kiełbasa");
+        meals.add("Karkówka");
+        meals.add("Boczek");
+        meals.add("Sałata");
+        meals.add("Karaczany");
+        for ( String day : meals) {
+            System.out.println(day);
+        }
+        return meals;
+    }
+    @ModelAttribute("nightOptions")
+    public List<String> nightList() {
+        List<String> nights = new ArrayList<>();
+        nights.add("Hilton");
+        nights.add("Szkoła");
+        nights.add("Namiot");
+        for ( String day : nights) {
+            System.out.println(day);
+        }
+        return nights;
+    }
+
     @RequestMapping(value = {"/admin", "/admin/"})
     public String home(Model model){
         return "admin/index";
@@ -108,6 +133,12 @@ public class AdminHomeController extends BaseController{
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
     public String delete(@ModelAttribute("competitorForm") CompetitorForm form) {
         competitorService.delete(form.getCompetitor());
+        return "admin/index";
+    }
+
+    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=zaznacz")
+    public String selectAll() {
+        System.out.println("Zaznacz wszystkich!");
         return "admin/index";
     }
 }
