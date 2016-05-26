@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole(Role.ADMIN.getCode())
                 .antMatchers("/clubs/**").hasAnyRole(Role.CLUB.getCode(),
                                                      Role.INDIVIDUAL.getCode());
+        http.csrf().disable();
 //        http
 //                .authorizeRequests().anyRequest().authenticated();
 //        http

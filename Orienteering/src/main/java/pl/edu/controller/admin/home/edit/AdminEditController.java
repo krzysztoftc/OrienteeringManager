@@ -40,7 +40,7 @@ public class AdminEditController extends BaseController {
 
     @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"})
     public String home(Model model, @ModelAttribute("competitorForm") CompetitorForm form){
-        model.addAttribute("competitorForm", form);
+//        model.addAttribute("competitorForm", form);
         return "admin/edit/competitor";
     }
 

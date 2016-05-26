@@ -84,9 +84,9 @@
                                 <input type="text" name="category" th:field="*{competitor.category}" placeholder="Kategoria" class="register-competitor-category form-control" id="register-competitor-category" />
                             </div>
                             <input type="hidden" name="id" th:field="*{competitor.id}" class="register-competitor-id form-control" id="register-competitor-id" />
-                            <input type="hidden" name="clubId" th:field="*{competitor.clubId}" class="register-competitor-clubId form-control" id="register-competitor-clubId" />
-                            <input type="hidden" name="clubName" th:field="*{clubName}" class="register-competitor-clubName form-control" id="register-competitor-clubName" />
-                            <input type="hidden" name="category" th:field="*{category}" class="register-competitor-category form-control" id="register-competitor-category" />
+                            <input type="hidden" name="clubId" th:field="*{competitor.club.id}" class="register-competitor-clubId form-control" id="register-competitor-clubId" />
+                            <input type="hidden" name="clubName" th:field="*{competitor.club.name}" class="register-competitor-clubName form-control" id="register-competitor-clubName" />
+                            <input type="hidden" name="category" th:field="*{competitor.category.name}" class="register-competitor-category form-control" id="register-competitor-category" />
                             <input type="submit" class="btn" name="action" value="save"/>
                             <input type="submit" class="btn" name="action" value="cancel"/>
                         </form>
