@@ -61,4 +61,8 @@ public class Competitor extends BaseEntity<Long> {
             insertable=false, updatable=false,
             nullable=false)
     private Category category;
+
+    @Getter	@Setter
+    @Column(name = "category")
+    private Long categoryId;
 }

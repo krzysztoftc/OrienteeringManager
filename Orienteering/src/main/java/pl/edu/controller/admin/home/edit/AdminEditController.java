@@ -3,6 +3,7 @@ package pl.edu.controller.admin.home.edit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,18 +53,21 @@ public class AdminEditController extends BaseController {
     }
 
     @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"})
-    public String home(Model model, @ModelAttribute("competitorForm") CompetitorForm form){
-//        model.addAttribute("competitorForm", form);
+    public String home(@ModelAttribute("competitorForm") CompetitorForm form,
+                       BindingResult bindingResult){
         return "admin/edit/competitor";
     }
 
     @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
             method=RequestMethod.POST, params="action=save")
-    public String saveCompetitor(Model model, @ModelAttribute("competitorForm") CompetitorForm form) {
+    public String saveCompetitor(@ModelAttribute("competitorForm") CompetitorForm form,
+                                 BindingResult bindingResult) {
 //        String clubName = form.getClubName();
 //        String categoryName = form.getCategory();
 //        String errorString = "";
         String resultView = "redirect:/admin";
+        form.getCompetitor().getCategory().setName("Woman");
+        competitorService.saveOrUpdate(form.getCompetitor());
 //        try{
 //            Long clubId = clubService.uniqueObject(Clubs.findAll().withClubName(clubName)).getId();
 //            Long categoryId = categoryService.uniqueObject(Categories.findAll().withName(categoryName)).getId();

@@ -20,6 +20,7 @@ public class Category extends BaseEntity<Long> {
 
     @Id
     @Getter
+    @Setter
     @GeneratedValue
     @Column(name = "idcategory")
     private Long id;
