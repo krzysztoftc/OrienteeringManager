@@ -66,8 +66,12 @@ public class AdminEditController extends BaseController {
 //        String categoryName = form.getCategory();
 //        String errorString = "";
         String resultView = "redirect:/admin";
-        form.getCompetitor().getCategory().setName("Woman");
-        competitorService.saveOrUpdate(form.getCompetitor());
+        try {
+            competitorService.saveOrUpdate(form.getCompetitor());
+        }catch(Exception e){
+            e.printStackTrace();
+            resultView = "/admin/edit/competitor";
+        }
 //        try{
 //            Long clubId = clubService.uniqueObject(Clubs.findAll().withClubName(clubName)).getId();
 //            Long categoryId = categoryService.uniqueObject(Categories.findAll().withName(categoryName)).getId();
