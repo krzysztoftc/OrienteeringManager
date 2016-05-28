@@ -7,7 +7,7 @@ import pl.edu.utils.ClassUtils;
 
 import java.util.List;
 
-public class CriteriaCompetitonInfos extends CompetitonInfos {
+public class CriteriaCompetitionInfos extends CompetitionInfos {
 	
 	/**
 	 * 
@@ -16,7 +16,7 @@ public class CriteriaCompetitonInfos extends CompetitonInfos {
 	protected Criteria criteria;
 	protected Criteria criteria2;
 
-	public CriteriaCompetitonInfos(Criteria criteria, Criteria criteria2) {
+	public CriteriaCompetitionInfos(Criteria criteria, Criteria criteria2) {
 		this.criteria = criteria;
 		this.criteria2 = criteria2;
 	}
