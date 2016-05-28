@@ -58,7 +58,7 @@
                                         <input type="hidden" th:name="competitor.birthYear" th:id="competitor.birthYear" th:value="${comp.birthYear}"/>
                                         <input type="hidden" th:name="competitor.gender" th:id="competitor.gender" th:value="${comp.gender}"/>
                                         <input type="hidden" th:name="competitor.category" th:id="competitor.category" th:value="${comp.category}"/>
-                                        <input type="hidden" th:name="clubName" th:id="clubName" th:value="${comp.club.name}"/>
+                                        <input type="hidden" th:name="competitor.clubId" th:id="competitor.clubId" th:value="${comp.clubId}"/>
                                         <input type="hidden" th:name="competitor.categoryId" th:id="competitor.categoryId" th:value="${comp.categoryId}"/>
                                         <td style="border: none; background: none">
                                             <input type="submit" class="btn" style="height: 30px;line-height: 30px" name="action" value="edit" />
@@ -77,14 +77,14 @@
                                                     <td th:text="${day}" style="border: none"></td>
                                                     <td>
                                                         <div th:each="meal : ${mealOptions}" >
-                                                            <input type="checkbox" th:name="${meal}" th:id="${meal}" th:value="${meal}" />
-                                                            <label th:text="${meal}"></label>
+                                                            <input type="checkbox" th:name="${meal.name}" th:id="${meal.id}" th:value="${meal.id}" />
+                                                            <label th:text="${meal.name}"></label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div th:each="night : ${nightOptions}" >
-                                                            <input type="checkbox" th:name="${night}" th:id="${night}" th:value="${night}" />
-                                                            <label th:text="${night}"></label>
+                                                            <input type="checkbox" th:name="${night.name}" th:id="${night.id}" th:value="${night.id}" />
+                                                            <label th:text="${night.name}"></label>
                                                         </div>
                                                     </td>
                                                 </tr>

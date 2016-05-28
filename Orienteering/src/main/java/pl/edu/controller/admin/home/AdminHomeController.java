@@ -16,15 +16,21 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
+import pl.edu.model.accommodation.Accommodation;
 import pl.edu.model.category.Category;
+import pl.edu.model.catering.Catering;
 import pl.edu.model.competition.CompetitonInfo;
 import pl.edu.model.competitor.Competitor;
+import pl.edu.repository.accommodation.Accommodations;
 import pl.edu.repository.category.Categories;
+import pl.edu.repository.catering.Caterings;
 import pl.edu.repository.club.Clubs;
 import pl.edu.repository.competition.CompetitonInfos;
 import pl.edu.repository.competitor.Competitors;
 import pl.edu.repository.user.Users;
+import pl.edu.service.accommodation.IAccommodationService;
 import pl.edu.service.category.ICategoryService;
+import pl.edu.service.catering.ICateringService;
 import pl.edu.service.club.IClubService;
 import pl.edu.service.competition.ICompetitonInfoService;
 import pl.edu.service.competitor.ICompetitorService;
@@ -47,10 +53,13 @@ import java.util.List;
 public class AdminHomeController extends BaseController{
 
     @Autowired
-    private IClubService clubService;
+    private ICategoryService categoryService;
 
     @Autowired
-    private ICategoryService categoryService;
+    private ICateringService cateringService;
+
+    @Autowired
+    private IAccommodationService accommodationService;
 
     @Autowired
     private ICompetitorService competitorService;
@@ -89,36 +98,19 @@ public class AdminHomeController extends BaseController{
             cStart.add(Calendar.DAY_OF_YEAR, 1);
         } while (cStart.before(cStop));
 
-        for (String day: days) {
-            System.out.println(day);
-        }
-
         return days;
     }
 
     @ModelAttribute("mealOptions")
-    public List<String> mealList() {
-        List<String> meals = new ArrayList<>();
-        meals.add("Kiełbasa");
-        meals.add("Karkówka");
-        meals.add("Boczek");
-        meals.add("Sałata");
-        meals.add("Karaczany");
-        for ( String day : meals) {
-            System.out.println(day);
-        }
-        return meals;
+    public List<Catering> mealList() {
+        List<Catering> cateringList = cateringService.list(Caterings.findAll());
+        return cateringList;
     }
+
     @ModelAttribute("nightOptions")
-    public List<String> nightList() {
-        List<String> nights = new ArrayList<>();
-        nights.add("Hilton");
-        nights.add("Szkoła");
-        nights.add("Namiot");
-        for ( String day : nights) {
-            System.out.println(day);
-        }
-        return nights;
+    public List<Accommodation> nightList() {
+        List<Accommodation> accommodationList = accommodationService.list(Accommodations.findAll());
+        return accommodationList;
     }
 
     @RequestMapping(value = {"/admin", "/admin/"})
@@ -137,6 +129,7 @@ public class AdminHomeController extends BaseController{
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")
     public String delete(@ModelAttribute("competitorForm") CompetitorForm form,
                          BindingResult bindingResult) {
+        form.getCompetitor().setCategory(categoryService.uniqueObject(Categories.findAll().withId(form.getCompetitor().getCategoryId())));
         competitorService.delete(form.getCompetitor());
         return "admin/index";
     }

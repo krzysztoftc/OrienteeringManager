@@ -2,6 +2,7 @@ package pl.edu.model.competitor;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 import pl.edu.model.BaseEntity;
 import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
@@ -45,6 +46,10 @@ public class Competitor extends BaseEntity<Long> {
             insertable=false, updatable=false,
             nullable=false)
     private Club club;
+
+    @Getter	@Setter
+    @Column(name = "idclub")
+    private Long clubId;
 
     @Getter	@Setter
     @Column(name = "birth_year")

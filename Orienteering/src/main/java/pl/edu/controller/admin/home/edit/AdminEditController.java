@@ -2,7 +2,6 @@ package pl.edu.controller.admin.home.edit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +10,6 @@ import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
-import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.category.Categories;
 import pl.edu.repository.club.Clubs;
 import pl.edu.service.category.ICategoryService;
@@ -62,9 +60,6 @@ public class AdminEditController extends BaseController {
             method=RequestMethod.POST, params="action=save")
     public String saveCompetitor(@ModelAttribute("competitorForm") CompetitorForm form,
                                  BindingResult bindingResult) {
-//        String clubName = form.getClubName();
-//        String categoryName = form.getCategory();
-//        String errorString = "";
         String resultView = "redirect:/admin";
         try {
             competitorService.saveOrUpdate(form.getCompetitor());
@@ -72,28 +67,6 @@ public class AdminEditController extends BaseController {
             e.printStackTrace();
             resultView = "/admin/edit/competitor";
         }
-//        try{
-//            Long clubId = clubService.uniqueObject(Clubs.findAll().withClubName(clubName)).getId();
-//            Long categoryId = categoryService.uniqueObject(Categories.findAll().withName(categoryName)).getId();
-//
-//            Competitor competitor = form.getCompetitor();
-//            competitor.setClub(club);
-//            competitor.setCategory(categoryId);
-//
-//            competitorService.saveOrUpdate(competitor);
-//        }
-//        catch(NullPointerException e){
-//            errorString = "Nie znaleziono klubu lub kategorii";
-//            resultView = "admin/edit/competitor";
-//        }
-//        catch(Exception e){
-//            errorString = "Nieznany błąd";
-//            resultView = "admin/edit/competitor";
-//        }
-//        finally {
-//            model.addAttribute("errorString", errorString);
-//        }
-
         return resultView;
     }
 

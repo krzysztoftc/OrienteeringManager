@@ -88,10 +88,7 @@
                                 </select>
                             </div>
                             <input type="hidden" name="id" th:field="*{competitor.id}" class="register-competitor-id form-control" id="register-competitor-id" />
-                            <!--<input type="hidden" name="clubId" th:field="*{competitor.club}" class="register-competitor-clubId form-control" id="register-competitor-clubId" />-->
-                            <input type="hidden" name="clubName" th:field="*{competitor.club}" class="register-competitor-clubName form-control" id="register-competitor-clubName" />
-                            <input type="hidden" name="category" th:field="*{competitor.category}" class="register-competitor-category form-control" id="register-competitor-category" />
-                            <!--<input type="hidden" name="categoryId" th:field="*{competitor.category.id}" class="register-category-id form-control" id="register-category-id" />-->
+                            <input type="hidden" name="clubId" th:field="*{competitor.clubId}" class="register-competitor-clubId form-control" id="register-competitor-clubId" />
                             <input type="submit" class="btn" name="action" value="save"/>
                             <input type="submit" class="btn" name="action" value="cancel"/>
                         </form>
