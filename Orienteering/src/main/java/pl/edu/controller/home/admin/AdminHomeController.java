@@ -121,9 +121,9 @@ public class AdminHomeController extends BaseController{
         return "admin/index";
     }
 
-    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=zaznacz")
+    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=add")
     public String selectAll() {
-        System.out.println("Zaznacz wszystkich!");
+        System.out.println("Dodaj nowego!");
         return "admin/index";
     }
 }
