@@ -47,51 +47,24 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 form-box">
                     <div class="form-top">
-                        <h3>Rejestracja zawodnika</h3>
+                        <h3>Rejestracja cateringu</h3>
                         <p>Wypełnij formularz:</p>
                     </div>
                     <div class="form-bottom contact-form">
-                        <form role="form" th:action="@{/admin/edit/competitor}" method="POST" th:object="${competitorForm}">
+                        <form role="form" th:action="@{/admin/edit/catering}" method="POST" th:object="${cateringForm}">
                             <div class="form-group only-club">
-                                <div>Imię</div>
-                                <input type="text" name="Name" th:field="*{competitor.name}" placeholder="Imię zawodnika" class="register-competitor-name form-control" id="register-competitor-name" />
-                            </div>
-                            <div class="form-group only-club">
-                                <div>Nazwisko</div>
-                                <input type="text" name="Surname" th:field="*{competitor.surname}" placeholder="Nazwisko zawodnika" class="register-competitor-surname form-control" id="register-competitor-surname" />
+                                <div>Nazwa noclegu</div>
+                                <input type="text" name="Name" th:field="*{catering.name}" placeholder="Nazwa cateringu" class="register-catering-name form-control" id="register-catering-name" />
                             </div>
                             <div class="form-group only-club">
-                                <div>Numer licencji</div>
-                                <input type="text" name="Name" th:field="*{competitor.licenceNumber}" placeholder="Numer licencji" class="register-competitor-licenceNumber form-control" id="register-competitor-licenceNumber" />
+                                <div>Adres</div>
+                                <input type="text" name="Address" th:field="*{catering.address}" placeholder="Adres cateringu" class="register-catering-address form-control" id="register-catering-address" />
                             </div>
                             <div class="form-group only-club">
-                                <div>Numer chipa</div>
-                                <input type="text" name="chipNumber" th:field="*{competitor.chipNumber}" placeholder="Numer czipsa" class="register-competitor-chipNumber form-control" id="register-competitor-chipNumber" />
+                                <div>Opis</div>
+                                <input type="text" name="Description" th:field="*{catering.description}" placeholder="Opis" class="register-catering-description form-control" id="register-catering-description" />
                             </div>
-                            <div class="form-group only-club">
-                                <div>Rok urodzenia</div>
-                                <select th:field="*{competitor.birthYear}" id="register-competitor-birthYear">
-                                    <option th:each="i : ${#numbers.sequence( 1900, #dates.format(#dates.createNow(), 'yyyy'))}" th:text="${i}" th:value="${i}"></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <div>Płeć</div>
-                                <select th:field="*{competitor.gender}" id="register-competitor-gender">
-                                    <option value="M">Mężczyzna</option>
-                                    <option value="F">Kobieta</option>
-                                </select>
-                            </div>
-                            <div class="form-group only-club">
-                                <div>Kategoria</div>
-                                <select th:field="*{competitor.category}" id="register-competitor-category">
-                                    <option th:each="cat : ${categoryList}" th:text="${cat.name}" th:value="${cat.name}"></option>
-                                </select>
-                            </div>
-                            <input type="hidden" name="id" th:field="*{competitor.id}" class="register-competitor-id form-control" id="register-competitor-id" />
-                            <!--<input type="hidden" name="clubId" th:field="*{competitor.club}" class="register-competitor-clubId form-control" id="register-competitor-clubId" />-->
-                            <input type="hidden" name="clubName" th:field="*{competitor.club}" class="register-competitor-clubName form-control" id="register-competitor-clubName" />
-                            <input type="hidden" name="id" th:field="*{competitor.id}" class="register-competitor-id form-control" id="register-competitor-id" />
-                            <input type="hidden" name="category" th:field="*{competitor.category}" class="register-competitor-category form-control" id="register-competitor-category" />
+                            <input type="hidden" name="id" th:field="*{catering.id}" class="register-catering-id form-control" id="register-catering-id" />
                             <input type="submit" class="btn" name="action" value="save"/>
                             <input type="submit" class="btn" name="action" value="cancel"/>
                         </form>
