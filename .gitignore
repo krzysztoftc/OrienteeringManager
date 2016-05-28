@@ -17,6 +17,7 @@ Orienteering/target/*
 .directory
 Orienteering/.directory
 Orienteering/.idea/*
+Orienteering/src/main/resources/application.properties
 
 #erd
 *.bak
