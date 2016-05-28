@@ -52,13 +52,13 @@ public class AdminEditController extends BaseController {
         return categoryList;
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"})
+    @RequestMapping(value = {"/admin/edit/competitor_form", "/admin/edit/competitor_form/"})
     public String home(@ModelAttribute("competitorForm") CompetitorForm form,
                        BindingResult bindingResult){
-        return "admin/edit/competitor";
+        return "admin/edit/competitor_form";
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
+    @RequestMapping(value = {"/admin/edit/competitor_form", "/admin/edit/competitor_form/"},
             method=RequestMethod.POST, params="action=save")
     public String saveCompetitor(@ModelAttribute("competitorForm") CompetitorForm form,
                                  BindingResult bindingResult) {
@@ -67,27 +67,27 @@ public class AdminEditController extends BaseController {
             competitorService.saveOrUpdate(form.getCompetitor());
         }catch(Exception e){
             e.printStackTrace();
-            resultView = "/admin/edit/competitor";
+            resultView = "/admin/edit/competitor_form";
         }
         return resultView;
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
+    @RequestMapping(value = {"/admin/edit/competitor_form", "/admin/edit/competitor_form/"},
             method=RequestMethod.POST, params="action=cancel")
     public String cancelCompetitor() {
         return "redirect:/admin";
     }
 
 
-    @RequestMapping(value = {"/admin/edit/accommodation", "/admin/edit/accommodation/"})
+    @RequestMapping(value = {"/admin/edit/accommodation_form", "/admin/edit/accommodation_form/"})
     public String home(@ModelAttribute("accommodationForm") AccommodationForm form,
                        BindingResult bindingResult){
-        return "admin/edit/accommodation";
+        return "admin/edit/accommodation_form";
     }
 
-    @RequestMapping(value = {"/admin/edit/catering", "/admin/edit/catering/"})
+    @RequestMapping(value = {"/admin/edit/catering_form", "/admin/edit/catering_form/"})
     public String home(@ModelAttribute("cateringForm") CateringForm form,
                        BindingResult bindingResult){
-        return "admin/edit/catering";
+        return "admin/edit/catering_form";
     }
 }
