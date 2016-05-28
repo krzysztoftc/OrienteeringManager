@@ -1,12 +1,12 @@
 package pl.edu.service.competition;
 
 import pl.edu.model.competition.CompetitionInfo;
-import pl.edu.repository.competition.CompetitonInfos;
+import pl.edu.repository.competition.CompetitionInfos;
 import pl.edu.service.IService;
 
 import java.util.List;
 
-public interface ICompetitonInfoService extends IService {
+public interface ICompetitionInfoService extends IService {
 
 	void delete(CompetitionInfo competitionInfo);
 
@@ -16,7 +16,7 @@ public interface ICompetitonInfoService extends IService {
 	 */
 	void update(CompetitionInfo competitionInfo);
 	
-	boolean exists(CompetitonInfos competitonInfos);
+	boolean exists(CompetitionInfos competitonInfos);
 	
 	void saveOrUpdate(CompetitionInfo competitionInfo);
 	
@@ -24,9 +24,9 @@ public interface ICompetitonInfoService extends IService {
 	
 	boolean saveIfNew(CompetitionInfo competitionInfo);
 
-	List<CompetitionInfo> list(CompetitonInfos competitonInfos);
+	List<CompetitionInfo> list(CompetitionInfos competitonInfos);
 
-	long count(CompetitonInfos competitonInfos);
+	long count(CompetitionInfos competitonInfos);
 
-    CompetitionInfo uniqueObject(CompetitonInfos competitonInfos);
+    CompetitionInfo uniqueObject(CompetitionInfos competitonInfos);
 }

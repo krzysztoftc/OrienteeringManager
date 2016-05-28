@@ -6,19 +6,19 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.mvc.AbstractForm;
 
-public class CompetitionForm extends AbstractForm {
+public class CompetitionInfoForm extends AbstractForm {
 
 	private static final long serialVersionUID = 1574688377467056255L;
 
 	@Getter @Setter
-	private CompetitionInfo competition;
+	private CompetitionInfo competitionInfo;
 
-    public CompetitionForm(){
+    public CompetitionInfoForm(){
     }
 
 	@Override
 	public String getID() {
-		return new Md5PasswordEncoder().encodePassword(competition.getId() + "", "sdfNOghELOjklkjuhLOGINygtfrLOLrtgyhjk");
+		return new Md5PasswordEncoder().encodePassword(competitionInfo.getId() + "", "sdfNOghELOjklkjuhLOGINygtfrLOLrtgyhjk");
 	}
 
 }
