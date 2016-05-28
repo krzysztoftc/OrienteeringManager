@@ -43,6 +43,7 @@ public class AdminCompetitorController extends BaseController {
     @ModelAttribute("clubList")
     public List<Club> clubList(){
         List<Club> clubList = clubService.list(Clubs.findAll());
+        clubList.removeIf(club -> club.getId() == 0);
         return clubList;
     }
 

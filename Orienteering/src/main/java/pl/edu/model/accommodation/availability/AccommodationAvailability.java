@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "acomodation_avaliabilities")
+@Table(name = "accommodation_availabilities")
 public class AccommodationAvailability extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -758076802868616147L;
@@ -18,11 +18,11 @@ public class AccommodationAvailability extends BaseEntity<Long> {
     @Id
     @Getter
     @GeneratedValue
-    @Column(name = "idreservations_options")
+    @Column(name = "idaccommodation_availabilities")
     private Long id;
 
     @Getter @Setter
-    @Column(name = "acomodationid")
+    @Column(name = "idaccommodation")
     private Long accommodationId;
 
     @Getter	@Setter

@@ -7,7 +7,7 @@ import pl.edu.model.BaseEntity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "acomodation_reservations")
+@Table(name = "accommodation_reservations")
 public class AccommodationReservation extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -758076802868616147L;
@@ -17,11 +17,11 @@ public class AccommodationReservation extends BaseEntity<Long> {
     @Id
     @Getter
     @GeneratedValue
-    @Column(name = "idacomodation_reservations")
+    @Column(name = "idaccommodation_reservations")
     private Long id;
 
     @Getter @Setter
-    @Column(name = "acomodation_option")
+    @Column(name = "idaccommodation_availabilities")
     private Long accommodationOption;
 
     @Getter	@Setter

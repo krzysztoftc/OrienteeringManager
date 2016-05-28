@@ -17,11 +17,13 @@ import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.accommodation.Accommodations;
 import pl.edu.repository.category.Categories;
 import pl.edu.repository.catering.Caterings;
+import pl.edu.repository.club.Clubs;
 import pl.edu.repository.competition.CompetitionInfos;
 import pl.edu.repository.competitor.Competitors;
 import pl.edu.service.accommodation.IAccommodationService;
 import pl.edu.service.category.ICategoryService;
 import pl.edu.service.catering.ICateringService;
+import pl.edu.service.club.IClubService;
 import pl.edu.service.competition.ICompetitionInfoService;
 import pl.edu.service.competitor.ICompetitorService;
 
@@ -38,6 +40,9 @@ import java.util.List;
  */
 @Controller("adminHomeController")
 public class AdminHomeController extends BaseController{
+
+    @Autowired
+    private IClubService clubService;
 
     @Autowired
     private ICategoryService categoryService;
@@ -105,8 +110,16 @@ public class AdminHomeController extends BaseController{
         return "admin/index";
     }
 
+    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=add")
+    public String add(@ModelAttribute("competitorForm") CompetitorForm form,
+                       BindingResult bindingResult,
+                       RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("competitorForm", new CompetitorForm());
+        return "redirect:/admin/edit/competitor";
+    }
+
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=edit")
-    public String edit(@ModelAttribute("competitorForm") @Valid CompetitorForm form,
+    public String edit(@ModelAttribute("competitorForm") CompetitorForm form,
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("competitorForm", form);
@@ -117,13 +130,8 @@ public class AdminHomeController extends BaseController{
     public String delete(@ModelAttribute("competitorForm") CompetitorForm form,
                          BindingResult bindingResult) {
         form.getCompetitor().setCategory(categoryService.uniqueObject(Categories.findAll().withId(form.getCompetitor().getCategoryId())));
+        form.getCompetitor().setClub(clubService.uniqueObject(Clubs.findAll().withId(form.getCompetitor().getClubId())));
         competitorService.delete(form.getCompetitor());
-        return "admin/index";
-    }
-
-    @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=add")
-    public String selectAll() {
-        System.out.println("Dodaj nowego!");
         return "admin/index";
     }
 }

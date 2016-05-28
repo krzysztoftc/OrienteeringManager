@@ -4,10 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import pl.edu.model.BaseEntity;
+import pl.edu.model.accommodation.availability.AccommodationAvailability;
+import pl.edu.model.accommodation.reservation.AccommodationReservation;
 import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "competitors")
@@ -70,4 +73,13 @@ public class Competitor extends BaseEntity<Long> {
     @Getter	@Setter
     @Column(name = "category")
     private Long categoryId;
+
+    @Getter @Setter
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "accommodation_reservations", joinColumns = {
+            @JoinColumn(name = "idcompetitor", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idaccommodation_availabilities",
+                    nullable = false, updatable = false)
+    })
+    private Set<AccommodationAvailability> accommodationAvailabilities;
 }
