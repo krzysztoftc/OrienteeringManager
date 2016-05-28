@@ -2,11 +2,11 @@ package pl.edu.repository.competition;
 
 import org.springframework.stereotype.Repository;
 import pl.edu.model.BaseEntity;
-import pl.edu.model.competition.CompetitonInfo;
+import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.repository.StandardDatabaseRepository;
 
 @Repository
-public class DatabaseCompetitonInfoRepository extends StandardDatabaseRepository<CompetitonInfo, Long> implements ICompetitonInfoRepository {
+public class DatabaseCompetitonInfoRepository extends StandardDatabaseRepository<CompetitionInfo, Long> implements ICompetitonInfoRepository {
 
 	/**
 	 * 
@@ -20,6 +20,6 @@ public class DatabaseCompetitonInfoRepository extends StandardDatabaseRepository
 
 	@Override
 	public Class<? extends BaseEntity<Long>> getEntityClass() {
-		return CompetitonInfo.class;
+		return CompetitionInfo.class;
 	}
 }

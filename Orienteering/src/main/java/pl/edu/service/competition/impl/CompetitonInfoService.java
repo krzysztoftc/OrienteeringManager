@@ -3,7 +3,7 @@ package pl.edu.service.competition.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.edu.model.competition.CompetitonInfo;
+import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.repository.competition.CompetitonInfos;
 import pl.edu.repository.competition.ICompetitonInfoRepository;
 import pl.edu.service.competition.ICompetitonInfoService;
@@ -20,27 +20,27 @@ public class CompetitonInfoService implements ICompetitonInfoService {
 	private ICompetitonInfoRepository competitonInfoRepository;
 
 	@Override
-	public void delete(CompetitonInfo competitonInfo) {
-        competitonInfoRepository.delete(competitonInfo);
+	public void delete(CompetitionInfo competitionInfo) {
+        competitonInfoRepository.delete(competitionInfo);
 	}
 
 	@Override
-	public void saveOrUpdate(CompetitonInfo competitonInfo) {
-        competitonInfoRepository.saveOrUpdate(competitonInfo);
+	public void saveOrUpdate(CompetitionInfo competitionInfo) {
+        competitonInfoRepository.saveOrUpdate(competitionInfo);
 	}
 
 	@Override
-	public void save(CompetitonInfo competitonInfo) {
-        competitonInfoRepository.save(competitonInfo);
+	public void save(CompetitionInfo competitionInfo) {
+        competitonInfoRepository.save(competitionInfo);
 	}
 
 	@Override
-	public boolean saveIfNew(CompetitonInfo competitonInfo) {
+	public boolean saveIfNew(CompetitionInfo competitionInfo) {
 		return false;
 	}
 
 	@Override
-	public List<CompetitonInfo> list(CompetitonInfos competitonInfos) {
+	public List<CompetitionInfo> list(CompetitonInfos competitonInfos) {
 		return competitonInfoRepository.findAll().merge(competitonInfos).list();
 	}
 
@@ -50,19 +50,19 @@ public class CompetitonInfoService implements ICompetitonInfoService {
 	}
 
 	@Override
-	public CompetitonInfo uniqueObject(CompetitonInfos competitonInfos) {
+	public CompetitionInfo uniqueObject(CompetitonInfos competitonInfos) {
 		return competitonInfoRepository.findAll().merge(competitonInfos).uniqueObject();
 	}
 
 	@Override
-	public void update(CompetitonInfo competitonInfo) {
-        competitonInfoRepository.update(competitonInfo);
+	public void update(CompetitionInfo competitionInfo) {
+        competitonInfoRepository.update(competitionInfo);
 	}
 
 	@Override
 	public boolean exists(CompetitonInfos competitonInfos) {
-        CompetitonInfo competitonInfo = competitonInfoRepository.findAll().merge(competitonInfos).uniqueObject();
-        competitonInfoRepository.evict(competitonInfo);
-		return competitonInfo != null;
+        CompetitionInfo competitionInfo = competitonInfoRepository.findAll().merge(competitonInfos).uniqueObject();
+        competitonInfoRepository.evict(competitionInfo);
+		return competitionInfo != null;
 	}
 }

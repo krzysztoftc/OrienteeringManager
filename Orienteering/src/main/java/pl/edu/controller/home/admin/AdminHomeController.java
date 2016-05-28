@@ -1,43 +1,30 @@
 package pl.edu.controller.home.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
 import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.model.accommodation.Accommodation;
-import pl.edu.model.category.Category;
 import pl.edu.model.catering.Catering;
-import pl.edu.model.competition.CompetitonInfo;
+import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.accommodation.Accommodations;
 import pl.edu.repository.category.Categories;
 import pl.edu.repository.catering.Caterings;
-import pl.edu.repository.club.Clubs;
 import pl.edu.repository.competition.CompetitonInfos;
 import pl.edu.repository.competitor.Competitors;
-import pl.edu.repository.user.Users;
 import pl.edu.service.accommodation.IAccommodationService;
 import pl.edu.service.category.ICategoryService;
 import pl.edu.service.catering.ICateringService;
-import pl.edu.service.club.IClubService;
 import pl.edu.service.competition.ICompetitonInfoService;
 import pl.edu.service.competitor.ICompetitorService;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -81,7 +68,7 @@ public class AdminHomeController extends BaseController{
 
     @ModelAttribute("days")
     public List<String> daysList() {
-        CompetitonInfo compInfo = competitionInfoService.uniqueObject(CompetitonInfos.findAll());
+        CompetitionInfo compInfo = competitionInfoService.uniqueObject(CompetitonInfos.findAll());
         Date begin = compInfo.getBegin();
         Date end = compInfo.getEnd();
 

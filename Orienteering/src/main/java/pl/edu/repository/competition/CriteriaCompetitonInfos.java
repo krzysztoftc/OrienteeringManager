@@ -1,9 +1,7 @@
 package pl.edu.repository.competition;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-import pl.edu.model.competition.CompetitonInfo;
+import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.utils.ClassUtils;
 
@@ -33,15 +31,15 @@ public class CriteriaCompetitonInfos extends CompetitonInfos {
 	}
 
 	@Override
-	public List<CompetitonInfo> list() {
+	public List<CompetitionInfo> list() {
 		return CommonCriteriaQueryable.list(this,
                 modifyCriteria(criteria),
                 criteria2,
-                ClassUtils.getMapAndCollectionsFrom(CompetitonInfo.class));
+                ClassUtils.getMapAndCollectionsFrom(CompetitionInfo.class));
 	}
 
 	@Override
-	public CompetitonInfo uniqueObject() {
+	public CompetitionInfo uniqueObject() {
 		return CommonCriteriaQueryable.uniqueObject(this, modifyCriteria(criteria));
 	}
 }

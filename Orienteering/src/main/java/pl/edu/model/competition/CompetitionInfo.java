@@ -9,11 +9,11 @@ import java.util.Date;
 
 @Entity
 @Table(name = "competiton_info")
-public class CompetitonInfo extends BaseEntity<Long> {
+public class CompetitionInfo extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -758076802868616147L;
 
-    public CompetitonInfo(){}
+    public CompetitionInfo(){}
 
     @Id
     @Getter
@@ -58,10 +58,10 @@ public class CompetitonInfo extends BaseEntity<Long> {
     private Float chipLostFee;
 
     @Getter	@Setter
-    @Column(name = "aplication_deadline")
-    private Date aplicationDeadline;
-
-    @Getter	@Setter
     @Column(name = "aplication_start")
     private Date aplicationStart;
+
+    @Getter	@Setter
+    @Column(name = "aplication_deadline")
+    private Date aplicationDeadline;
 }

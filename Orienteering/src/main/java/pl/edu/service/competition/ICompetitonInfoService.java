@@ -1,6 +1,6 @@
 package pl.edu.service.competition;
 
-import pl.edu.model.competition.CompetitonInfo;
+import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.repository.competition.CompetitonInfos;
 import pl.edu.service.IService;
 
@@ -8,25 +8,25 @@ import java.util.List;
 
 public interface ICompetitonInfoService extends IService {
 
-	void delete(CompetitonInfo competitonInfo);
+	void delete(CompetitionInfo competitionInfo);
 
 	/**
 	 * Metoda zapisująca zmiany danych klubu.
-	 * @param competitonInfo
+	 * @param competitionInfo
 	 */
-	void update(CompetitonInfo competitonInfo);
+	void update(CompetitionInfo competitionInfo);
 	
 	boolean exists(CompetitonInfos competitonInfos);
 	
-	void saveOrUpdate(CompetitonInfo competitonInfo);
+	void saveOrUpdate(CompetitionInfo competitionInfo);
 	
-	void save(CompetitonInfo competitonInfo);
+	void save(CompetitionInfo competitionInfo);
 	
-	boolean saveIfNew(CompetitonInfo competitonInfo);
+	boolean saveIfNew(CompetitionInfo competitionInfo);
 
-	List<CompetitonInfo> list(CompetitonInfos competitonInfos);
+	List<CompetitionInfo> list(CompetitonInfos competitonInfos);
 
 	long count(CompetitonInfos competitonInfos);
 
-    CompetitonInfo uniqueObject(CompetitonInfos competitonInfos);
+    CompetitionInfo uniqueObject(CompetitonInfos competitonInfos);
 }

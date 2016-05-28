@@ -1,14 +1,12 @@
 package pl.edu.repository.competition;
 
-import org.apache.commons.lang3.StringUtils;
-import pl.edu.model.competition.CompetitonInfo;
+import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.repository.OrderType;
 import pl.edu.repository.Queryable;
 
-import java.util.Date;
 import java.util.List;
 
-public abstract class CompetitonInfos extends Queryable<CompetitonInfo, Long> {
+public abstract class CompetitonInfos extends Queryable<CompetitionInfo, Long> {
 
 	private static final long serialVersionUID = -5848249886489304600L;
 
@@ -48,12 +46,12 @@ public abstract class CompetitonInfos extends Queryable<CompetitonInfo, Long> {
 			private static final long serialVersionUID = -6804576481886404146L;
 
 			@Override
-			public CompetitonInfo uniqueObject() {
+			public CompetitionInfo uniqueObject() {
 				return null;
 			}
 
 			@Override
-			public List<CompetitonInfo> list() {
+			public List<CompetitionInfo> list() {
 				return null;
 			}
 
