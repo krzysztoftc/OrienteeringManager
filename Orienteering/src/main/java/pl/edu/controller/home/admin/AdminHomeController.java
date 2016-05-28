@@ -17,12 +17,12 @@ import pl.edu.model.competitor.Competitor;
 import pl.edu.repository.accommodation.Accommodations;
 import pl.edu.repository.category.Categories;
 import pl.edu.repository.catering.Caterings;
-import pl.edu.repository.competition.CompetitonInfos;
+import pl.edu.repository.competition.CompetitionInfos;
 import pl.edu.repository.competitor.Competitors;
 import pl.edu.service.accommodation.IAccommodationService;
 import pl.edu.service.category.ICategoryService;
 import pl.edu.service.catering.ICateringService;
-import pl.edu.service.competition.ICompetitonInfoService;
+import pl.edu.service.competition.ICompetitionInfoService;
 import pl.edu.service.competitor.ICompetitorService;
 
 import javax.validation.Valid;
@@ -52,7 +52,7 @@ public class AdminHomeController extends BaseController{
     private ICompetitorService competitorService;
 
     @Autowired
-    private ICompetitonInfoService competitionInfoService;
+    private ICompetitionInfoService competitionInfoService;
 
     @ModelAttribute("competitorForm")
     public CompetitorForm form() {
@@ -68,7 +68,7 @@ public class AdminHomeController extends BaseController{
 
     @ModelAttribute("days")
     public List<String> daysList() {
-        CompetitionInfo compInfo = competitionInfoService.uniqueObject(CompetitonInfos.findAll());
+        CompetitionInfo compInfo = competitionInfoService.uniqueObject(CompetitionInfos.findAll());
         Date begin = compInfo.getBegin();
         Date end = compInfo.getEnd();
 
