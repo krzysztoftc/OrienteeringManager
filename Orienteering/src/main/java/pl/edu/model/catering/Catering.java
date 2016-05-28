@@ -3,8 +3,10 @@ package pl.edu.model.catering;
 import lombok.Getter;
 import lombok.Setter;
 import pl.edu.model.BaseEntity;
+import pl.edu.model.catering.availability.CateringAvailability;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "caterings")
@@ -21,7 +23,7 @@ public class Catering extends BaseEntity<Long> {
     private Long id;
 
     @Getter	@Setter
-    @Column(name = "adress")
+    @Column
     private String address;
 
     @Getter @Setter
@@ -31,4 +33,8 @@ public class Catering extends BaseEntity<Long> {
     @Getter	@Setter
     @Column
     private String description;
+
+    @Getter @Setter
+    @OneToMany(mappedBy = "cateringId", fetch = FetchType.EAGER)
+    private Set<CateringAvailability> cateringAvailabilities;
 }

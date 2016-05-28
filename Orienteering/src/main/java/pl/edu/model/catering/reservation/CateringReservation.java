@@ -3,8 +3,10 @@ package pl.edu.model.catering.reservation;
 import lombok.Getter;
 import lombok.Setter;
 import pl.edu.model.BaseEntity;
+import pl.edu.model.catering.availability.CateringAvailability;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "catering_reservations")
@@ -21,8 +23,8 @@ public class CateringReservation extends BaseEntity<Long> {
     private Long id;
 
     @Getter @Setter
-    @Column(name = "catering_option")
-    private Long cateringOption;
+    @Column(name = "idcatering_availabilities")
+    private Long cateringAvailabilityId;
 
     @Getter	@Setter
     @Column(name = "competitor")
