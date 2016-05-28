@@ -139,4 +139,10 @@ public class AdminHomeController extends BaseController{
         System.out.println("Zaznacz wszystkich!");
         return "admin/index";
     }
+
+    @RequestMapping(value="/admin/save_competitor", method=RequestMethod.POST, params="action=save_competitor")
+    public String save_competitor() {
+        System.out.println("Save competitor");
+        return null;
+    }
 }
