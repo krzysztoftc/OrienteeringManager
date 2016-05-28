@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orientering Manager - Rejestracja</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"> </link>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" th:href="@{/assets/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css"  />
+    <link rel="stylesheet" href="../assets/css/form-elements.css" th:href="@{/assets/css/form-elements.css}"> </link>
+    <link rel="stylesheet" href="../assets/css/style.css" th:href="@{/assets/css/style.css}"> </link>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon and touch icons
+    <link rel="shortcut icon" href="assets/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+</head>
+
+<body>
+<div th:replace="fragments/header :: header">
+    &nbsp;
+</div>
+<!-- Top content -->
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1>Orientering manager</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <h3>Szczegóły zawodów</h3>
+                        <p>Wypełnij formularz:</p>
+                    </div>
+                    <div class="form-bottom contact-form">
+                        <form role="form" th:action="@{/admin/edit/competition}" method="POST" th:object="${competitionForm}">
+                            <div class="form-group only-club">
+                                <div>Nazwa zawodów</div>
+                                <input type="text" name="Name" th:field="*{competition.name}" placeholder="Nazwa zawodów" class="register-competition-name form-control" id="register-competition-name" />
+                            </div>
+                            <div class="form-group only-club">
+                                <div>Adres</div>
+                                <input type="text" name="Address" th:field="*{competition.address}" placeholder="Adres" class="register-competition-address form-control" id="register-competition-address" />
+                            </div>
+                            <div class="form-group only-club">
+                                <div>Opis</div>
+                                <input type="text" name="Description" th:field="*{competition.description}" placeholder="Opis" class="register-competition-description form-control" id="register-competition-description" />
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Początek zawodów</div>
+                                            <input type="text" name="begin" th:field="*{competition.begin}" placeholder="Początek zawodów" class="register-competition-begin form-control" id="register-competition-begin" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Koniec zawodów</div>
+                                            <input type="text" name="end" th:field="*{competition.end}" placeholder="Koniec zawodów" class="register-competition-begin form-control" id="register-competition-end" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Wpisowe</div>
+                                            <input type="text" name="entryFee" th:field="*{competition.entryFee}" placeholder="Wpisowe" class="register-competition-entryFee form-control" id="register-competition-entryFee" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Wpisowe kara</div>
+                                            <input type="text" name="overdueEntryFee" th:field="*{competition.overdueEntryFee}" placeholder="Koniec zawodów" class="register-competition-overdueEntryFee form-control" id="register-competition-overdueEntryFee" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Wypożyczenie chipa</div>
+                                            <input type="text" name="chipBorrowFee" th:field="*{competition.chipBorrowFee}" placeholder="Wypożyczenie chipa" class="register-competition-chipBorrowFee form-control" id="register-competition-chipBorrowFee" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Zgubienie chipa</div>
+                                            <input type="text" name="chipLostFee" th:field="*{competition.chipLostFee}" placeholder="Zgubienie chipa" class="register-competition-chipLostFee form-control" id="register-competition-chipLostFee" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Początek zapisów</div>
+                                            <input type="text" name="aplicationStart" th:field="*{competition.aplicationStart}" placeholder="Początek zapisów" class="register-competition-aplicationStart form-control" id="register-competition-aplicationStart" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group only-club">
+                                            <div>Koniec zapisów</div>
+                                            <input type="text" name="aplicationDeadline" th:field="*{competition.aplicationDeadline}" placeholder="Koniec zapisów" class="register-competition-aplicationDeadline form-control" id="register-competition-aplicationDeadline" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            
+                            
+                            
+                            
+                            <input type="hidden" name="id" th:field="*{competition.id}" class="register-competition-id form-control" id="register-competition-id" />
+                            
+                            <input type="submit" class="btn" name="action" value="save"/>
+                            <input type="submit" class="btn" name="action" value="cancel"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Javascript -->
+
+<script src="../assets/js/jquery-1.11.1.min.js" th:href="@{/assets/js/jquery-1.11.1.min.js}"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js" th:href="@{/assets/js/bootstrap.min.js}"></script>
+<script src="../assets/js/jquery.backstretch.min.js" th:href="@{/assets/js/jquery.backstretch.min.js}"></script>
+<script src="../assets/js/scripts/register.js" th:href="@{/assets/js/scripts/login.js}"></script>
+
+<!--[if lt IE 10]>
+<script src="assets/js/placeholder.js"></script>
+<![endif]-->
+
+</body>
+
+</html>

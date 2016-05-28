@@ -53,12 +53,6 @@
                     <div class="form-bottom contact-form">
                         <form role="form" th:action="@{/admin/edit/competitor}" method="POST" th:object="${competitorForm}">
                             <div class="form-group only-club">
-                                <div>Klub</div>
-                                <select th:field="*{competitor.clubId}" id="register-competitor-club">
-                                    <option th:each="clb : ${clubList}" th:text="${clb.name}" th:value="${clb.id}"></option>
-                                </select>
-                            </div>
-                            <div class="form-group only-club">
                                 <div>Imię</div>
                                 <input type="text" name="Name" th:field="*{competitor.name}" placeholder="Imię zawodnika" class="register-competitor-name form-control" id="register-competitor-name" />
                             </div>
