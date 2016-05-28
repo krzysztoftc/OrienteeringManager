@@ -47,11 +47,9 @@ public class LoginController extends BaseController {
         String resultView = "login";
         String errorString = "";
         if (!validator.hasErrors()) {
-
-            Authentication authenticate = null;
             try {
                 // sprawdzamy czy haslo i user sie zgadza
-                authenticate = authenticationManager.authenticate(
+                Authentication authenticate = authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(
                                 loginForm.getUser().getEmail(),
                                 loginForm.getUser().getPassword()));
