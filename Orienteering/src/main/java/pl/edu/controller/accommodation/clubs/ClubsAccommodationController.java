@@ -1,4 +1,4 @@
-package pl.edu.controller.clubs.accommodation;
+package pl.edu.controller.accommodation.clubs;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

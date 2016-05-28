@@ -1,4 +1,4 @@
-package pl.edu.controller.admin.home.edit;
+package pl.edu.controller.competitor.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ import java.util.List;
  * Created by bartosz on 23.04.16.
  */
 @Controller("adminEditController")
-public class AdminEditController extends BaseController {
+public class AdminCompetitorController extends BaseController {
 
     @Autowired
     private ICompetitorService competitorService;
@@ -76,18 +76,5 @@ public class AdminEditController extends BaseController {
             method=RequestMethod.POST, params="action=cancel")
     public String cancelCompetitor() {
         return "redirect:/admin";
-    }
-
-
-    @RequestMapping(value = {"/admin/edit/accommodation_form", "/admin/edit/accommodation_form/"})
-    public String home(@ModelAttribute("accommodationForm") AccommodationForm form,
-                       BindingResult bindingResult){
-        return "admin/edit/accommodation_form";
-    }
-
-    @RequestMapping(value = {"/admin/edit/catering_form", "/admin/edit/catering_form/"})
-    public String home(@ModelAttribute("cateringForm") CateringForm form,
-                       BindingResult bindingResult){
-        return "admin/edit/catering_form";
     }
 }

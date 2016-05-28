@@ -1,4 +1,4 @@
-package pl.edu.controller.main;
+package pl.edu.controller.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

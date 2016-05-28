@@ -1,4 +1,4 @@
-package pl.edu.controller.admin.accommodation;
+package pl.edu.controller.accommodation.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,20 +21,20 @@ public class AdminAccommodationController extends BaseController{
     @Autowired
     IAccommodationService accommodationService;
 
-    @RequestMapping(value = {"/admin/accommodation", "/admin/accommodation/"})
-    public String accommodation(){
-        return "admin/accommodation";
-    }
-
     @ModelAttribute
     AccommodationForm accommodationForm(){
         return new AccommodationForm();
     }
 
+    @RequestMapping(value = {"/admin/accommodation", "/admin/accommodation/"})
+    public String accommodation(){
+        return "admin/accommodation";
+    }
+
     @RequestMapping(value = {"/admin/edit/accommodation", "/admin/edit/accommodation/"})
     public String accommodationRegister(@ModelAttribute("accommodationForm") AccommodationForm form,
                        BindingResult bindingResult){
-        return "admin/edit/accommodation";
+        return "admin/edit/accommodation_form";
     }
 
     @RequestMapping(value = {"/admin/edit/accommodation", "/admin/edit/accommodation/"},
@@ -46,7 +46,7 @@ public class AdminAccommodationController extends BaseController{
             accommodationService.saveOrUpdate(form.getAccommodation());
         }catch(Exception e){
             e.printStackTrace();
-            resultView = "/admin/edit/accommodation";
+            resultView = "/admin/edit/accommodation_form";
         }
         return resultView;
     }

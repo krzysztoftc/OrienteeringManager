@@ -1,4 +1,4 @@
-package pl.edu.controller.admin.home;
+package pl.edu.controller.home.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
