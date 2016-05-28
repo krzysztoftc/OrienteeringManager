@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.controller.BaseController;
+import pl.edu.controller.accommodation.form.AccommodationForm;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
@@ -74,5 +75,12 @@ public class AdminEditController extends BaseController {
             method=RequestMethod.POST, params="action=cancel")
     public String cancelCompetitor() {
         return "redirect:/admin";
+    }
+
+
+    @RequestMapping(value = {"/admin/edit/accommodation", "/admin/edit/accommodation/"})
+    public String home(@ModelAttribute("accommodationForm") AccommodationForm form,
+                       BindingResult bindingResult){
+        return "admin/edit/accommodation";
     }
 }
