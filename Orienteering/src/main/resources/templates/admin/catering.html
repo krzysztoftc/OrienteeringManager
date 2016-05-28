@@ -34,8 +34,8 @@
                                 <th>Adres</th>
                                 <th>Opis</th>
                             </tr>
-                            <div th:each="cat : ${cateirngs}">
-                                <form th:action="@{/admin/catering}" method="POST" th:object="${cateirngForm}">
+                            <div th:each="cat : ${caterings}">
+                                <form th:action="@{/admin/catering}" method="POST" th:object="${cateringForm}">
                                     <tr th:id="${cat.id}" class="cateirng_info">
                                         <td th:id="${cat.id}" th:text="${cat.name}"/>
                                         <td th:id="${cat.id}" th:text="${cat.address}"/>

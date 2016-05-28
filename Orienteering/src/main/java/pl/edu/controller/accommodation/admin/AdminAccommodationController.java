@@ -10,7 +10,10 @@ import pl.edu.controller.BaseController;
 import pl.edu.controller.accommodation.form.AccommodationForm;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.model.accommodation.Accommodation;
+import pl.edu.repository.accommodation.Accommodations;
 import pl.edu.service.accommodation.IAccommodationService;
+
+import java.util.List;
 
 /**
  * Created by bartosz on 23.04.16.
@@ -21,14 +24,9 @@ public class AdminAccommodationController extends BaseController{
     @Autowired
     IAccommodationService accommodationService;
 
-    @ModelAttribute
+    @ModelAttribute("accommodationForm")
     AccommodationForm accommodationForm(){
         return new AccommodationForm();
-    }
-
-    @RequestMapping(value = {"/admin/accommodation", "/admin/accommodation/"})
-    public String accommodation(){
-        return "admin/accommodation";
     }
 
     @RequestMapping(value = {"/admin/edit/accommodation", "/admin/edit/accommodation/"})

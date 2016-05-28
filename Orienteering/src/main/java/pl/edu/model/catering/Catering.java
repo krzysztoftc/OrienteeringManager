@@ -15,7 +15,7 @@ public class Catering extends BaseEntity<Long> {
     public Catering(){}
 
     @Id
-    @Getter
+    @Getter @Setter
     @GeneratedValue
     @Column(name = "idcatering")
     private Long id;

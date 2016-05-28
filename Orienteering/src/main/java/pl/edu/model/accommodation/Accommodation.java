@@ -15,7 +15,7 @@ public class Accommodation extends BaseEntity<Long> {
     public Accommodation(){}
 
     @Id
-    @Getter
+    @Getter @Setter
     @GeneratedValue
     @Column(name = "idacomodation")
     private Long id;

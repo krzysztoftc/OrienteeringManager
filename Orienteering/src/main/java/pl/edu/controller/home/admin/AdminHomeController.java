@@ -110,7 +110,7 @@ public class AdminHomeController extends BaseController{
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("competitorForm", form);
-        return "redirect:/admin/edit/competitor_form";
+        return "redirect:/admin/edit/competitor";
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=delete")

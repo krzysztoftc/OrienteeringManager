@@ -52,13 +52,13 @@ public class AdminCompetitorController extends BaseController {
         return categoryList;
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor_form", "/admin/edit/competitor_form/"})
+    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"})
     public String home(@ModelAttribute("competitorForm") CompetitorForm form,
                        BindingResult bindingResult){
         return "admin/edit/competitor_form";
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor_form", "/admin/edit/competitor_form/"},
+    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
             method=RequestMethod.POST, params="action=save")
     public String saveCompetitor(@ModelAttribute("competitorForm") CompetitorForm form,
                                  BindingResult bindingResult) {
@@ -72,7 +72,7 @@ public class AdminCompetitorController extends BaseController {
         return resultView;
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor_form", "/admin/edit/competitor_form/"},
+    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
             method=RequestMethod.POST, params="action=cancel")
     public String cancelCompetitor() {
         return "redirect:/admin";
