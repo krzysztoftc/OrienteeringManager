@@ -1,5 +1,6 @@
 package pl.edu.controller.home.admin;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,14 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
+import pl.edu.controller.competitor.form.CompetitorOptionsList;
 import pl.edu.model.accommodation.Accommodation;
 import pl.edu.model.category.Category;
 import pl.edu.model.catering.Catering;
@@ -39,6 +39,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -141,8 +145,18 @@ public class AdminHomeController extends BaseController{
     }
 
     @RequestMapping(value={"/admin/save_competitor", "/admin/save_competitor/"}, method=RequestMethod.POST)
-    public String save_competitor() {
+    public String save_competitor(@RequestBody String jsonString) {
         System.out.println("Save competitor");
+        CompetitorOptionsList options;
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String decodedString = URLDecoder.decode(jsonString, "UTF-8");
+            System.out.println(decodedString);
+            options = mapper.readValue(decodedString, CompetitorOptionsList.class);
+            System.out.println(options);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
