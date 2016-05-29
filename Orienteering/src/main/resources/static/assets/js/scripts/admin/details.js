@@ -41,4 +41,9 @@ $(document).on('click','.save',function () {
 
     var result = JSON.stringify(options);
     console.log(result);
+
+    $.post("/admin/save_competitor",result,function (){
+        console.log("Send with succes");
+    }
+    );
 });

@@ -140,7 +140,7 @@ public class AdminHomeController extends BaseController{
         return "admin/index";
     }
 
-    @RequestMapping(value="/admin/save_competitor", method=RequestMethod.POST, params="action=save_competitor")
+    @RequestMapping(value={"/admin/save_competitor", "/admin/save_competitor/"}, method=RequestMethod.POST)
     public String save_competitor() {
         System.out.println("Save competitor");
         return null;
