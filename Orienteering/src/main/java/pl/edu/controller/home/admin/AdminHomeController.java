@@ -12,10 +12,8 @@ import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.controller.competitor.form.CompetitorOptionsList;
 import pl.edu.model.accommodation.Accommodation;
-import pl.edu.model.accommodation.availability.AccommodationAvailability;
 import pl.edu.model.accommodation.reservation.AccommodationReservation;
 import pl.edu.model.catering.Catering;
-import pl.edu.model.catering.availability.CateringAvailability;
 import pl.edu.model.catering.reservation.CateringReservation;
 import pl.edu.model.competition.CompetitionInfo;
 import pl.edu.model.competitor.Competitor;
@@ -31,16 +29,11 @@ import pl.edu.service.accommodation.IAccommodationService;
 import pl.edu.service.accommodation.reservation.IAccommodationReservationService;
 import pl.edu.service.category.ICategoryService;
 import pl.edu.service.catering.ICateringService;
-import pl.edu.service.catering.availability.ICateringAvailabilityService;
 import pl.edu.service.catering.reservation.ICateringReservationService;
 import pl.edu.service.club.IClubService;
 import pl.edu.service.competition.ICompetitionInfoService;
 import pl.edu.service.competitor.ICompetitorService;
-
-import javax.validation.Valid;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -152,7 +145,7 @@ public class AdminHomeController extends BaseController{
         form.getCompetitor().setCategory(categoryService.uniqueObject(Categories.findAll().withId(form.getCompetitor().getCategoryId())));
         form.getCompetitor().setClub(clubService.uniqueObject(Clubs.findAll().withId(form.getCompetitor().getClubId())));
         competitorService.delete(form.getCompetitor());
-        return "admin/index";
+        return "redirect:/";
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=zaznacz")
@@ -178,7 +171,6 @@ public class AdminHomeController extends BaseController{
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        return null;
     }
 
     private void updateCateringReservations(CompetitorOptionsList options){
@@ -197,7 +189,7 @@ public class AdminHomeController extends BaseController{
             CateringReservation cr = new CateringReservation();
             cr.setCompetitorId(options.getCompetitor());
             cr.setCateringAvailabilityId(id);
-            cateringReservationService.save(cr);
+            cateringReservationService.saveOrUpdate(cr);
         }
         System.out.println("Added new catering reservations");
     }
@@ -218,7 +210,7 @@ public class AdminHomeController extends BaseController{
             AccommodationReservation ar = new AccommodationReservation();
             ar.setCompetitorId(options.getCompetitor());
             ar.setAccommodationAvailability(id);
-            accommodationReservationService.save(ar);
+            accommodationReservationService.saveOrUpdate(ar);
         }
         System.out.println("Added new accommodation reservations");
     }

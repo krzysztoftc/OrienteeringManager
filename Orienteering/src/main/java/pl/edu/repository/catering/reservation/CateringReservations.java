@@ -42,6 +42,9 @@ public abstract class CateringReservations extends Queryable<CateringReservation
 
 	public CateringReservations merge(CateringReservations other) {
 		super.merge(other);
+        if(other.competitorId != null){
+            competitorId = other.competitorId;
+        }
 		return this;
 	}
 

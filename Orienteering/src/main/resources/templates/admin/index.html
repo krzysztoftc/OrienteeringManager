@@ -99,7 +99,8 @@
                                                             <div th:each="availability : ${meal.cateringAvailabilities}">
                                                                 <div th:if="${day} == ${#dates.format(availability.date, 'dd-MM-yyyy')}">
                                                                     <input type="checkbox" th:name="${availability.mealTime}"
-                                                                           th:class="meal_+${availability.id}" th:value="${availability.id}"/>
+                                                                           th:class="meal_+${availability.id}" th:value="${availability.id}"
+                                                                           th:checked="${#lists.contains(comp.cateringAvailabilities, availability)}"/>
                                                                     <label th:text="${availability.mealTime}"></label>
                                                                 </div>
                                                             </div>
@@ -111,7 +112,8 @@
                                                             <div th:each="availability : ${night.accommodationAvailabilities}">
                                                                 <div th:if="${day} == ${#dates.format(availability.date, 'dd-MM-yyyy')}">
                                                                     <input type="checkbox" th:name="${availability.date}"
-                                                                           th:class="night_+${availability.id}" th:value="${availability.id}"/>
+                                                                           th:class="night_+${availability.id}" th:value="${availability.id}"
+                                                                           th:checked="${#lists.contains(comp.accommodationAvailabilities, availability)}"/>
                                                                     <label th:text="${#dates.format(availability.date, 'dd-MM-yyyy')}"></label>
                                                                 </div>
                                                             </div>

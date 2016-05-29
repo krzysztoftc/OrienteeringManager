@@ -43,6 +43,9 @@ public abstract class AccommodationReservations extends Queryable<AccommodationR
 
 	public AccommodationReservations merge(AccommodationReservations other) {
 		super.merge(other);
+        if(other.competitorId != null){
+            competitorId = other.competitorId;
+        }
 		return this;
 	}
 

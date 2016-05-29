@@ -76,7 +76,7 @@ public class Competitor extends BaseEntity<Long> {
     private Long categoryId;
 
     @Getter @Setter
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "accommodation_reservations", joinColumns = {
             @JoinColumn(name = "idcompetitor", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "idaccommodation_availabilities",
@@ -85,7 +85,7 @@ public class Competitor extends BaseEntity<Long> {
     private Set<AccommodationAvailability> accommodationAvailabilities;
 
     @Getter @Setter
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "catering_reservations", joinColumns = {
             @JoinColumn(name = "idcompetitor", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "idcatering_availabilities",
