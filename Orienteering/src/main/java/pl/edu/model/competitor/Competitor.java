@@ -7,6 +7,7 @@ import pl.edu.model.BaseEntity;
 import pl.edu.model.accommodation.availability.AccommodationAvailability;
 import pl.edu.model.accommodation.reservation.AccommodationReservation;
 import pl.edu.model.category.Category;
+import pl.edu.model.catering.availability.CateringAvailability;
 import pl.edu.model.club.Club;
 
 import javax.persistence.*;
@@ -82,4 +83,13 @@ public class Competitor extends BaseEntity<Long> {
                     nullable = false, updatable = false)
     })
     private Set<AccommodationAvailability> accommodationAvailabilities;
+
+    @Getter @Setter
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "catering_reservations", joinColumns = {
+            @JoinColumn(name = "idcompetitor", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idcatering_availabilities",
+                    nullable = false, updatable = false)
+            })
+    private Set<CateringAvailability> cateringAvailabilities;
 }
