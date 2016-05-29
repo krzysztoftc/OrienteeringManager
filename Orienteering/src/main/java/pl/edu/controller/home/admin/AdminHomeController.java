@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
+import pl.edu.controller.competitor.form.CompetitorListForm;
 import pl.edu.model.accommodation.Accommodation;
 import pl.edu.model.catering.Catering;
 import pl.edu.model.competition.CompetitionInfo;
@@ -63,6 +64,12 @@ public class AdminHomeController extends BaseController{
     public CompetitorForm form() {
         CompetitorForm competitorForm = new CompetitorForm();
         return competitorForm;
+    }
+
+    @ModelAttribute("competitorListForm")
+    public CompetitorListForm listForm() {
+        CompetitorListForm listForm = new CompetitorListForm();
+        return listForm;
     }
 
     @ModelAttribute("competitors")
@@ -119,9 +126,11 @@ public class AdminHomeController extends BaseController{
     }
 
     @RequestMapping(value="/admin", method=RequestMethod.POST, params="action=edit")
-    public String edit(@ModelAttribute("competitorForm") CompetitorForm form,
+    public String edit(@ModelAttribute("competitorListForm") CompetitorListForm listForm,
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
+
+        CompetitorForm form = new CompetitorForm();
         redirectAttributes.addFlashAttribute("competitorForm", form);
         return "redirect:/admin/edit/competitor";
     }
