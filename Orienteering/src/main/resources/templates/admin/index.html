@@ -94,20 +94,22 @@
                                                 <tr class="info">
                                                     <td th:text="${day}" style="border: none"></td>
                                                     <td>
-                                                        <div th:each="catering : ${caterings}">
-                                                            <div th:each="meal : ${mealOptions}">
-                                                                <input type="checkbox" th:name="${meal.name}"
-                                                                       th:class="meal_+${meal.id}" th:value="${meal.id}"/>
-                                                                <label th:text="${meal.name}"></label>
+                                                        <div th:each="meal : ${mealOptions}">
+                                                            <label th:text="${meal.name}"></label>
+                                                            <div th:each="availability : ${meal.cateringAvailabilities}">
+                                                                <input type="checkbox" th:name="${availability.mealTime}"
+                                                                       th:class="meal_+${availability.id}" th:value="${availability.id}"/>
+                                                                <label th:text="${availability.mealTime}"></label>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div th:each="accommodation : ${accommodations}">
-                                                            <div th:each="night : ${nightOptions}">
-                                                                <input type="checkbox" th:name="${night.name}"
-                                                                       th:class="night_+${night.id}" th:value="${night.id}"/>
-                                                                <label th:text="${night.name}"></label>
+                                                        <div th:each="night : ${nightOptions}">
+                                                            <label th:text="${night.name}"></label>
+                                                            <div th:each="availability : ${night.accommodationAvailabilities}">
+                                                                <input type="checkbox" th:name="${availability.date}"
+                                                                       th:class="night_+${availability.id}" th:value="${availability.id}"/>
+                                                                <label th:text="${availability.date}"></label>
                                                             </div>
                                                         </div>
                                                     </td>
