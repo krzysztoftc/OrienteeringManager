@@ -11,12 +11,19 @@ public abstract class AccommodationReservations extends Queryable<AccommodationR
 
 	private static final long serialVersionUID = -5848249886489304600L;
 
+    protected Long competitorId;
+
 	protected AccommodationReservations() {
 	}
 
 	public AccommodationReservations withId(Long id) {
 		return (AccommodationReservations) super.withId(id);
 	}
+
+    public AccommodationReservations withCompetitorId(Long competitorId){
+        this.competitorId = competitorId;
+        return this;
+    }
 
 	public AccommodationReservations addOrder(OrderType orderType, String sortProperty) {
 		return (AccommodationReservations) super.addOrder(orderType, sortProperty);

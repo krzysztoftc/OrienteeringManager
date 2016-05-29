@@ -27,6 +27,6 @@ public class CateringReservation extends BaseEntity<Long> {
     private Long cateringAvailabilityId;
 
     @Getter	@Setter
-    @Column(name = "competitor")
+    @Column(name = "idcompetitor")
     private Long competitorId;
 }

@@ -1,6 +1,7 @@
 package pl.edu.repository.accommodation.reservation;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import pl.edu.model.accommodation.reservation.AccommodationReservation;
 import pl.edu.model.catering.reservation.CateringReservation;
 import pl.edu.repository.CommonCriteriaQueryable;
@@ -23,7 +24,10 @@ public class CriteriaAccommodationReservations extends AccommodationReservations
 	}
 
 	public Criteria modifyCriteria(Criteria criteria) {
-		return criteria;
+        if (competitorId != null) {
+            criteria.add(Restrictions.eq("competitorId", competitorId));
+        }
+        return criteria;
 	}
 
 	@Override

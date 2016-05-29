@@ -97,9 +97,11 @@
                                                         <div th:each="meal : ${mealOptions}">
                                                             <label th:text="${meal.name}"></label>
                                                             <div th:each="availability : ${meal.cateringAvailabilities}">
-                                                                <input type="checkbox" th:name="${availability.mealTime}"
-                                                                       th:class="meal_+${availability.id}" th:value="${availability.id}"/>
-                                                                <label th:text="${availability.mealTime}"></label>
+                                                                <div th:if="${day} == ${#dates.format(availability.date, 'dd-MM-yyyy')}">
+                                                                    <input type="checkbox" th:name="${availability.mealTime}"
+                                                                           th:class="meal_+${availability.id}" th:value="${availability.id}"/>
+                                                                    <label th:text="${availability.mealTime}"></label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -107,9 +109,11 @@
                                                         <div th:each="night : ${nightOptions}">
                                                             <label th:text="${night.name}"></label>
                                                             <div th:each="availability : ${night.accommodationAvailabilities}">
-                                                                <input type="checkbox" th:name="${availability.date}"
-                                                                       th:class="night_+${availability.id}" th:value="${availability.id}"/>
-                                                                <label th:text="${availability.date}"></label>
+                                                                <div th:if="${day} == ${#dates.format(availability.date, 'dd-MM-yyyy')}">
+                                                                    <input type="checkbox" th:name="${availability.date}"
+                                                                           th:class="night_+${availability.id}" th:value="${availability.id}"/>
+                                                                    <label th:text="${#dates.format(availability.date, 'dd-MM-yyyy')}"></label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </td>

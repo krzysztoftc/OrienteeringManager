@@ -22,9 +22,9 @@ public class AccommodationReservation extends BaseEntity<Long> {
 
     @Getter @Setter
     @Column(name = "idaccommodation_availabilities")
-    private Long accommodationOption;
+    private Long accommodationAvailability;
 
     @Getter	@Setter
-    @Column(name = "competitor")
+    @Column(name = "idcompetitor")
     private Long competitorId;
 }

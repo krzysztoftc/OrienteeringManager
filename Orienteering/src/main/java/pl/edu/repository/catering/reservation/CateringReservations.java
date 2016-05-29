@@ -10,12 +10,19 @@ public abstract class CateringReservations extends Queryable<CateringReservation
 
 	private static final long serialVersionUID = -5848249886489304600L;
 
+    protected Long competitorId;
+
 	protected CateringReservations() {
 	}
 
 	public CateringReservations withId(Long id) {
 		return (CateringReservations) super.withId(id);
 	}
+
+    public CateringReservations withCompetitorId(Long competitorId){
+        this.competitorId = competitorId;
+        return this;
+    }
 
 	public CateringReservations addOrder(OrderType orderType, String sortProperty) {
 		return (CateringReservations) super.addOrder(orderType, sortProperty);

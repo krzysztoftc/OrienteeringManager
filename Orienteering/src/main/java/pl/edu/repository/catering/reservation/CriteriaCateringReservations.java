@@ -1,6 +1,8 @@
 package pl.edu.repository.catering.reservation;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import pl.edu.model.catering.reservation.CateringReservation;
 import pl.edu.repository.CommonCriteriaQueryable;
 import pl.edu.utils.ClassUtils;
@@ -22,6 +24,9 @@ public class CriteriaCateringReservations extends CateringReservations {
 	}
 
 	public Criteria modifyCriteria(Criteria criteria) {
+        if (competitorId != null) {
+            criteria.add(Restrictions.eq("competitorId", competitorId));
+        }
 		return criteria;
 	}
 

@@ -24,6 +24,6 @@ public class DatabaseCateringReservationRepository
 
 	@Override
 	public Class<? extends BaseEntity<Long>> getEntityClass() {
-		return Catering.class;
+		return CateringReservation.class;
 	}
 }
