@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Admin index</title>
 
-    <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"> </link>
-    <link rel="stylesheet" type="text/css"  href="/assets/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css"  href="/assets/css/form-elements.css"> </link>
-    <link rel="stylesheet" type="text/css"  href="/assets/css/style.css"> </link>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600">
+    </link>
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/form-elements.css">
+    </link>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    </link>
 
 </head>
 <body>
@@ -29,80 +32,107 @@
                     </div>
                     <div class="form-bottom">
                         <p>Kliknij na danych zawodnika aby wyświetlić informacje o zakwaterowaniu i wyżywieniu</p>
-                        <table style="margin-bottom: 20px;">
-                            <tr>
-                                <th>Edycja</th>
-                                <th>Imię</th>
-                                <th>Nazwisko</th>
-                                <th>Płeć</th>
-                                <th>Rok urodzenia</th>
-                                <!-- <td th:each="day : ${days}" th:text="${day}"></td> -->
-                            </tr>
-                            <div th:each="comp : ${competitors}">
-                                <form th:action="@{/admin}" method="POST" th:object="${competitorForm}">
-                                    <tr th:id="${comp.id}" class="competitor_info">
+
+                        <form th:action="@{/admin}" method="POST" th:object="${competitorForm}">
+                            <table style="margin-bottom: 20px;">
+                                <tr>
+                                    <th>Edycja</th>
+                                    <th>Imię</th>
+                                    <th>Nazwisko</th>
+                                    <th>Płeć</th>
+                                    <th>Rok urodzenia</th>
+                                    <!-- <td th:each="day : ${days}" th:text="${day}"></td> -->
+                                </tr>
+                                <th:block th:each="comp : ${competitors}">
+                                    <tr th:id="options_+${comp.id}" class="competitor_info">
                                         <td>
-                                            <input type="checkbox" th:name="${night}" th:id="${night}"  />
+                                            <input type="checkbox" th:name="${night}" th:id="${night}"/>
                                         </td>
                                         <td th:id="${comp.id}" th:text="${comp.name}" onclick="toogle(this.id)"/>
                                         <td th:id="${comp.id}" th:text="${comp.surname}" onclick="toogle(this.id)"/>
                                         <td th:id="${comp.id}" th:text="${comp.gender}" onclick="toogle(this.id)"/>
                                         <td th:id="${comp.id}" th:text="${comp.birthYear}" onclick="toogle(this.id)"/>
-
-                                        <input type="hidden" th:name="competitor.id" th:id="competitor.id" th:value="${comp.id}"/>
-                                        <input type="hidden" th:name="competitor.name" th:id="competitor.name" th:value="${comp.name}"/>
-                                        <input type="hidden" th:name="competitor.surname" th:id="competitor.surname" th:value="${comp.surname}"/>
-                                        <input type="hidden" th:name="competitor.licenceNumber" th:id="competitor.licenceNumber" th:value="${comp.licenceNumber}"/>
-                                        <input type="hidden" th:name="competitor.chipNumber" th:id="competitor.chipNumber" th:value="${comp.chipNumber}"/>
-                                        <input type="hidden" th:name="competitor.club" th:id="competitor.club" th:value="${comp.club}"/>
-                                        <input type="hidden" th:name="competitor.birthYear" th:id="competitor.birthYear" th:value="${comp.birthYear}"/>
-                                        <input type="hidden" th:name="competitor.gender" th:id="competitor.gender" th:value="${comp.gender}"/>
-                                        <input type="hidden" th:name="competitor.category" th:id="competitor.category" th:value="${comp.category}"/>
-                                        <input type="hidden" th:name="competitor.clubId" th:id="competitor.clubId" th:value="${comp.clubId}"/>
-                                        <input type="hidden" th:name="competitor.categoryId" th:id="competitor.categoryId" th:value="${comp.categoryId}"/>
+                                        <td style="display: none">
+                                            <input type="hidden" th:name="competitor.id" th:id="competitor.id"
+                                                   th:value="${comp.id}"/>
+                                            <input type="hidden" th:name="competitor.name" th:id="competitor.name"
+                                                   th:value="${comp.name}"/>
+                                            <input type="hidden" th:name="competitor.surname" th:id="competitor.surname"
+                                                   th:value="${comp.surname}"/>
+                                            <input type="hidden" th:name="competitor.licenceNumber"
+                                                   th:id="competitor.licenceNumber" th:value="${comp.licenceNumber}"/>
+                                            <input type="hidden" th:name="competitor.chipNumber"
+                                                   th:id="competitor.chipNumber" th:value="${comp.chipNumber}"/>
+                                            <input type="hidden" th:name="competitor.club" th:id="competitor.club"
+                                                   th:value="${comp.club}"/>
+                                            <input type="hidden" th:name="competitor.birthYear"
+                                                   th:id="competitor.birthYear" th:value="${comp.birthYear}"/>
+                                            <input type="hidden" th:name="competitor.gender" th:id="competitor.gender"
+                                                   th:value="${comp.gender}"/>
+                                            <input type="hidden" th:name="competitor.category"
+                                                   th:id="competitor.category" th:value="${comp.category}"/>
+                                            <input type="hidden" th:name="competitor.clubId" th:id="competitor.clubId"
+                                                   th:value="${comp.clubId}"/>
+                                            <input type="hidden" th:name="competitor.categoryId"
+                                                   th:id="competitor.categoryId" th:value="${comp.categoryId}"/>
+                                        </td>
                                         <td style="border: none; background: none">
-                                            <input type="submit" class="btn" style="height: 30px;line-height: 30px" name="action" value="edit" />
-                                            <input type="submit" class="btn" style="height: 30px;line-height: 30px" name="action" value="delete" />
+                                            <input type="submit" class="btn" style="height: 30px;line-height: 30px"
+                                                   name="action" value="edit"/>
+                                            <input type="submit" class="btn" style="height: 30px;line-height: 30px"
+                                                   name="action" value="delete"/>
                                         </td>
                                     </tr>
-                                    <tr th:id="option+${comp.id}" style="display: none;" class="option"><td colspan="5">
-                                        <form th:id="${comp.id}" class="options_form" action="#" onsubmit="save_competitor()">
-                                            <table  align="center" STYLE="margin-bottom: 30px;" th:each="day : ${days}" >
+                                    <tr th:id="option+${comp.id}" style="display: none;" class="option">
+                                        <td th:id="comp_options_ + ${comp.id}" colspan="5">
+                                            <table th:id="options-day_+${day}" align="center" STYLE="margin-bottom: 15px; margin-top: 15px;" th:each="day : ${days}">
                                                 <tr>
                                                     <th style="border: none">&nbsp;</th>
                                                     <th>Wyżywienie</th>
                                                     <th>Zakwaterowanie</th>
                                                 </tr>
-                                                <tr>
+                                                <tr class="info">
                                                     <td th:text="${day}" style="border: none"></td>
                                                     <td>
-                                                        <div th:each="meal : ${mealOptions}" >
-                                                            <input type="checkbox" th:name="${meal.name}" th:id="${meal.id}" th:value="${meal.id}" />
+                                                        <div th:each="meal : ${mealOptions}">
+                                                            <input type="checkbox" th:name="${meal.name}"
+                                                                   th:class="meal_+${meal.id}" th:value="${meal.id}"/>
                                                             <label th:text="${meal.name}"></label>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div th:each="night : ${nightOptions}" >
-                                                            <input type="checkbox" th:name="${night.name}" th:id="${night.id}" th:value="${night.id}" />
+                                                        <div th:each="night : ${nightOptions}">
+                                                            <input type="checkbox" th:name="${night.name}"
+                                                                   th:class="night_+${night.id}" th:value="${night.id}"/>
                                                             <label th:text="${night.name}"></label>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <input type="button" class="btn" style="height: 30px; padding:0px 3px; line-height: 30px" value="Zapisz" th:onclick='save_competitor(${comp.id})'/>
-                                        </form>
-                                    </td>
+                                            <!--
+                                            <input type="button" class="btn save" style="height: 30px; padding:0px 3px; line-height: 30px" value="Zapisz" <th:onclick="'javascript:save_competitor(\'' + 'comp_options_' + ${comp.id} + '\');'"/>
+                                            -->
+                                            <input th:id="save_button_+${comp.id}" type="button" class="btn save"
+                                                   style="height: 30px; padding:0px 3px; line-height: 30px"
+                                                   value="Zapisz"
+                                            />
+                                        </td>
                                     </tr>
-                                </form>
-                            </div>
-                            <tr ><td colspan="6" style="border: none; background: none">
-                                <form th:action="@{/admin}" method="POST">
-                                    <input type="submit" class="btn" style="height: 30px; padding:0px 3px; line-height: 30px" name="action" value="zaznacz" />
-                                    <input type="submit" class="btn" style="height: 30px; padding:0px 3px; line-height: 30px" name="action" value="opcje dla zaznaczonych" />
-                                </form>
-                                </td>
-                            </tr>
-                        </table>
+                                </th:block>
+                                <tr>
+                                    <td colspan="6" style="border: none; background: none">
+
+                                        <input type="button" class="btn"
+                                               style="height: 30px; padding:0px 3px; line-height: 30px" name="action"
+                                               value="zaznacz"/>
+                                        <input type="button" class="btn"
+                                               style="height: 30px; padding:0px 3px; line-height: 30px" name="action"
+                                               value="opcje dla zaznaczonych"/>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </form>
 
                     </div>
                 </div>
