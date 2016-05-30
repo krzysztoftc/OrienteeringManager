@@ -58,7 +58,7 @@
             </ul>
             <ul th:case ="${false}" class="nav navbar-nav navbar-right">
                 <li><a href="#" th:text="${clubData.agentName == null} ? 'Witaj, Administratorze!' : 'Witaj, '+${clubData.agentName}"><span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
+                <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
             </ul>
         </div>
 
