@@ -44,7 +44,9 @@
                                     <!-- <td th:each="day : ${days}" th:text="${day}"></td> -->
                                 </tr>
                                 <th:block th:each="comp : ${competitors}">
+                                    <form>
                                     <tr th:id="options_+${comp.id}" class="competitor_info">
+
                                         <td>
                                             <input type="checkbox" th:name="${night}" th:id="${night}"/>
                                         </td>
@@ -83,6 +85,7 @@
                                                    name="action" value="delete"/>
                                         </td>
                                     </tr>
+                                    </form>
                                     <tr th:id="option+${comp.id}" style="display: none;" class="option">
                                         <td th:id="comp_options_ + ${comp.id}" colspan="5">
                                             <table th:id="options-day_+${day}" align="center" STYLE="margin-bottom: 15px; margin-top: 15px;" th:each="day : ${days}">
