@@ -32,20 +32,20 @@
         <div th:switch = "${clubData.id == null}">
             <div th:case = "${true}">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../">Strona główna</a></li>
+                    <li class="active"><a href="/index.html">Strona główna</a></li>
                 </ul>
             </div>
             <div th:case = "${false}">
                 <div th:switch="${clubData.id == 0}">
                     <ul th:case="${true}" class="nav navbar-nav">
-                        <li class="active"><a href="../admin/">Zawodnicy</a></li>
-                        <li><a href="../admin/catering">Cateringi</a></li>
-                        <li><a href="../admin/accommodation">Noclegi</a></li>
+                        <li class="active"><a th:href="@{/admin}">Zawodnicy</a></li>
+                        <li><a th:href="@{/admin/catering}">Cateringi</a></li>
+                        <li><a th:href="@{/admin/accommodation}">Noclegi</a></li>
                     </ul>
                     <ul th:case="${false}" class="nav navbar-nav">
-                        <li class="active"><a href="../admin/index.html">Zawodnicy</a></li>
-                        <li><a href="../club/catering">Cateringi</a></li>
-                        <li><a href="../club/accommodation">Noclegi</a></li>
+                        <li class="active"><a th:href="@{/admin}">Zawodnicy</a></li>
+                        <li><a th:href="@{/club/catering}">Cateringi</a></li>
+                        <li><a th:href="@{/club/accommodation}">Noclegi</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,12 +53,12 @@
 
         <div th:switch = "${clubData.id == null}" >
             <ul th:case ="${true}" class="nav navbar-nav navbar-right">
-                <li><a href="../register"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
-                <li><a href="../login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
+                <li><a th:href="@{/register}"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
+                <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
             </ul>
             <ul th:case ="${false}" class="nav navbar-nav navbar-right">
                 <li><a href="#" th:text="${clubData.agentName == null} ? 'Witaj, Administratorze!' : 'Witaj, '+${clubData.agentName}"><span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a href="../logout"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
+                <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
             </ul>
         </div>
 
