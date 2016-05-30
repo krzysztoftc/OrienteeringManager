@@ -18,8 +18,8 @@ import java.util.List;
 /**
  * Created by bartosz on 23.04.16.
  */
-@Controller("adminAccommodationController")
-public class AdminAccommodationController extends BaseController{
+@Controller("adminAccommodationEditController")
+public class AdminAccommodationEditController extends BaseController{
 
     @Autowired
     IAccommodationService accommodationService;

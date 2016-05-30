@@ -21,8 +21,8 @@ import java.util.List;
 /**
  * Created by bartosz on 23.04.16.
  */
-@Controller("adminCateringController")
-public class AdminCateringController extends BaseController {
+@Controller("adminCateringEditController")
+public class AdminCateringEditController extends BaseController {
 
     @Autowired
     ICateringService cateringService;

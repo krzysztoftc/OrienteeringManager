@@ -52,6 +52,6 @@ public class AdminCateringHomeController extends BaseController {
     public String delete(@ModelAttribute("cateringForm") CateringForm form,
                          BindingResult bindingResult) {
         cateringService.delete(form.getCatering());
-        return "admin/index";
+        return "redirect:/admin/catering";
     }
 }

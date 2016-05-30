@@ -52,6 +52,6 @@ public class AdminAccommodationHomeController extends BaseController{
     public String delete(@ModelAttribute("accommodationForm") AccommodationForm form,
                          BindingResult bindingResult) {
         accommodationService.delete(form.getAccommodation());
-        return "admin/accommodation";
+        return "redirect:/admin/accommodation";
     }
 }
