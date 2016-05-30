@@ -3,7 +3,8 @@
  */
 
 function toogle(id) {
-   $("#option"+id).slideToggle("fast");
+    $("#option"+id).slideToggle("fast");
+    $.backstretch("assets/img/backgrounds/1.jpg");
 }
 
 function save_competitor(button) {
