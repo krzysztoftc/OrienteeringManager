@@ -64,6 +64,10 @@
                                 <div>Opis</div>
                                 <input type="text" name="Description" th:field="*{catering.description}" placeholder="Opis" class="register-catering-description form-control" id="register-catering-description" />
                             </div>
+                            <div th:each="i : ${#numbers.sequence( 1, 10 )}">
+                                <div th:text="'Opcja '+${i}+'.'"/>
+                                <input type="text"  th:field="*{options}" placeholder="Opcja" class="register-catering-option form-control" th:id="'register-catering-option-'+${i}" />
+                            </div>
                             <input type="hidden" name="id" th:field="*{catering.id}" class="register-catering-id form-control" id="register-catering-id" />
                             <input type="submit" class="btn" name="action" value="save"/>
                             <input type="submit" class="btn" name="action" value="cancel"/>
