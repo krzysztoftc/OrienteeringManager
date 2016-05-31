@@ -72,8 +72,8 @@
                                 <input type="text"  th:field="*{options}" placeholder="Opcja" class="register-catering-option form-control" th:id="'register-catering-option-'+${i}" />
                             </div>
                             <input type="hidden" name="id" th:field="*{catering.id}" class="register-catering-id form-control" id="register-catering-id" />
-                            <input type="submit" class="btn" name="action" value="save"/>
-                            <input type="submit" class="btn" name="action" value="cancel"/>
+                            <button type="submit" class="btn" name="action" value="save">Zapisz</button>
+                            <button type="submit" class="btn" name="action" value="cancel">Anuluj</button>
                         </form>
                     </div>
                 </div>
