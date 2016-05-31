@@ -51,6 +51,8 @@ public class AdminCateringEditController extends BaseController {
         String resultView = "redirect:/admin/catering";
         try {
             cateringService.saveOrUpdate(form.getCatering());
+            for( String opt : form.getOptions() )
+                System.out.println( opt );
         }catch(Exception e){
             e.printStackTrace();
             resultView = "/admin/edit/catering_form";

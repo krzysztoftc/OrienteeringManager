@@ -13,6 +13,9 @@ public class CateringForm extends AbstractForm {
 	@Getter @Setter
 	private Catering catering;
 
+	@Getter @Setter
+	private String[] options;
+
     public CateringForm(){
     }
 
