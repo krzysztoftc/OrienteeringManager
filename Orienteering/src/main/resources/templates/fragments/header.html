@@ -32,11 +32,11 @@
         <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div th:switch = "${loggedUsername.type}">
-                <div th:case = "${'NONE'}">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a th:href="@{/}">Strona główna</a></li>
-                    </ul>
-                </div>
+
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/}">Strona główna</a></li>
+                </ul>
+
                 <div th:case = "${'ADMIN'}">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
