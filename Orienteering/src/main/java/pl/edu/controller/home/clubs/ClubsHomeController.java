@@ -102,7 +102,12 @@ public class ClubsHomeController extends BaseHomeController {
     public String add(@ModelAttribute("competitorForm") CompetitorForm form,
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("competitorForm", new CompetitorForm());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long clubId = userService.uniqueObject(Users.findAll().withEmail(user.getUsername())).getClub().getId();
+        form = new CompetitorForm();
+        form.setCompetitor(new Competitor());
+        form.getCompetitor().setClubId(clubId);
+        redirectAttributes.addFlashAttribute("competitorForm", form);
         return "redirect:/clubs/edit/competitor";
     }
 

@@ -51,7 +51,7 @@
                         <p>Wypełnij formularz:</p>
                     </div>
                     <div class="form-bottom contact-form">
-                        <form role="form" th:action="@{/admin/edit/competitor}" method="POST" th:object="${competitorForm}">
+                        <form role="form" th:action="@{/clubs/edit/competitor}" method="POST" th:object="${competitorForm}">
                             <div class="form-group only-club">
                                 <div>Imię</div>
                                 <input type="text" name="Name" th:field="*{competitor.name}" placeholder="Imię zawodnika" class="register-competitor-name form-control" id="register-competitor-name" />
