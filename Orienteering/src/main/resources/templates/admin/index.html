@@ -36,7 +36,7 @@
                         <!--<form th:action="@{/admin}" method="POST" th:object="${competitorForm}">-->
                             <table style="margin-bottom: 20px;">
                                 <tr>
-                                    <th>Edycja</th>
+                                    <th style="display: none">Edycja</th>
                                     <th>Imię</th>
                                     <th>Nazwisko</th>
                                     <th>Płeć</th>
@@ -48,8 +48,8 @@
 
                                     <tr th:id="options_+${comp.id}" class="competitor_info">
 
-                                        <td>
-                                            <input type="checkbox" th:name="${night}" th:id="${night}"/>
+                                        <td  style="display: none">
+                                            <input type="checkbox" th:name="${night}" th:id="${night} "/>
                                         </td>
                                         <td th:id="${comp.id}" th:text="${comp.name}" onclick="toogle(this.id)"/>
                                         <td th:id="${comp.id}" th:text="${comp.surname}" onclick="toogle(this.id)"/>
@@ -139,7 +139,7 @@
                                     </tr>
                                 </th:block>
                                 <tr>
-                                    <td colspan="6" style="border: none; background: none">
+                                    <td colspan="6" style="border: none; background: none; display: none">
 
                                         <input type="button" class="btn"
                                                style="height: 30px; padding:0px 3px; line-height: 30px" name="action"
@@ -147,8 +147,10 @@
                                         <input type="button" class="btn"
                                                style="height: 30px; padding:0px 3px; line-height: 30px" name="action"
                                                value="opcje dla zaznaczonych"/>
+                                    </td>
+                                    <td colspan="6" style="border: none; background: none;">
                                         <form th:action="@{/admin}" method="POST" th:object="${competitorForm}">
-                                            <input type="submit" class="btn" style="height: 30px; padding:0px 3px; line-height: 30px" name="action" value="add" />
+                                            <button type="submit" class="btn" style="height: 30px; padding:0px 3px; line-height: 30px" name="action" value="add" >Dodaj</button>
                                         </form>
                                     </td>
                                 </tr>
