@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import pl.edu.service.user.IUserService;
 import pl.edu.model.user.Role;
 
@@ -38,19 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/clubs/**").hasAnyRole(Role.CLUB.getCode(),
                                                      Role.INDIVIDUAL.getCode());
         http.csrf().disable();
-//        http
-//                .authorizeRequests().anyRequest().authenticated();
-//        http
-//                .formLogin()
-//                .permitAll()
-//                .failureUrl("/login?error")
-//                .defaultSuccessUrl("/")
-//                .loginPage("/login")
-//                .loginProcessingUrl("/login")
-//                .usernameParameter("email")
-//                .and()
-//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
-//                .permitAll();
     }
 
     @Autowired
@@ -58,25 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(userService)
                 .passwordEncoder(passwordEncoder);
-//        System.out.println(userService);
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER");
     }
 
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-//    @Bean
-//    AuthenticationManager authenticationManager(){
-//        AuthenticationManager authenticationManager =  new AuthenticationManager() {
-//            @Override
-//            public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-//                return null;
-//            }
-//        };
-//        authenticationManager.
-//    }
 }

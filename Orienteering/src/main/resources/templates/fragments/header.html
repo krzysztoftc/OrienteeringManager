@@ -30,35 +30,35 @@
             <a class="navbar-brand" href="#">Orientering manager</a>
         </div>
         <div th:switch = "${loggedUsername.type}">
-            <div th:case = "${NONE}">
+            <div th:case = "${'NONE'}">
                 <ul class="nav navbar-nav">
                     <li class="active"><a th:href="@{/}">Strona główna</a></li>
                 </ul>
             </div>
-            <div th:case = "${ROLE_ADMIN}">
+            <div th:case = "${'ADMIN'}">
                 <ul class="nav navbar-nav">
                     <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
                     <li><a th:href="@{/admin/catering}">Cateringi</a></li>
                     <li><a th:href="@{/admin/accommodation}">Noclegi</a></li>
                 </ul>
-            <div th:case = "${ROLE_CLUB}">
+            </div>
+            <div th:case = "${'CLUB'}">
                 <ul class="nav navbar-nav">
                     <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
                     <li><a th:href="@{/club/catering}">Cateringi</a></li>
                     <li><a th:href="@{/club/accommodation}">Noclegi</a></li>
                 </ul>
             </div>
-                <div th:case = "${ROLE_INDIVIDUAL}">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
-                        <li><a th:href="@{/club/catering}">Cateringi</a></li>
-                        <li><a th:href="@{/club/accommodation}">Noclegi</a></li>
-                    </ul>
-                </div>
+            <div th:case = "${'INDIVIDUAL'}">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
+                    <li><a th:href="@{/club/catering}">Cateringi</a></li>
+                    <li><a th:href="@{/club/accommodation}">Noclegi</a></li>
+                </ul>
             </div>
         </div>
 
-        <div th:switch = "${loggedUsername.type == NONE}" >
+        <div th:switch = "${loggedUsername.type == 'NONE'}" >
             <ul th:case ="${true}" class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/register}"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
                 <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
@@ -68,7 +68,6 @@
                 <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
             </ul>
         </div>
-
     </div>
 </div>
 

@@ -20,6 +20,7 @@ import pl.edu.controller.login.form.LoginValidator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Collection;
 
 /**
  * Created by bartosz on 11.04.16.
@@ -84,12 +85,13 @@ public class LoginController extends BaseController {
         return resultView;
     }
 
-    @RequestMapping(value = { "/logout", "/logout/" }, method = RequestMethod.POST)
-    public String logout(BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = { "/logout", "/logout/" }, method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+
         return "redirect:/login";
     }
 }
