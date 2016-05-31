@@ -41,13 +41,13 @@
                     <li><a th:href="@{/admin/catering}">Cateringi</a></li>
                     <li><a th:href="@{/admin/accommodation}">Noclegi</a></li>
                 </ul>
-            <div th:case = "${ROLE_CLUB}">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
-                    <li><a th:href="@{/club/catering}">Cateringi</a></li>
-                    <li><a th:href="@{/club/accommodation}">Noclegi</a></li>
-                </ul>
-            </div>
+                <div th:case = "${ROLE_CLUB}">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
+                        <li><a th:href="@{/club/catering}">Cateringi</a></li>
+                        <li><a th:href="@{/club/accommodation}">Noclegi</a></li>
+                    </ul>
+                </div>
                 <div th:case = "${ROLE_INDIVIDUAL}">
                     <ul class="nav navbar-nav">
                         <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
