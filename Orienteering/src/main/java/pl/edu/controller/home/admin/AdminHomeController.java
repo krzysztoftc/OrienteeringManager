@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.edu.controller.BaseController;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.controller.competitor.form.CompetitorOptionsList;
+import pl.edu.controller.home.BaseHomeController;
 import pl.edu.model.accommodation.Accommodation;
 import pl.edu.model.accommodation.reservation.AccommodationReservation;
 import pl.edu.model.catering.Catering;
@@ -46,13 +47,7 @@ import java.util.List;
  * Created by bartosz on 23.04.16.
  */
 @Controller("adminHomeController")
-public class AdminHomeController extends BaseController{
-
-    @Autowired
-    private ICateringReservationService cateringReservationService;
-
-    @Autowired
-    private IAccommodationReservationService accommodationReservationService;
+public class AdminHomeController extends BaseHomeController{
 
     @Autowired
     private IClubService clubService;
@@ -69,9 +64,6 @@ public class AdminHomeController extends BaseController{
     @Autowired
     private ICompetitorService competitorService;
 
-    @Autowired
-    private ICompetitionInfoService competitionInfoService;
-
     @ModelAttribute("competitorForm")
     public CompetitorForm form() {
         CompetitorForm competitorForm = new CompetitorForm();
@@ -82,28 +74,6 @@ public class AdminHomeController extends BaseController{
     public List<Competitor> competitorList() {
         List<Competitor> competitorList = competitorService.list(Competitors.findAll());
         return competitorList;
-    }
-
-    @ModelAttribute("days")
-    public List<String> daysList() {
-        CompetitionInfo compInfo = competitionInfoService.uniqueObject(CompetitionInfos.findAll());
-        Date begin = compInfo.getBegin();
-        Date end = compInfo.getEnd();
-
-        Calendar cStart = Calendar.getInstance(),
-                cStop = Calendar.getInstance();
-
-        cStart.setTime(begin);
-        cStop.setTime(end);
-
-        List<String> days = new ArrayList<>();
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        do {
-            days.add(df.format(cStart.getTime()));
-            cStart.add(Calendar.DAY_OF_YEAR, 1);
-        } while (cStart.before(cStop));
-
-        return days;
     }
 
     @ModelAttribute("mealOptions")
@@ -158,60 +128,6 @@ public class AdminHomeController extends BaseController{
     @ResponseStatus(value = HttpStatus.OK)
     public void save_competitor(@RequestBody String jsonString) {
         System.out.println("Save competitor");
-        try {
-
-            String decodedString = URLDecoder.decode(jsonString, "UTF-8");
-            System.out.println(decodedString);
-
-            ObjectMapper mapper = new ObjectMapper();
-            CompetitorOptionsList options = mapper.readValue(decodedString, CompetitorOptionsList.class);
-
-            updateCateringReservations(options);
-            updateAccommodationReservations(options);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void updateCateringReservations(CompetitorOptionsList options){
-        // Getting list of current catering reservations
-        List<CateringReservation> cateringReservationsList =
-                cateringReservationService.list(CateringReservations.findAll().withCompetitorId(options.getCompetitor()));
-
-        // Removing old catering reservations
-        for(CateringReservation cr : cateringReservationsList){
-            cateringReservationService.delete(cr);
-        }
-        System.out.println("Deleted old catering reservations");
-
-        // Adding new catering reservations
-        for(Long id : options.getCaterings()){
-            CateringReservation cr = new CateringReservation();
-            cr.setCompetitorId(options.getCompetitor());
-            cr.setCateringAvailabilityId(id);
-            cateringReservationService.saveOrUpdate(cr);
-        }
-        System.out.println("Added new catering reservations");
-    }
-
-    private void updateAccommodationReservations(CompetitorOptionsList options){
-        // Getting list of current accommodation reservations
-        List<AccommodationReservation> accommodationReservationsList =
-                accommodationReservationService.list(AccommodationReservations.findAll().withCompetitorId(options.getCompetitor()));
-
-        // Removing old accommodation reservations
-        for(AccommodationReservation ar : accommodationReservationsList){
-            accommodationReservationService.delete(ar);
-        }
-        System.out.println("Deleted old accommodation reservations");
-
-        // Adding new accommodation reservations
-        for(Long id : options.getNights()){
-            AccommodationReservation ar = new AccommodationReservation();
-            ar.setCompetitorId(options.getCompetitor());
-            ar.setAccommodationAvailability(id);
-            accommodationReservationService.saveOrUpdate(ar);
-        }
-        System.out.println("Added new accommodation reservations");
+        saveCompetitorToDB(jsonString);
     }
 }

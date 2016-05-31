@@ -1,4 +1,4 @@
-package pl.edu.controller.competitor.admin;
+package pl.edu.controller.competitor.clubs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.controller.BaseController;
-import pl.edu.controller.accommodation.form.AccommodationForm;
-import pl.edu.controller.catering.form.CateringForm;
 import pl.edu.controller.competitor.form.CompetitorForm;
 import pl.edu.model.category.Category;
 import pl.edu.model.club.Club;
@@ -23,8 +21,8 @@ import java.util.List;
 /**
  * Created by bartosz on 23.04.16.
  */
-@Controller("adminCompetitorController")
-public class AdminCompetitorController extends BaseController {
+@Controller("clubsCompetitorController")
+public class ClubsCompetitorController extends BaseController {
 
     @Autowired
     private ICompetitorService competitorService;
@@ -53,29 +51,29 @@ public class AdminCompetitorController extends BaseController {
         return categoryList;
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"})
+    @RequestMapping(value = {"/clubs/edit/competitor", "/clubs/edit/competitor/"})
     public String home(@ModelAttribute("competitorForm") CompetitorForm form,
                        BindingResult bindingResult){
-        return "admin/edit/competitor_form";
+        return "clubs/edit/competitor_form";
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
+    @RequestMapping(value = {"/clubs/edit/competitor", "/clubs/edit/competitor/"},
             method=RequestMethod.POST, params="action=save")
     public String saveCompetitor(@ModelAttribute("competitorForm") CompetitorForm form,
                                  BindingResult bindingResult) {
-        String resultView = "redirect:/admin";
+        String resultView = "redirect:/clubs";
         try {
             competitorService.saveOrUpdate(form.getCompetitor());
         }catch(Exception e){
             e.printStackTrace();
-            resultView = "/admin/edit/competitor_form";
+            resultView = "/clubs/edit/competitor_form";
         }
         return resultView;
     }
 
-    @RequestMapping(value = {"/admin/edit/competitor", "/admin/edit/competitor/"},
+    @RequestMapping(value = {"/clubs/edit/competitor", "/clubs/edit/competitor/"},
             method=RequestMethod.POST, params="action=cancel")
     public String cancelCompetitor() {
-        return "redirect:/admin";
+        return "redirect:/clubs";
     }
 }
