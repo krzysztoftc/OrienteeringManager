@@ -38,10 +38,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by bartosz on 23.04.16.
@@ -73,6 +70,14 @@ public class AdminHomeController extends BaseHomeController{
     @ModelAttribute("competitors")
     public List<Competitor> competitorList() {
         List<Competitor> competitorList = competitorService.list(Competitors.findAll());
+        competitorList.sort(((c1, c2) -> {
+            if(c1.getId() > c2.getId())
+                return 1;
+            if(c1.getId() < c2.getId())
+                return -1;
+            else
+                return 0;
+        }));
         return competitorList;
     }
 
