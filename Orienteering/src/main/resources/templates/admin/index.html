@@ -41,6 +41,8 @@
                                     <th>Nazwisko</th>
                                     <th>Płeć</th>
                                     <th>Rok urodzenia</th>
+                                    <th>Kategoria</th>
+                                    <th>Czips</th>
                                     <!-- <td th:each="day : ${days}" th:text="${day}"></td> -->
                                 </tr>
                                 <th:block th:each="comp : ${competitors}">
@@ -55,6 +57,8 @@
                                         <td th:id="${comp.id}" th:text="${comp.surname}" onclick="toogle(this.id)"/>
                                         <td th:id="${comp.id}" th:text="${comp.gender}" onclick="toogle(this.id)"/>
                                         <td th:id="${comp.id}" th:text="${comp.birthYear}" onclick="toogle(this.id)"/>
+                                        <td th:id="${comp.id}" th:text="${comp.category.name}" onclick="toogle(this.id)"/>
+                                        <td th:id="${comp.id}" th:text="${comp.chipNumber}" onclick="toogle(this.id)"/>
                                         <!--<td style="display: none">-->
                                             <!---->
                                         <!--</td>-->
@@ -91,7 +95,7 @@
                                     </tr>
 
                                     <tr th:id="option+${comp.id}" style="display: none;" class="option">
-                                        <td th:id="comp_options_ + ${comp.id}" colspan="5">
+                                        <td th:id="comp_options_ + ${comp.id}" colspan="6">
                                             <table th:id="options-day_+${day}" align="center" STYLE="margin-bottom: 15px; margin-top: 15px;" th:each="day : ${days}">
                                                 <tr>
                                                     <th style="border: none">&nbsp;</th>
