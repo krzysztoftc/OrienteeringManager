@@ -44,7 +44,8 @@ public class AdminClubController extends BaseController {
             method= RequestMethod.POST, params="action=save")
     public String saveClub(@ModelAttribute("clubForm") ClubForm form,
                                     BindingResult bindingResult) {
-        String resultView = "redirect:/admin/club";
+//        String resultView = "redirect:/admin/club";
+        String resultView = "redirect:/admin";
         try {
             clubService.saveOrUpdate(form.getClub());
         }catch(Exception e){
@@ -57,6 +58,7 @@ public class AdminClubController extends BaseController {
     @RequestMapping(value = {"/admin/edit/club", "/admin/edit/club/"},
             method=RequestMethod.POST, params="action=cancel")
     public String cancelClub() {
-        return "redirect:/admin/club";
+//        return "redirect:/admin/club";
+        return "redirect:/admin";
     }
 }

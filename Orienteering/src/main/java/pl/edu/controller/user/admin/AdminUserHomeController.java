@@ -52,6 +52,6 @@ public class AdminUserHomeController extends BaseController {
     public String delete(@ModelAttribute("userForm") UserForm form,
                          BindingResult bindingResult) {
         userService.delete(form.getUser());
-        return "admin/index";
+        return "redirect:/admin";
     }
 }

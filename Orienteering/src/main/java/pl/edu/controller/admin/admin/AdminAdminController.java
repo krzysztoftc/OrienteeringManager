@@ -44,7 +44,8 @@ public class AdminAdminController extends BaseController {
             method= RequestMethod.POST, params="action=save")
     public String saveUser(@ModelAttribute("adminForm") AdminForm form,
                                     BindingResult bindingResult) {
-        String resultView = "redirect:/admin/admin";
+//        String resultView = "redirect:/admin/admin";
+        String resultView = "redirect:/admin";
         try {
             userService.saveOrUpdate(form.getAdmin());
         }catch(Exception e){
