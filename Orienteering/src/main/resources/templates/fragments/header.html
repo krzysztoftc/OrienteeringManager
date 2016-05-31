@@ -29,43 +29,52 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Orientering manager</a>
         </div>
-        <div th:switch = "${loggedUsername.type}">
-            <div th:case = "${'NONE'}">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Strona główna</a></li>
-                </ul>
+        <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div th:switch = "${loggedUsername.type}">
+                <div th:case = "${'NONE'}">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a th:href="@{/}">Strona główna</a></li>
+                    </ul>
+                </div>
+                <div th:case = "${'ADMIN'}">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zarządzaj<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a th:href="@{/admin/accommodation}">Noclegi</a></li>
+                                <li><a th:href="@{/admin/catering}">Cateringi</a></li>
+                                <li><a th:href="@{/admin/edit/club}">Kluby</a></li>
+                                <li><a th:href="@{/admin/edit/user}">Zawodnicy</a></li>
+                                <li><a th:href="@{/admin/edit/admin}">Administratorzy</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div th:case = "${'CLUB'}">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
+                    </ul>
+                </div>
+                <div th:case = "${'INDIVIDUAL'}">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
+                    </ul>
+                </div>
             </div>
-            <div th:case = "${'ADMIN'}">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
-                    <li><a th:href="@{/admin/catering}">Cateringi</a></li>
-                    <li><a th:href="@{/admin/accommodation}">Noclegi</a></li>
-                </ul>
-            </div>
-            <div th:case = "${'CLUB'}">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
-                </ul>
-            </div>
-            <div th:case = "${'INDIVIDUAL'}">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Zawodnicy</a></li>
-                </ul>
-            </div>
-        </div>
 
-        <div th:switch = "${loggedUsername.type == 'NONE'}" >
-            <ul th:case ="${true}" class="nav navbar-nav navbar-right">
-                <li><a th:href="@{/register}"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
-                <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
-            </ul>
-            <ul th:case ="${false}" class="nav navbar-nav navbar-right">
-                <li><a href="#" th:text="'Witaj, ' + ${loggedUsername.club.agentName} + '!'"><span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
-            </ul>
-        </div>
+            <div th:switch = "${loggedUsername.type == 'NONE'}" >
+                <ul th:case ="${true}" class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{/register}"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
+                    <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
+                </ul>
+                <ul th:case ="${false}" class="nav navbar-nav navbar-right">
+                    <li><a href="#" th:text="'Witaj, ' + ${loggedUsername.club.agentName} + '!'"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
+                </ul>
+            </div>
     </div>
 </div>
-
+</div>
 </body>
 </html>
